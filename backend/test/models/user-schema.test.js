@@ -9,6 +9,6 @@ describe('user schema', () => {
         return testInvalid({name: 'Test User', password: 'test'});
     });
     it('requires password', () => {
-      return testInvalid({name: 'Test User', email: 'user@test.com'})
+        return testInvalid({name: 'Test User', email: 'user@test.com'});
     });
 });
