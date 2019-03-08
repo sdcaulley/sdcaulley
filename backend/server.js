@@ -5,6 +5,6 @@ require('./lib/db');
 
 const server = http.createServer(app);
 
-server.listen(PORT, () => {
+module.exports = server.listen(PORT, () => {
     console.log('server is running on ', server.address());
 });

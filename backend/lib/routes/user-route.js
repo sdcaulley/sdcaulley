@@ -1,5 +1,5 @@
 const express = require('express');
-const router = express.Router();
+const userRouter = express.Router();
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const passport = require('passport');
@@ -7,9 +7,8 @@ const validateRegisterInput = require('../validation/register');
 const validateLoginInput = require('../validation/login');
 const User = require('../models/user-schema');
 
-router.post('/register', function(req, res) {
+userRouter.post('/register', function(req, res) {
     const { errors, isValid } = validateRegisterInput(req.body);
-
     if(!isValid) {
         return res.status(400).json(errors);
     }
@@ -47,7 +46,7 @@ router.post('/register', function(req, res) {
         }
     });
 });
-router.post('/login', (req, res) => {
+userRouter.post('/login', (req, res) => {
     const { errors, isValid } = validateLoginInput(req.body);
     if(!isValid) {
         return res.status(400).json(errors);
@@ -88,7 +87,7 @@ router.post('/login', (req, res) => {
         });
 });
 
-router.get('/me', passport.authenticate('jwt', { session: false }), (req, res) => {
+userRouter.get('/me', passport.authenticate('jwt', { session: false }), (req, res) => {
     return res.json({
         id: req.user.id,
         name: req.user.name,
@@ -96,4 +95,4 @@ router.get('/me', passport.authenticate('jwt', { session: false }), (req, res) =
     });
 });
 
-module.exports = router;
+module.exports = userRouter;

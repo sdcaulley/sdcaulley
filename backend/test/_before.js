@@ -1,7 +1,6 @@
-const mongoose = require('mongoose');
-
-require('../lib/db');
 process.env.MONGODB_URI = 'mongodb://localhost:27017/basic_test';
+require('../lib/db');
+const mongoose = require('mongoose');
 
 before((done) => {
     const drop = () => mongoose.connection.dropDatabase(() =>{
