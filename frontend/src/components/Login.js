@@ -34,15 +34,17 @@ class Login extends Component {
                 <h2>Login</h2>
                 <form onSubmit={ this.handleSubmit }>
                     <SingleInput
-                        type='email'
-                        placeholder='Email'
-                        name='email'
+                        title={'Email:'}
+                        type={'email'}
+                        placeholder={'Email'}
+                        name={'email'}
                         controlFunc={ this.handleInputChange }
                         content={ this.state.email } />
                     <SingleInput
-                        type='password'
-                        placeholder='Password'
-                        name='password'
+                        title={'Password'}
+                        type={'password'}
+                        placeholder={'Password'}
+                        name={'password'}
                         controlFunc={ this.handleInputChange }
                         content={ this.state.password } />
                     <button type='submit'>Login</button>

@@ -38,27 +38,31 @@ class Register extends Component {
                 <h2>Registration</h2>
                 <form onSubmit={ this.handleSubmit }>
                     <SingleInput
-                        type='text'
-                        placeholder='Name'
-                        name='name'
+                        title={'Name:'}
+                        type={'text'}
+                        placeholder={'Name'}
+                        name={'name'}
                         controlFunc={ this.handleInputChange }
                         content={ this.state.name } />
                     <SingleInput
-                        type='email'
-                        placeholder='Email'
-                        name='email'
+                        title={'Email:'}
+                        type={'email'}
+                        placeholder={'Email'}
+                        name={'email'}
                         controlFunc={ this.handleInputChange }
                         content={ this.state.email} />
                     <SingleInput
-                        type='password'
-                        placeholder='Password'
-                        name='password'
+                        title={'Password:'}
+                        type={'password'}
+                        placeholder={'Password'}
+                        name={'password'}
                         controlFunc={ this.handleInputChange }
                         content={ this.state.password} />
                     <SingleInput
-                        type='password'
-                        placeholder='Confirm Password'
-                        name='password_confirm'
+                        title={'Confirm Password:'}
+                        type={'password'}
+                        placeholder={'Confirm Password'}
+                        name={'password_confirm'}
                         controlFunc={ this.handleInputChange }
                         content={ this.state.password_confirm} />
                     <button type='submit'>Register User</button>
