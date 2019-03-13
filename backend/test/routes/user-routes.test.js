@@ -19,7 +19,6 @@ function badRequest(url, data, error) {
         )
         .catch(function(err) {
             console.log('err ', err);
-            // res.status(400, err).json({});
         });
 }
 
@@ -55,7 +54,6 @@ describe('user', () => {
                 })
                 .catch(function(err) {
                     console.log('err ', err);
-                    // res.status(400, err).json({});
                 });
         }
 
@@ -68,8 +66,5 @@ describe('user', () => {
         it('email should not be in use', () => {
             badRequest('/register', { email: 'user1@test.com' }, 'Email is already in use');
         });
-        // it('creates new user', () => {
-        //
-        // });
     });
 });
