@@ -1,4 +1,8 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import { withRouter } from 'react-router-dom';
+import { registerUser } from '../actions/authentication';
 import SingleInput from './SingleInput';
 
 class Register extends Component {
@@ -30,6 +34,14 @@ class Register extends Component {
             password_confirm: this.state.password_confirm
         };
         console.log(user);
+    }
+
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.errors) {
+            this.setState({
+                errors: nextProps.errors
+            });
+        }
     }
 
     render() {
@@ -72,4 +84,15 @@ class Register extends Component {
     }
 }
 
-export default Register;
+Register.propTypes = {
+    registerUser: PropTypes.func.isRequired,
+    errors: PropTypes.object
+};
+
+function mapStateToProps(state) {
+    return {
+        errors: state.errors
+    };
+}
+
+export default connect(mapStateToProps, { registerUser })(withRouter(Register));
