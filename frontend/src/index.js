@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { combineReducers } from 'redux';
+import errorReducer from './reducers/errorReducer';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
@@ -11,4 +12,6 @@ ReactDOM.render(<App />, document.getElementById('root'));
 // Learn more about service workers: http://bit.ly/CRA-PWA
 serviceWorker.unregister();
 
-export default combineReducers({});
+export default combineReducers({
+    errors: errorReducer
+});
