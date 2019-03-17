@@ -45,38 +45,51 @@ class Register extends Component {
     }
 
     render() {
+        const { errors } = this.state;
         return (
             <div>
                 <h2>Registration</h2>
                 <form onSubmit={ this.handleSubmit }>
-                    <SingleInput
-                        title={'Name:'}
-                        type={'text'}
-                        placeholder={'Name'}
-                        name={'name'}
-                        controlFunc={ this.handleInputChange }
-                        content={ this.state.name } />
-                    <SingleInput
-                        title={'Email:'}
-                        type={'email'}
-                        placeholder={'Email'}
-                        name={'email'}
-                        controlFunc={ this.handleInputChange }
-                        content={ this.state.email} />
-                    <SingleInput
-                        title={'Password:'}
-                        type={'password'}
-                        placeholder={'Password'}
-                        name={'password'}
-                        controlFunc={ this.handleInputChange }
-                        content={ this.state.password} />
-                    <SingleInput
-                        title={'Confirm Password:'}
-                        type={'password'}
-                        placeholder={'Confirm Password'}
-                        name={'password_confirm'}
-                        controlFunc={ this.handleInputChange }
-                        content={ this.state.password_confirm} />
+                    <div>
+                        <SingleInput
+                            title={'Name:'}
+                            type={'text'}
+                            placeholder={'Name'}
+                            name={'name'}
+                            controlFunc={ this.handleInputChange }
+                            content={ this.state.name } />
+                        {errors.name && (<div>{errors.name}</div>)}
+                    </div>
+                    <div>
+                        <SingleInput
+                            title={'Email:'}
+                            type={'email'}
+                            placeholder={'Email'}
+                            name={'email'}
+                            controlFunc={ this.handleInputChange }
+                            content={ this.state.email} />
+                        {errors.email && (<div>{errors.email}</div>)}
+                    </div>
+                    <div>
+                        <SingleInput
+                            title={'Password:'}
+                            type={'password'}
+                            placeholder={'Password'}
+                            name={'password'}
+                            controlFunc={ this.handleInputChange }
+                            content={ this.state.password} />
+                        {errors.password && (<div>{errors.password}</div>)}
+                    </div>
+                    <div>
+                        <SingleInput
+                            title={'Confirm Password:'}
+                            type={'password'}
+                            placeholder={'Confirm Password'}
+                            name={'password_confirm'}
+                            controlFunc={ this.handleInputChange }
+                            content={ this.state.password_confirm} />
+                        {errors.password_confirm && (<div>{errors.password_confirm}</div>)}
+                    </div>
                     <button type='submit'>Register User</button>
                 </form>
             </div>

@@ -7,7 +7,7 @@ function SingleInput(props) {
             <label>{props.title}</label>
             <input
                 name={props.name}
-                type={props.inputType}
+                type={props.type}
                 value={props.content}
                 onChange={props.controlFunc}
                 placeholder={props.placeholder} />
@@ -18,9 +18,8 @@ function SingleInput(props) {
 SingleInput.propTypes = {
     title: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
-    inputType: PropTypes.oneOf([
-        'text', 'number', 'password'
-    ]).isRequired,
+    type: PropTypes.oneOf([
+        'text', 'number', 'password', 'email'    ]).isRequired,
     content: PropTypes.oneOfType([
         PropTypes.string,
         PropTypes.number,
