@@ -42,3 +42,12 @@ export function setCurrentUser(decoded) {
         payload: decoded
     };
 }
+
+export function logoutUser(history) {
+    return (dispatch) => {
+        localStorage.removeItem('jwtToken');
+        setAuthToken(false);
+        dispatch(setCurrentUser({}));
+        history.push('/login');
+    };
+}
