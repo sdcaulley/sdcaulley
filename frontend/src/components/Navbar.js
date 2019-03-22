@@ -15,7 +15,7 @@ class Navbar extends Component {
         const { isAuthenticated } = this.props.auth;
         const authLinks = (
             <ul>
-                <a href='#' onClick={this.onLogOut.bind(this)}>Logout</a>
+                <a href='' onClick={this.onLogOut.bind(this)}>Logout</a>
             </ul>
         );
         const guestLinks = (
