@@ -1,7 +1,7 @@
 {
   "name": "backend",
   "version": "1.0.0",
-  "description": "backing for basic authentication",
+  "description": "backend for sdcaulley",
   "main": "index.js",
   "scripts": {
     "test": "mocha --recursive",
