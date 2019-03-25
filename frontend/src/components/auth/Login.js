@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { loginUser } from '../actions/authentication';
-import SingleInput from './SingleInput';
+import { loginUser } from '../../actions/authentication';
+import SingleInput from '../SingleInput';
 
 class Login extends Component {
     constructor() {
