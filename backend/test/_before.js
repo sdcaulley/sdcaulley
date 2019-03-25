@@ -1,4 +1,4 @@
-process.env.MONGODB_URI = 'mongodb://localhost:27017/basic_test';
+process.env.MONGODB_URI = 'mongodb://localhost:27017/sdcaulley_test';
 require('../lib/db');
 const mongoose = require('mongoose');
 

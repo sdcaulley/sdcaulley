@@ -30,7 +30,7 @@ class Navbar extends Component {
         );
         return (
             <nav>
-                <Link to='/'>Redux Node Auth</Link>
+                <Link to='/'>sdcaulley</Link>
                 <div>
                     { isAuthenticated ? authLinks : guestLinks}
                 </div>
