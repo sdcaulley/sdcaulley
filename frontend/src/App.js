@@ -8,9 +8,10 @@ import { setCurrentUser, logoutUser } from './actions/authentication';
 import Register from './components/auth/Register';
 import Login from './components/auth/Login';
 import Home from './components/Home';
-import Code from './components/front-page/code-front';
-import Craft from './components/front-page/craft-front';
-import Consciousness from './components/front-page/conscious-front';
+import Code from './components/code/code__front/code-front';
+import Craft from './components/craft/craft__front/craft-front';
+import Consciousness from './components/consciousness/consciousness__front/conscious-front';
+import MyFront from './components/mine/mine__front/mine__front';
 
 if (localStorage.jwtToken) {
     const decoded = jwt_decode(localStorage.jwtToken);
@@ -36,6 +37,7 @@ class App extends Component {
                         <Route exact path='/code' component={ Code } />
                         <Route exact path='/craft' component={ Craft } />
                         <Route exact path='/consciousness' component={ Consciousness } />
+                        <Route exact path='/my-front' component={ MyFront } />
                     </div>
                 </Router>
             </Provider>
