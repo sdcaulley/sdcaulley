@@ -25,7 +25,7 @@ class MyFront extends Component {
       }  else {
         return (
           <React.Fragment>
-            <p>Need to <a onClick={this.displayForm}>login</a>?</p>
+            <p>Need to <button onClick={this.displayForm}>Login</button>?</p>
             <Register />
           </React.Fragment>
         );
