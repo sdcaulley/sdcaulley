@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { loginUser } from '../../actions/authentication';
-import SingleInput from '../SingleInput';
+import SingleInput from '../form-elements/SingleInput';
 
 class Login extends Component {
     constructor() {
@@ -63,7 +63,7 @@ class Login extends Component {
                     </div>
                     <div>
                         <SingleInput
-                            title={'Password'}
+                            title={'Password:'}
                             type={'password'}
                             placeholder={'Password'}
                             name={'password'}
