@@ -6,6 +6,7 @@ import jwt_decode from 'jwt-decode';
 import setAuthToken from './setAuthToken';
 import { setCurrentUser, logoutUser } from './actions/authentication';
 import 'normalize.css';
+import './App.css';
 import Register from './components/auth/Register';
 import Login from './components/auth/Login';
 import Home from './components/Home';
