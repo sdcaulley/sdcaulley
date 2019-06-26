@@ -3,9 +3,10 @@ import PropTypes from 'prop-types';
 
 function SingleInput(props) {
     return (
-        <div>
-            <label>{props.title}</label>
+        <div className='single-input__line'>
+            <label className='single-input__label'>{props.title}</label>
             <input
+                className='single-input__input'
                 name={props.name}
                 type={props.type}
                 value={props.content}

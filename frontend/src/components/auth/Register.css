@@ -1,0 +1,38 @@
+.register__container {
+  border-radius: 2em;
+  border-style: solid;
+  margin: auto;
+  max-width: 500px;
+}
+
+.register__h2 {
+  margin: 1em;
+  text-align: center;
+}
+
+.register__form {
+  margin: auto;
+}
+
+.register__button {
+  border-radius: 5px;
+  display: block;
+  margin: auto;
+  margin-bottom: 0.5em;
+  margin-top: 0.5em;
+}
+
+.single-input__line {
+  line-height: 1.5em;
+}
+.single-input__label {
+  display: inline-block;
+  padding: 0.5em;
+  text-align: right;
+  width: 150px;
+}
+
+.single-input__input {
+  border-radius: 5px;
+  height: 1.25em;
+}

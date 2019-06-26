@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Register from '../../auth/Register';
 import Login from '../../auth/Login';
-
+import './mine__front.css';
 class MyFront extends Component {
     constructor() {
       super();
@@ -25,7 +25,11 @@ class MyFront extends Component {
       }  else {
         return (
           <React.Fragment>
-            <p>Need to <button onClick={this.displayForm}>Login</button>?</p>
+            <p className='mine-front__p'>Need to
+              <button onClick={this.displayForm} className='mine-front__button'>
+                Login
+              </button>?
+            </p>
             <Register />
           </React.Fragment>
         );

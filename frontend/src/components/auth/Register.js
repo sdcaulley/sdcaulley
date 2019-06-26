@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import { registerUser } from '../../actions/authentication';
 import SingleInput from '../form-elements/SingleInput';
+import './Register.css';
 
 class Register extends Component {
     constructor() {
@@ -53,10 +54,11 @@ class Register extends Component {
     render() {
         const { errors } = this.state;
         return (
-            <div>
-                <h2>Registration</h2>
+            <div className='register__container'>
+                <h2 className='register__h2'>Registration</h2>
                 <form onSubmit={ this.handleSubmit }>
-                    <div>
+                    <div className='register__form'>
+                      <React.Fragment>
                         <SingleInput
                             title={'Name:'}
                             type={'text'}
@@ -65,8 +67,8 @@ class Register extends Component {
                             controlFunc={ this.handleInputChange }
                             content={ this.state.name } />
                         {errors.name && (<div>{errors.name}</div>)}
-                    </div>
-                    <div>
+                      </React.Fragment>
+                      <React.Fragment>
                         <SingleInput
                             title={'Email:'}
                             type={'email'}
@@ -75,8 +77,8 @@ class Register extends Component {
                             controlFunc={ this.handleInputChange }
                             content={ this.state.email} />
                         {errors.email && (<div>{errors.email}</div>)}
-                    </div>
-                    <div>
+                      </React.Fragment>
+                      <React.Fragment>
                         <SingleInput
                             title={'Password:'}
                             type={'password'}
@@ -85,8 +87,8 @@ class Register extends Component {
                             controlFunc={ this.handleInputChange }
                             content={ this.state.password} />
                         {errors.password && (<div>{errors.password}</div>)}
-                    </div>
-                    <div>
+                      </React.Fragment>
+                      <React.Fragment>
                         <SingleInput
                             title={'Confirm Password:'}
                             type={'password'}
@@ -95,8 +97,9 @@ class Register extends Component {
                             controlFunc={ this.handleInputChange }
                             content={ this.state.password_confirm} />
                         {errors.password_confirm && (<div>{errors.password_confirm}</div>)}
+                      </React.Fragment>
+                      <button type='submit' className='register__button'>Register User</button>
                     </div>
-                    <button type='submit'>Register User</button>
                 </form>
             </div>
         );
