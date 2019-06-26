@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { loginUser } from '../../actions/authentication';
 import SingleInput from '../form-elements/SingleInput';
+import './Login.css';
 
 class Login extends Component {
     constructor() {
@@ -48,30 +49,32 @@ class Login extends Component {
     render() {
         const { errors } = this.state;
         return (
-            <div>
-                <h2>Login</h2>
+            <div className='login__container'>
+                <h2 className='login__h2'>Login</h2>
                 <form onSubmit={ this.handleSubmit }>
-                    <div>
-                        <SingleInput
-                            title={'Email:'}
-                            type={'email'}
-                            placeholder={'Email'}
-                            name={'email'}
-                            controlFunc={ this.handleInputChange }
-                            content={ this.state.email } />
-                        {errors.email && (<div>{errors.email}</div>)}
+                    <div className='login__form'>
+                      <div className='login__single-input'>
+                          <SingleInput
+                              title={'Email:'}
+                              type={'email'}
+                              placeholder={'Email'}
+                              name={'email'}
+                              controlFunc={ this.handleInputChange }
+                              content={ this.state.email } />
+                          {errors.email && (<div>{errors.email}</div>)}
+                      </div>
+                      <div className='login__single-input'>
+                          <SingleInput
+                              title={'Password:'}
+                              type={'password'}
+                              placeholder={'Password'}
+                              name={'password'}
+                              controlFunc={ this.handleInputChange }
+                              content={ this.state.password } />
+                          {errors.password && (<div>{errors.password}</div>)}
+                      </div>
+                      <button type='submit' className='login__button'>Login</button>
                     </div>
-                    <div>
-                        <SingleInput
-                            title={'Password:'}
-                            type={'password'}
-                            placeholder={'Password'}
-                            name={'password'}
-                            controlFunc={ this.handleInputChange }
-                            content={ this.state.password } />
-                        {errors.password && (<div>{errors.password}</div>)}
-                    </div>
-                    <button type='submit'>Login</button>
                 </form>
             </div>
         );

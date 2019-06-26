@@ -1,10 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import './SingleInput.css';
 
 function SingleInput(props) {
     return (
         <div className='single-input__line'>
-            <label className='single-input__label'>{props.title}</label>
+            <label>{props.title}</label>
             <input
                 className='single-input__input'
                 name={props.name}

@@ -58,7 +58,7 @@ class Register extends Component {
                 <h2 className='register__h2'>Registration</h2>
                 <form onSubmit={ this.handleSubmit }>
                     <div className='register__form'>
-                      <React.Fragment>
+                      <div className='register__single-input'>
                         <SingleInput
                             title={'Name:'}
                             type={'text'}
@@ -67,8 +67,8 @@ class Register extends Component {
                             controlFunc={ this.handleInputChange }
                             content={ this.state.name } />
                         {errors.name && (<div>{errors.name}</div>)}
-                      </React.Fragment>
-                      <React.Fragment>
+                      </div>
+                      <div className='register__single-input'>
                         <SingleInput
                             title={'Email:'}
                             type={'email'}
@@ -77,8 +77,8 @@ class Register extends Component {
                             controlFunc={ this.handleInputChange }
                             content={ this.state.email} />
                         {errors.email && (<div>{errors.email}</div>)}
-                      </React.Fragment>
-                      <React.Fragment>
+                      </div>
+                      <div className='register__single-input'>
                         <SingleInput
                             title={'Password:'}
                             type={'password'}
@@ -87,8 +87,8 @@ class Register extends Component {
                             controlFunc={ this.handleInputChange }
                             content={ this.state.password} />
                         {errors.password && (<div>{errors.password}</div>)}
-                      </React.Fragment>
-                      <React.Fragment>
+                      </div>
+                      <div className='register__single-input'>
                         <SingleInput
                             title={'Confirm Password:'}
                             type={'password'}
@@ -97,7 +97,7 @@ class Register extends Component {
                             controlFunc={ this.handleInputChange }
                             content={ this.state.password_confirm} />
                         {errors.password_confirm && (<div>{errors.password_confirm}</div>)}
-                      </React.Fragment>
+                      </div>
                       <button type='submit' className='register__button'>Register User</button>
                     </div>
                 </form>

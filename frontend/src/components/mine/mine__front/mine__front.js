@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Register from '../../auth/Register';
 import Login from '../../auth/Login';
 import './mine__front.css';
+
 class MyFront extends Component {
     constructor() {
       super();
