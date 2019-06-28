@@ -11,5 +11,5 @@ install:
   - cd $TRAVIS_BUILD_DIR/backend && npm install
 
 script:
-  - cd $TRAVIS_BUILD_DIR/frontend && npm test
   - cd $TRAVIS_BUILD_DIR/backend && npm test
+  - cd $TRAVIS_BUILD_DIR/frontend && npm test
