@@ -1,5 +1,7 @@
 # sdcaulley
 
+[![Build Status](https://travis-ci.com/sdcaulley/sdcaulley.svg?branch=master)](https://travis-ci.com/sdcaulley/sdcaulley)
+
 ## Backend
 - node
 - express
