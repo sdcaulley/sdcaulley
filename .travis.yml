@@ -5,6 +5,8 @@ node_js:
 
 sevices:
   - mongodb
+before_install:
+  - sudo service mongod start
 
 install:
   - cd $TRAVIS_BUILD_DIR/frontend && npm install
