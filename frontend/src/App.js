@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import store from './store';
 import jwt_decode from 'jwt-decode';
@@ -13,7 +13,9 @@ import Home from './components/Home';
 import Code from './components/code/code__front/code-front';
 import Craft from './components/craft/craft__front/craft-front';
 import Consciousness from './components/consciousness/consciousness__front/conscious-front';
-import MyFront from './components/mine/mine__front/mine__front';
+import MyAuth from './components/mine/mine__auth/mine__auth';
+import PrivateRoute from './components/auth/PrivateRoute';
+import Dashboard from './components/mine/mine__dashboard/Dashboard';
 
 if (localStorage.jwtToken) {
     const decoded = jwt_decode(localStorage.jwtToken);
@@ -39,7 +41,10 @@ class App extends Component {
                         <Route exact path='/code' component={ Code } />
                         <Route exact path='/craft' component={ Craft } />
                         <Route exact path='/consciousness' component={ Consciousness } />
-                        <Route exact path='/my-front' component={ MyFront } />
+                        <Route exact path='/my-auth' component={ MyAuth } />
+                        <Switch>
+                            <PrivateRoute exact path='/dashboard' component= {Dashboard} />
+                        </Switch>
                     </div>
                 </Router>
             </Provider>

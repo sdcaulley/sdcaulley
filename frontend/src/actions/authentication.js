@@ -6,7 +6,10 @@ import jwt_decode from 'jwt-decode';
 export function registerUser(user, history) {
     return (dispatch) => {
         axios.post('/register', user)
-            .then(res => history.push('/login'))
+            .then(res => {
+                console.log('res = ', res);
+                history.push('/login');
+            })
             .catch(err => {
                 console.log('err', err);
                 dispatch({

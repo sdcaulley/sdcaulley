@@ -34,7 +34,7 @@ class Register extends Component {
             password: this.state.password,
             password_confirm: this.state.password_confirm
         };
-        this.props.registerUser(user);
+        this.props.registerUser(user, this.props.history);
     }
 
     componentWillReceiveProps(nextProps) {
@@ -58,47 +58,47 @@ class Register extends Component {
                 <h2 className='register__h2'>Registration</h2>
                 <form onSubmit={ this.handleSubmit }>
                     <div className='register__form'>
-                      <div className='register__single-input'>
-                        <SingleInput
-                            title={'Name:'}
-                            type={'text'}
-                            placeholder={'Name'}
-                            name={'name'}
-                            controlFunc={ this.handleInputChange }
-                            content={ this.state.name } />
-                        {errors.name && (<div>{errors.name}</div>)}
-                      </div>
-                      <div className='register__single-input'>
-                        <SingleInput
-                            title={'Email:'}
-                            type={'email'}
-                            placeholder={'Email'}
-                            name={'email'}
-                            controlFunc={ this.handleInputChange }
-                            content={ this.state.email} />
-                        {errors.email && (<div>{errors.email}</div>)}
-                      </div>
-                      <div className='register__single-input'>
-                        <SingleInput
-                            title={'Password:'}
-                            type={'password'}
-                            placeholder={'Password'}
-                            name={'password'}
-                            controlFunc={ this.handleInputChange }
-                            content={ this.state.password} />
-                        {errors.password && (<div>{errors.password}</div>)}
-                      </div>
-                      <div className='register__single-input'>
-                        <SingleInput
-                            title={'Confirm Password:'}
-                            type={'password'}
-                            placeholder={'Confirm Password'}
-                            name={'password_confirm'}
-                            controlFunc={ this.handleInputChange }
-                            content={ this.state.password_confirm} />
-                        {errors.password_confirm && (<div>{errors.password_confirm}</div>)}
-                      </div>
-                      <button type='submit' className='register__button'>Register User</button>
+                        <div className='register__single-input'>
+                            <SingleInput
+                                title={'Name:'}
+                                type={'text'}
+                                placeholder={'Name'}
+                                name={'name'}
+                                controlFunc={ this.handleInputChange }
+                                content={ this.state.name } />
+                            {errors.name && (<div>{errors.name}</div>)}
+                        </div>
+                        <div className='register__single-input'>
+                            <SingleInput
+                                title={'Email:'}
+                                type={'email'}
+                                placeholder={'Email'}
+                                name={'email'}
+                                controlFunc={ this.handleInputChange }
+                                content={ this.state.email} />
+                            {errors.email && (<div>{errors.email}</div>)}
+                        </div>
+                        <div className='register__single-input'>
+                            <SingleInput
+                                title={'Password:'}
+                                type={'password'}
+                                placeholder={'Password'}
+                                name={'password'}
+                                controlFunc={ this.handleInputChange }
+                                content={ this.state.password} />
+                            {errors.password && (<div>{errors.password}</div>)}
+                        </div>
+                        <div className='register__single-input'>
+                            <SingleInput
+                                title={'Confirm Password:'}
+                                type={'password'}
+                                placeholder={'Confirm Password'}
+                                name={'password_confirm'}
+                                controlFunc={ this.handleInputChange }
+                                content={ this.state.password_confirm} />
+                            {errors.password_confirm && (<div>{errors.password_confirm}</div>)}
+                        </div>
+                        <button type='submit' className='register__button'>Register User</button>
                     </div>
                 </form>
             </div>

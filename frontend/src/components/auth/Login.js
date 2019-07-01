@@ -33,16 +33,13 @@ class Login extends Component {
     }
 
     componentWillReceiveProps(nextProps) {
+        if (nextProps.auth.isAuthenticated) {
+            this.props.history.push('/dashboard');
+        }
         if (nextProps.errors) {
             this.setState({
                 errors: nextProps.errors
             });
-        }
-    }
-
-    componentDidMount() {
-        if (this.props.auth.isAuthenticate) {
-            this.props.history.push('/');
         }
     }
 
@@ -53,33 +50,33 @@ class Login extends Component {
                 <h2 className='login__h2'>Login</h2>
                 <form onSubmit={ this.handleSubmit }>
                     <div className='login__form'>
-                      <div className='login__single-input'>
-                          <SingleInput
-                              title={'Email:'}
-                              type={'email'}
-                              placeholder={'Email'}
-                              name={'email'}
-                              controlFunc={ this.handleInputChange }
-                              content={ this.state.email } />
-                          {errors.email && (<div>{errors.email}</div>)}
-                      </div>
-                      <div className='login__single-input'>
-                          <SingleInput
-                              title={'Password:'}
-                              type={'password'}
-                              placeholder={'Password'}
-                              name={'password'}
-                              controlFunc={ this.handleInputChange }
-                              content={ this.state.password } />
-                          {errors.password && (<div>{errors.password}</div>)}
-                      </div>
-                      <button type='submit' className='login__button'>Login</button>
+                        <div className='login__single-input'>
+                            <SingleInput
+                                title={'Email:'}
+                                type={'email'}
+                                placeholder={'Email'}
+                                name={'email'}
+                                controlFunc={ this.handleInputChange }
+                                content={ this.state.email } />
+                            {errors.email && (<div>{errors.email}</div>)}
+                        </div>
+                        <div className='login__single-input'>
+                            <SingleInput
+                                title={'Password:'}
+                                type={'password'}
+                                placeholder={'Password'}
+                                name={'password'}
+                                controlFunc={ this.handleInputChange }
+                                content={ this.state.password } />
+                            {errors.password && (<div>{errors.password}</div>)}
+                        </div>
+                        <button type='submit' className='login__button'>Login</button>
                     </div>
                 </form>
             </div>
         );
     }
-}
+};
 
 Login.propTypes = {
     errors: PropTypes.object.isRequired,
