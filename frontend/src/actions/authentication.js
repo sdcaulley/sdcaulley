@@ -46,11 +46,10 @@ export function setCurrentUser(decoded) {
     };
 }
 
-export function logoutUser(history) {
+export function logoutUser() {
     return (dispatch) => {
         localStorage.removeItem('jwtToken');
         setAuthToken(false);
         dispatch(setCurrentUser({}));
-        history.push('/login');
     };
 }
