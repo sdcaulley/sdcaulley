@@ -33,5 +33,9 @@
     "not ie <= 11",
     "not op_mini all"
   ],
-  "proxy": "http://localhost:4000"
+  "proxy": "http://localhost:4000",
+  "devDependencies": {
+    "eslint-plugin-jest": "^22.7.1",
+    "react-test-renderer": "^16.8.6"
+  }
 }

@@ -5,8 +5,10 @@
         "es6": true,
         "node": true
     },
+    "extends": ["plugin:jest/recommended"],
     "plugins": [
-        "react"
+        "react",
+        "jest"
     ],
     "parserOptions": {
         "ecmaFeatures": {
@@ -75,6 +77,11 @@
                 "SwitchCase": 1
             }
         ],
+            "jest/no-disabled-tests": "warn",
+        "jest/no-focused-tests": "error",
+        "jest/no-identical-title": "error",
+        "jest/prefer-to-have-length": "warn",
+        "jest/valid-expect": "error",
         "jsx-quotes": [
             1,
             "prefer-single"
