@@ -5,13 +5,15 @@ node_js:
 
 sevices:
   - mongodb
+
 before_install:
   - sudo service mongod start
 
 install:
+  - npm install -g codecov
   - cd $TRAVIS_BUILD_DIR/frontend && npm install
   - cd $TRAVIS_BUILD_DIR/backend && npm install
 
 script:
-  - cd $TRAVIS_BUILD_DIR/backend && npm test
+  - cd $TRAVIS_BUILD_DIR/backend && npm coverage
   - cd $TRAVIS_BUILD_DIR/frontend && npm test
