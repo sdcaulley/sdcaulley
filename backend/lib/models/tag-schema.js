@@ -4,6 +4,11 @@ const TagSchema = new Schema({
     tag: {
         type: String,
         required: true
+    },
+    category: {
+        type: String,
+        enum: ['code', 'consciousness', 'craft'],
+        required: true
     }
 });
 
