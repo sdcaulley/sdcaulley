@@ -9,7 +9,7 @@ import 'normalize.css';
 import './App.css';
 import Register from './components/auth/Register';
 import Login from './components/auth/Login';
-import Home from './components/Home';
+import Home from './components/home/Home';
 import Code from './components/code/code__front/code-front';
 import Craft from './components/craft/craft__front/craft-front';
 import Consciousness from './components/consciousness/consciousness__front/conscious-front';

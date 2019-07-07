@@ -1,13 +1,13 @@
 const mongoose = require('mongoose');
 
-const { dburi } = require('../config');
-
-mongoose.createConnection(dburi, { useNewUrlParser: true });
+const { dburi_test } = require('../config');
+console.log('dburi_test: ', dburi_test);
+mongoose.createConnection(dburi_test, { useNewUrlParser: true });
 
 // CONNECTION EVENTS
 // When successfully connected
 mongoose.connection.on('connected', function() {
-    console.log(`Mongoose default connection open to ${dburi}`);
+    console.log(`Mongoose default connection open to ${dburi_test}`);
 });
 
 // If the connection throws an error

@@ -1,10 +1,9 @@
 const app = require('./lib/app');
 const http = require('http');
-const PORT = process.env.PORT || 4000;
 require('./lib/db');
-
+const { port } = require('./config');
 const server = http.createServer(app);
 
-module.exports = server.listen(PORT, () => {
+module.exports = server.listen(port, () => {
     console.log('server is running on ', server.address());
 });
