@@ -1,9 +1,16 @@
 const app = require('./lib/app');
-const http = require('http');
-require('./lib/db');
-const { port } = require('./config');
-const server = http.createServer(app);
+const connectDB = require('./lib/db/db');
+const { port, dburi } = require('./config');
 
-module.exports = server.listen(port, () => {
-    console.log('server is running on ', server.address());
+connectDB(dburi)
+  .then(info =>
+    console.log(`Connected to ${info.host}:${info.port}/${info.name}`))
+  .catch(err => console.error('Unable to connect to database: ', err));
+
+const server = app.listen(port, () => {
+  console.log(`Server started on port ${port}.`);
+}).on('error', err => {
+  console.error(err);
 });
+
+module.exports = server;

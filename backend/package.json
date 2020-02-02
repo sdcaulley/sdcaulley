@@ -2,32 +2,33 @@
   "name": "backend",
   "version": "1.0.0",
   "description": "backend for sdcaulley",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "test": "mocha --recursive --exit",
+    "test": "mocha -r dotenv/config --recursive --exit",
     "start": "nodemon -r dotenv/config server.js"
   },
   "author": "sdcaulley",
-  "license": "ISC",
+  "license": "GPL-3.0",
   "dependencies": {
-    "bcryptjs": "^2.4.3",
-    "body-parser": "^1.18.3",
-    "cors": "^2.8.5",
-    "express": "^4.16.4",
-    "express-es6-template-engine": "^2.1.9",
-    "jsonwebtoken": "^8.5.0",
-    "mongoose": "^5.4.16",
-    "passport": "^0.4.0",
-    "passport-jwt": "^4.0.0",
-    "validator": "^10.11.0"
+    "@koa/cors": "^3.0.0",
+    "@koa/router": "^8.0.6",
+    "bcrypt": "^3.0.7",
+    "import-dir": "0.0.1",
+    "jsonwebtoken": "^8.5.1",
+    "koa": "^2.11.0",
+    "koa-bodyparser": "^4.2.1",
+    "koa-compose": "^4.1.0",
+    "mongoose": "^5.8.11",
+    "mongoose-unique-validator": "^2.0.3"
   },
   "devDependencies": {
     "chai": "^4.2.0",
-    "chai-http": "^4.2.1",
-    "dotenv": "^8.0.0",
-    "eslint": "^5.14.1",
-    "mocha": "^6.1.4",
-    "node-fetch": "^2.3.0",
-    "nodemon": "^1.18.10"
+    "chai-http": "^4.3.0",
+    "dotenv": "^8.2.0",
+    "eslint": "^5.16.0",
+    "eslint-plugin-node": "^11.0.0",
+    "koa-logger": "^3.2.1",
+    "mocha": "^6.2.2",
+    "nodemon": "^1.19.4"
   }
 }

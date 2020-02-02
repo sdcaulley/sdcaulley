@@ -1,6 +1,6 @@
 module.exports = {
-    port: process.env.PORT,
-    port_test: process.env.PORT_TEST,
-    dburi: process.env.MONGODB_URI,
-    dburi_test: process.env.MONGODB_URI_TEST
+  port: process.env.PORT,
+  dburi: process.env.MONGODB_URI,
+  test: process.env.MONGODB_TEST,
+  sekrit: process.env.APP_SECRET
 };
