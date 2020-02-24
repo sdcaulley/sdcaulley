@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken');
-const { sekret } = require('../../config');
+const { sekrit } = require('../../config');
 
 module.exports = {
   sign(user) {
@@ -7,10 +7,9 @@ module.exports = {
       id: user._id,
       displayName: user.displayName
     };
-
-    return jwt.sign(payload, sekret);
+    return jwt.sign(payload, sekrit);
   },
   verify(token) {
-    return jwt.verify(token, sekret);
+    return jwt.verify(token, sekrit);
   }
 };

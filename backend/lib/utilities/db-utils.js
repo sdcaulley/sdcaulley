@@ -19,10 +19,17 @@ async function deleteDocument(collection, id) {
   return await collection.findOneAndDelete({ _id: id });
 }
 
+function splitUrl (url) {
+  const array = url.split('/');
+  const id = array[2];
+  return id;
+}
+
 module.exports = {
   findAllDocuments,
   findOneDocument,
   makeNewDocument,
   updateDocument,
   deleteDocument,
+  splitUrl
 };

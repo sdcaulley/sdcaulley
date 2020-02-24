@@ -12,6 +12,12 @@ describe('user-routes', () => {
     displayName: 'user1'
   };
 
+  const user2 = {
+    login: 'user2@test.com',
+    password: 'user2',
+    displayName: 'user2'
+  };
+
   it('userRegistration should create a new user', (done) => {
     request
       .post('/user/registration')
@@ -52,17 +58,18 @@ describe('user-routes', () => {
         return res.body;
       })
       .catch(err => {
-        console.error('error: ', err);
+        console.error(' res error: ', err);
       });
 
     if(user) {
+      const id = user.user._id;
       request
         .patch('/user/update')
+        .set('Authorization', user.token)
         .send({
-          _id: user.user._id,
+          _id: id,
           displayName: 'testNo'
         })
-        .set('Authorization', user.token)
         .end((err, res) => {
           assert.propertyVal(res.body.user, 'displayName', 'testNo');
         });
@@ -73,16 +80,15 @@ describe('user-routes', () => {
   it('userDelete removes a user from the database', async () => {
     const user = await request
       .post('/user/registration')
-      .send(user1)
+      .send(user2)
       .then(res => {
         return res.body;
       })
       .catch(err => {
-        console.error('error: ', err);
+        console.error('delete error: ', err);
       });
-    console.log('user: ', user);
     if(user) {
-      const _id = user._id;
+      const _id = user.user._id;
       request
         .delete(`/user/${_id}`)
         .set('Authorization', user.token)
