@@ -11,14 +11,14 @@
   "license": "GPL-3.0",
   "dependencies": {
     "@koa/cors": "^3.0.0",
-    "@koa/router": "^8.0.6",
-    "bcrypt": "^3.0.7",
+    "@koa/router": "^8.0.8",
+    "bcrypt": "^3.0.8",
     "import-dir": "0.0.1",
     "jsonwebtoken": "^8.5.1",
     "koa": "^2.11.0",
-    "koa-bodyparser": "^4.2.1",
+    "koa-bodyparser": "^4.3.0",
     "koa-compose": "^4.1.0",
-    "mongoose": "^5.8.11",
+    "mongoose": "^5.9.7",
     "mongoose-unique-validator": "^2.0.3"
   },
   "devDependencies": {
@@ -26,9 +26,9 @@
     "chai-http": "^4.3.0",
     "dotenv": "^8.2.0",
     "eslint": "^5.16.0",
-    "eslint-plugin-node": "^11.0.0",
+    "eslint-plugin-node": "^11.1.0",
     "koa-logger": "^3.2.1",
-    "mocha": "^6.2.2",
-    "nodemon": "^1.19.4"
+    "mocha": "^6.2.3",
+    "nodemon": "^2.0.2"
   }
 }

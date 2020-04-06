@@ -5,7 +5,7 @@ const server = require('../../server');
 const assert = chai.assert;
 const request = chai.request(server).keepOpen();
 
-describe('user-routes', () => {
+describe('user-routes', function() {
   const user1 = {
     login: 'user1@test.com',
     password: 'user1',
@@ -18,46 +18,47 @@ describe('user-routes', () => {
     displayName: 'user2'
   };
 
-  it('userRegistration should create a new user', (done) => {
+  it('userRegistration should create a new user', function(done) {
     request
       .post('/user/registration')
       .send(user1)
-      .end((err, res) => {
+      .end(function(err, res) {
         const result = res.body.user;
         assert.hasAnyKeys(result, ['_id']);
         done();
       });
   });
 
-  it('userLogin should return a token', async () => {
+  it('userLogin should return a token', async function() {
     const user = await request
       .post('/user/registration')
       .send(user1)
-      .then(res => {
+      .then(function(res) {
         return res.body.user;
       })
-      .catch(err => {
+      .catch(function(err) {
         console.error('error: ', err);
       });
+
     if (user) {
       request
         .post('/user/login')
         .send(user1)
-        .end((err, res) => {
+        .end(function(err, res) {
           const result = res.body;
           assert.hasAnyKeys(result, ['token']);
         });
     }
   });
 
-  it('userUpdate changes an existing user document', async () => {
+  it('userUpdate changes an existing user document', async function() {
     const user = await request
       .post('/user/registration')
       .send(user1)
-      .then(res => {
+      .then(function(res) {
         return res.body;
       })
-      .catch(err => {
+      .catch(function(err) {
         console.error(' res error: ', err);
       });
 
@@ -70,21 +71,21 @@ describe('user-routes', () => {
           _id: id,
           displayName: 'testNo'
         })
-        .end((err, res) => {
+        .end(function(err, res) {
           assert.propertyVal(res.body.user, 'displayName', 'testNo');
         });
 
     }
   });
 
-  it('userDelete removes a user from the database', async () => {
+  it('userDelete removes a user from the database', async function() {
     const user = await request
       .post('/user/registration')
       .send(user2)
-      .then(res => {
+      .then(function(res) {
         return res.body;
       })
-      .catch(err => {
+      .catch(function(err) {
         console.error('delete error: ', err);
       });
     if(user) {

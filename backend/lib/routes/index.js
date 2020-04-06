@@ -4,6 +4,7 @@ const importDir = require('import-dir');
 
 const routerConfigs = [
   { folder: 'user', prefix: '/user' },
+  { folder: 'tag', prefix: '/tag'},
 ];
 
 function routes() {
