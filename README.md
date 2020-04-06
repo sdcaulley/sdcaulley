@@ -8,10 +8,10 @@ Exploring BEM structure for files and styling.
 
 ## Backend
 - node
-- express
+- koa
 - mongodb
 - auth with passport
 
 ## Frontend
-- created with create-react-app
+- web components
 - auth with jwt
