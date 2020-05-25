@@ -5,11 +5,11 @@ const TagSchema = new Schema({
     type: String,
     required: true
   },
-  category: {
+  category: [{
     type: String,
     enum: ['code', 'consciousness', 'craft'],
     required: true
-  }
+  }]
 });
 
 module.exports = mongoose.model('Tag', TagSchema);
