@@ -1,7 +1,8 @@
 const token = require('./token');
 
 async function ensureAuth(ctx, next) {
-  const bearerToken = ctx.header.authorization;
+  console.log('ctx: ', ctx);
+  const bearerToken = ctx.header.token;
 
   return next(token.verify(bearerToken));
 }
