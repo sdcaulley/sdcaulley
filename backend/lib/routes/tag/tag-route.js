@@ -55,7 +55,6 @@ async function tagUpdate(ctx, next) {
 }
 
 async function tagDelete(ctx) {
-  console.log('ctx; ', ctx);
   const id = await dbUtils.splitUrl(ctx.request.url);
   const confirm = await dbUtils.deleteDocument(Tag, id);
 
