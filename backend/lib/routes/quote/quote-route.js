@@ -1,6 +1,6 @@
-const Quote = require('../../models/quote-schema');
-const dbUtils = require('../../utilities/db-utils');
-const ensureAuth = require('../../auth/ensure-auth');
+const Quote = require('../../models/quote-schema.js');
+const dbUtils = require('../../utilities/db-utils.js');
+const ensureAuth = require('../../auth/ensure-auth.js');
 
 async function quoteCreate(ctx, next) {
   const quote = await dbUtils.makeNewDocument(Quote, ctx.request.body);

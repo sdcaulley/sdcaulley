@@ -1,6 +1,6 @@
-const Tag = require('../../models/tag-schema');
-const dbUtils = require('../../utilities/db-utils');
-const ensureAuth = require('../../auth/ensure-auth');
+const Tag = require('../../models/tag-schema.js');
+const dbUtils = require('../../utilities/db-utils.js');
+const ensureAuth = require('../../auth/ensure-auth.js');
 
 async function tagCreate(ctx, next) {
   const tag = await dbUtils.makeNewDocument(Tag, ctx.request.body);
