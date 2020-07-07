@@ -50,6 +50,7 @@ class Site extends LitElement {
 		site-category {
 			display: flex;
 			justify-content: space-around;
+			margin: auto;
 			width: 90%;
 		}
 		`;

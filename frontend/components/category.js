@@ -9,11 +9,16 @@ export default class Category extends LitElement {
 
 	static get styles () {
 		return css`
-			button {
+			a {
 				border-radius: 1em;
+				border-style: outset;
 				border-width: 1.5px;
+				display: inline-block;
 				height: 5em;
 				margin: 1em;
+				line-height: 5em;
+				text-align: center;
+				text-decoration: none;
 				width: 5em;
 			}
 
@@ -42,7 +47,7 @@ export default class Category extends LitElement {
 		return html`
 			<section>
 				${this.categories.map(
-					category => html`<button id="${category}">${category}</button>`
+					category => html`<a href="/${category}" id="${category}">${category}</a>`
 				)}
 			</section>
 		`;

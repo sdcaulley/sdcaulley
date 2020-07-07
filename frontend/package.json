@@ -4,7 +4,7 @@
   "description": "frontend for sdcaulley",
   "main": "index.html",
   "scripts": {
-    "start": "es-dev-server --app-index index.html --node-resolve --watch --open"
+    "start": "es-dev-server --app-index index.html --node-resolve --watch --open --cors=true"
   },
   "author": "sdcaulley",
   "license": "GPL-3.0-or-later",
@@ -13,9 +13,12 @@
     "happiness": "^10.0.2"
   },
   "dependencies": {
+    "@vaadin/router": "^1.7.2",
     "lit-element": "^2.3.1"
   },
-	"standard": {
-		"globals": ["customElements"]
-	}
+  "standard": {
+    "globals": [
+      "customElements"
+    ]
+  }
 }
