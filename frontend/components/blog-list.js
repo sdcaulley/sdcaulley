@@ -1,6 +1,7 @@
 import { LitElement, html, css } from 'lit-element';
 import { taxonomy } from '../css/taxonomy.js';
 import { router } from './routes.js';
+import './blog.js';
 
 export default class BlogList extends LitElement {
 	static get properties () {
@@ -18,7 +19,7 @@ export default class BlogList extends LitElement {
 		return [
 			taxonomy,
 			css`
-				p {
+				h2 {
 					text-transform: capitalize;
 				}
 			`
@@ -28,7 +29,10 @@ export default class BlogList extends LitElement {
 	render () {
 		const category = this.location.params.category;
 
-		return html`<p>Hello ${category} Blog</p>`;
+		return html`
+			<h2>${category}</h2>
+			<blog-item .blogItems=${this.blogItems}></blog-item>
+		`;
 	}
 }
 

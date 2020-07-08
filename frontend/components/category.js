@@ -1,5 +1,5 @@
 import { LitElement, html, css } from 'lit-element';
-import { taxonomy } from '../css/taxonomy';
+import { taxonomy } from '../css/taxonomy.js';
 
 export default class Category extends LitElement {
 	static get properties () {
