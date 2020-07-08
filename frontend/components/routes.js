@@ -10,17 +10,7 @@ router.setRoutes([
 		action: () => import('./site.js')
 	},
 	{
-		path: '/code',
-		component: 'blog-list',
-		action: () => import('./blog-list.js')
-	},
-	{
-		path: '/craft',
-		component: 'blog-list',
-		action: () => import('./blog-list.js')
-	},
-	{
-		path: '/culture',
+		path: '/:category',
 		component: 'blog-list',
 		action: () => import('./blog-list.js')
 	}
