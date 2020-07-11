@@ -18,7 +18,8 @@
   },
   "standard": {
     "globals": [
-      "customElements"
+      "customElements",
+			"fetch"
     ]
   }
 }

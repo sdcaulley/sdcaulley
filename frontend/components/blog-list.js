@@ -6,13 +6,23 @@ import './blog.js';
 export default class BlogList extends LitElement {
 	static get properties () {
 		return {
-			location: { type: Object }
+			location: { type: Object },
+			blogItems: { type: Array }
 		};
+	}
+
+	async firstUpdated () {
+		this.blogItems = await fetch('../blog.json')
+			.then(response => response.json())
+			.then(data => {
+				return data;
+			});
 	}
 
 	constructor () {
 		super();
 		this.location = router.location;
+		this.blogItems = [];
 	}
 
 	static get styles () {

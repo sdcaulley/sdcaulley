@@ -15,6 +15,11 @@ export default class Blog extends LitElement {
 	}
 
 	render () {
+		if (!this.blogItems) {
+			return ``;
+		}
+
+		console.log('blogItems: ', this.blogItems);
 		return html`
 			<section>
 				${this.blogItems.map(blog => {
