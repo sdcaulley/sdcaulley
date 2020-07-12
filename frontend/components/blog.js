@@ -10,23 +10,85 @@ export default class Blog extends LitElement {
 
 	static get styles () {
 		return [
-			taxonomy
+			taxonomy,
+			css`
+				a {
+					text-decoration: none;
+				}
+
+				ul {
+					list-style: none;
+				}
+
+				li {
+					display: inline-block;
+					margin: 1em;
+				}
+
+				article {
+					border-style: solid;
+					border-color: black;
+					border-width: 1.5px;
+					border-radius: 5em;
+					padding: 1em 3em;
+				}
+
+				h4 {
+					margin: 1em;
+				}
+			`
 		];
+	}
+
+	constructor () {
+		super();
+		this.blogItems = [];
+	}
+
+	async connectedCallback () {
+		super.connectedCallback();
+		this.blogItems = await fetch('../blog.json')
+			.then(response => response.json())
+			.then(data => {
+				return data;
+			})
+			.catch(err => {
+				console.error('Error: ', err);
+			});
 	}
 
 	render () {
 		if (!this.blogItems) {
-			return ``;
+			return html`<p> Loading...<-p>`;
 		}
 
-		console.log('blogItems: ', this.blogItems);
 		return html`
 			<section>
-				${this.blogItems.map(blog => {
-					html`
-						<article id="blog._id">${blog}</article>
-					`;
-				})}
+				${this.blogItems.map(
+					blog => html`
+					<article>
+						<h4>${blog.title}</h4>
+						<p>Created: ${blog.date_created}</p>
+						<p>Updated: ${blog.date_updated}</p>
+						${blog.content}
+						<p>Tags:</p>
+						<ul>
+							${blog.tag.map(
+								tag => html`
+									<li><a>${tag}</a></li>
+								`
+							)}
+						</ul>
+						<p>Categories:</p>
+						<ul>
+							${blog.category.map(
+								item => html`
+									<li><a>${item}</a></li>
+								`
+							)}
+						</ul>
+					</article>`
+				)}
 			</section>
 		`;
 	}

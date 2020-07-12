@@ -19,7 +19,7 @@
   "standard": {
     "globals": [
       "customElements",
-			"fetch"
+      "fetch"
     ]
   }
 }
