@@ -30,8 +30,7 @@ export default class Blog extends LitElement {
 				}
 
 				article {
-					border-style: solid;
-					border-color: black;
+					border-style: outset;
 					border-width: 1.5px;
 					border-radius: 5em;
 					padding: 1em 3em;
@@ -39,6 +38,30 @@ export default class Blog extends LitElement {
 
 				h4 {
 					margin: 1em;
+				}
+
+				.code {
+					border-color: #7DA134;
+				}
+
+				.code a {
+					color: #577913;
+				}
+
+				.craft {
+					border-color: #226868;
+				}
+
+				.craft a {
+					color: #0C4E4E;
+				}
+
+				.culture {
+					border-color: #AD3838;
+				}
+
+				.culture a {
+					color: #821414;
 				}
 			`
 		];
@@ -60,19 +83,21 @@ export default class Blog extends LitElement {
 						return blog;
 					}
 				});
-				return catFilter;
+
+				const result = catFilter.map(blog => {
+					const str = blog.content.split('\n');
+					blog.content = [];
+
+					for (let i = 0; i < str.length; i++) {
+						blog.content.push(str[i]);
+					}
+					return blog;
+				});
+				return result;
 			})
 			.catch(err => {
 				console.error('Error: ', err);
 			});
-	}
-
-	async filterCategory (filter) {
-		this.filtered = await this.blogItems.filter(blog => {
-			if (blog.category.includes(filter)) {
-				return blog;
-			}
-		});
 	}
 
 	render () {
@@ -84,11 +109,13 @@ export default class Blog extends LitElement {
 			<section>
 				${this.blogItems.map(
 					blog => html`
-					<article>
+					<article class=${this.filter}>
 						<h4>${blog.title}</h4>
 						<p>Created: ${blog.date_created}</p>
 						<p>Updated: ${blog.date_updated}</p>
-						${blog.content}
+						${blog.content.map(
+							item => html`<p>${item}</p>`
+						)}
 						<p>Tags:</p>
 						<ul>
 							${blog.tag.map(
