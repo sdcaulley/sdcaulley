@@ -4,7 +4,11 @@ import { taxonomy } from '../css/taxonomy.js';
 export default class Blog extends LitElement {
 	static get properties () {
 		return {
-			blogItems: { type: Array }
+			blogItems: {
+				type: Array,
+				attribute: false
+			},
+			filter: { type: String }
 		};
 	}
 
@@ -43,6 +47,7 @@ export default class Blog extends LitElement {
 	constructor () {
 		super();
 		this.blogItems = [];
+		this.filter = '';
 	}
 
 	async connectedCallback () {
@@ -50,11 +55,24 @@ export default class Blog extends LitElement {
 		this.blogItems = await fetch('../blog.json')
 			.then(response => response.json())
 			.then(data => {
-				return data;
+				const catFilter = data.filter(blog => {
+					if (blog.category.includes(this.filter)) {
+						return blog;
+					}
+				});
+				return catFilter;
 			})
 			.catch(err => {
 				console.error('Error: ', err);
 			});
+	}
+
+	async filterCategory (filter) {
+		this.filtered = await this.blogItems.filter(blog => {
+			if (blog.category.includes(filter)) {
+				return blog;
+			}
+		});
 	}
 
 	render () {

@@ -31,7 +31,7 @@ export default class BlogList extends LitElement {
 
 		return html`
 			<h2>${category}</h2>
-			<blog-item></blog-item>
+			<blog-item filter=${category}></blog-item>
 		`;
 	}
 }
