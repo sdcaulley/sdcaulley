@@ -1,7 +1,9 @@
 import { LitElement, html, css } from 'lit-element';
 import { taxonomy } from '../css/taxonomy.js';
 import { router } from './routes.js';
+import './header.js';
 import './blog.js';
+import './footer.js';
 
 export default class BlogList extends LitElement {
 	static get properties () {
@@ -10,28 +12,23 @@ export default class BlogList extends LitElement {
 		};
 	}
 
+	static get styles () {
+		return [
+			taxonomy
+		];
+	}
+
 	constructor () {
 		super();
 		this.location = router.location;
 	}
 
-	static get styles () {
-		return [
-			taxonomy,
-			css`
-				h2 {
-					text-transform: capitalize;
-				}
-			`
-		];
-	}
-
 	render () {
 		const category = this.location.params.category;
-
 		return html`
-			<h2>${category}</h2>
+			<site-header category=${category}></site-header>
 			<blog-item filter=${category}></blog-item>
+			<site-footer></site-footer>
 		`;
 	}
 }

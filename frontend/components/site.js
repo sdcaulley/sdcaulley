@@ -1,4 +1,6 @@
 import { LitElement, html, css } from 'lit-element';
+import './header.js';
+import './footer.js';
 import './category.js';
 
 class Site extends LitElement {
@@ -19,7 +21,9 @@ class Site extends LitElement {
 
 	render () {
 		return html`
+			<site-header></site-header>
 			<site-category .categories=${this.categories}></site-category>
+			<site-footer></site-footer>
 		`;
 	}
 }

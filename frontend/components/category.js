@@ -1,5 +1,6 @@
 import { LitElement, html, css } from 'lit-element';
 import { taxonomy } from '../css/taxonomy.js';
+import { dropShadow } from '../css/drop-shadow.js';
 
 export default class Category extends LitElement {
 	static get properties () {
@@ -11,6 +12,7 @@ export default class Category extends LitElement {
 	static get styles () {
 		return [
 			taxonomy,
+			dropShadow,
 			css`
 				a {
 					border-radius: 1em;
@@ -27,16 +29,19 @@ export default class Category extends LitElement {
 
 				#code {
 					border-color: #7DA134;
+					box-shadow: var(--green);
 					color: #577913;
 				}
 
 				#craft {
 					border-color: #226868;
+					box-shadow: var(--blue);
 					color: #0C4E4E;
 				}
 
 				#culture {
 					border-color: #AD3838;
+					box-shadow: var(--red);
 					color: #821414;
 				}
 			`

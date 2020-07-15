@@ -33,6 +33,8 @@ export default class Blog extends LitElement {
 					border-style: outset;
 					border-width: 1.5px;
 					border-radius: 5em;
+					box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+					margin: 1em;
 					padding: 1em 3em;
 				}
 
