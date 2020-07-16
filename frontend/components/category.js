@@ -1,6 +1,5 @@
 import { LitElement, html, css } from 'lit-element';
 import { taxonomy } from '../css/taxonomy.js';
-import { dropShadow } from '../css/drop-shadow.js';
 
 export default class Category extends LitElement {
 	static get properties () {
@@ -12,37 +11,20 @@ export default class Category extends LitElement {
 	static get styles () {
 		return [
 			taxonomy,
-			dropShadow,
 			css`
 				a {
-					border-radius: 1em;
+					background-image: url('ricepaper_v3.png');
+					background-color: rgba(250, 240, 230, 0.7);
 					border-style: outset;
-					border-width: 1.5px;
+					border-width: 0.25em;
 					display: inline-block;
+					drop-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 					height: 5em;
 					margin: 1em;
 					line-height: 5em;
 					text-align: center;
 					text-decoration: none;
 					width: 5em;
-				}
-
-				#code {
-					border-color: #7DA134;
-					box-shadow: var(--green);
-					color: #577913;
-				}
-
-				#craft {
-					border-color: #226868;
-					box-shadow: var(--blue);
-					color: #0C4E4E;
-				}
-
-				#culture {
-					border-color: #AD3838;
-					box-shadow: var(--red);
-					color: #821414;
 				}
 			`
 		];

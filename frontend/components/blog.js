@@ -30,9 +30,10 @@ export default class Blog extends LitElement {
 				}
 
 				article {
+					background-image: url('ricepaper_v3.png');
+					background-color: rgba(250, 240, 230, 0.7);
 					border-style: outset;
-					border-width: 1.5px;
-					border-radius: 5em;
+					border-width: 0.25em;
 					box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 					margin: 1em;
 					padding: 1em 3em;
@@ -40,30 +41,6 @@ export default class Blog extends LitElement {
 
 				h4 {
 					margin: 1em;
-				}
-
-				.code {
-					border-color: #7DA134;
-				}
-
-				.code a {
-					color: #577913;
-				}
-
-				.craft {
-					border-color: #226868;
-				}
-
-				.craft a {
-					color: #0C4E4E;
-				}
-
-				.culture {
-					border-color: #AD3838;
-				}
-
-				.culture a {
-					color: #821414;
 				}
 			`
 		];

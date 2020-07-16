@@ -32,8 +32,15 @@ export const taxonomy = css`
 		font-size: 1.2em;
 	}
 
-	html, p, a {
+	html, p {
 		font-family: "Dosis", sans-serif;
 		font-size: 1em;
 		font-weight: normal;
-	}`;
+	}
+
+	a {
+		font-family: "Dosis", sans-serif;
+		font-size: 1em;
+		font-weight: bold;
+	}
+	`;
