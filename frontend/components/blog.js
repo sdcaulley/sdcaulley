@@ -4,11 +4,7 @@ import { taxonomy } from '../css/taxonomy.js';
 export default class Blog extends LitElement {
 	static get properties () {
 		return {
-			blogItems: {
-				type: Array,
-				attribute: false
-			},
-			filter: { type: String }
+			blogItems: { type: Array, observe: true }
 		};
 	}
 
@@ -30,7 +26,6 @@ export default class Blog extends LitElement {
 				}
 
 				article {
-					background-image: url('ricepaper_v3.png');
 					background-color: rgba(250, 240, 230, 0.7);
 					border-style: outset;
 					border-width: 0.25em;
@@ -49,42 +44,18 @@ export default class Blog extends LitElement {
 	constructor () {
 		super();
 		this.blogItems = [];
-		this.filter = '';
-	}
-
-	async connectedCallback () {
-		super.connectedCallback();
-		this.blogItems = await fetch('../blog.json')
-			.then(response => response.json())
-			.then(data => {
-				const catFilter = data.filter(blog => {
-					if (blog.category.includes(this.filter)) {
-						return blog;
-					}
-				});
-
-				const result = catFilter.map(blog => {
-					const str = blog.content.split('\n');
-					blog.content = [];
-
-					for (let i = 0; i < str.length; i++) {
-						blog.content.push(str[i]);
-					}
-					return blog;
-				});
-				return result;
-			})
-			.catch(err => {
-				console.error('Error: ', err);
-			});
 	}
 
 	render () {
-		if (!this.blogItems) {
-			return html`<p> Loading...<-p>`;
+		console.log('blog: ', this.blogItems);
+		if (this.blogItems.length < 1) {
+			console.log('blogItems: ', this.blogItems);
+			return html`<p> Loading...</p>`;
 		}
 
-		return html`
+		return html`<p>Hello</p>`;
+
+		/* return html`
 			<section>
 				${this.blogItems.map(
 					blog => html`
@@ -114,7 +85,7 @@ export default class Blog extends LitElement {
 					</article>`
 				)}
 			</section>
-		`;
+		`; */
 	}
 }
 
