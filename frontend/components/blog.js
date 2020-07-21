@@ -4,7 +4,7 @@ import { taxonomy } from '../css/taxonomy.js';
 export default class Blog extends LitElement {
 	static get properties () {
 		return {
-			blogItems: { type: Array, observe: true }
+			blogItems: { type: Array }
 		};
 	}
 
@@ -47,10 +47,8 @@ export default class Blog extends LitElement {
 	}
 
 	render () {
-		console.log('blog: ', this.blogItems);
 		if (this.blogItems.length < 1) {
-			console.log('blogItems: ', this.blogItems);
-			return html`<p> Loading...</p>`;
+			return html`<p> Loading Blog Item...</p>`;
 		}
 
 		return html`<p>Hello</p>`;

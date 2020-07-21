@@ -9,7 +9,7 @@ export default class BlogList extends LitElement {
 	static get properties () {
 		return {
 			location: { type: Object },
-			blogItems: { type: Array, reflect: true },
+			blogItems: { type: Array },
 			category: { type: String }
 		};
 	}
@@ -23,24 +23,8 @@ export default class BlogList extends LitElement {
 	async connectedCallback () {
 		super.connectedCallback();
 		this.blogItems = await fetch('../blog.json')
-			.then(response => response.json())
-			.then(data => {
-				const catFilter = data.filter(blog => {
-					if (blog.category.includes(this.category)) {
-						return blog;
-					}
-				});
-
-				const result = catFilter.map(blog => {
-					const str = blog.content.split('\n');
-					blog.content = [];
-
-					for (let i = 0; i < str.length - 1; i++) {
-						blog.content.push(str[i]);
-					}
-					return blog;
-				});
-				return result;
+			.then(response => {
+				return response;
 			})
 			.catch(err => {
 				console.error('Error: ', err);
@@ -57,10 +41,8 @@ export default class BlogList extends LitElement {
 	render () {
 		this.category = this.location.params.category;
 
-		console.log(this.blogItems);
-
 		if (this.blogItems.length < 1) {
-			return html`<p>Loading...</p>`;
+			return html`<p>Loading Blog List...</p>`;
 		}
 
 		return html`
