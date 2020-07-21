@@ -22,7 +22,7 @@ export default class BlogList extends LitElement {
 
 	async connectedCallback () {
 		super.connectedCallback();
-		this.blogItems = await fetch('../blog.json')
+		this.blogItems = await fetch('localhost:5000/blog')
 			.then(response => {
 				return response;
 			})

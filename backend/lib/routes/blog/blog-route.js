@@ -40,10 +40,34 @@ async function blogCreate (ctx, next) {
 }
 
 async function blogGet (ctx, next) {
-	const blog = dbUtils.findAllDocuments(Blog);
+	const blog = await dbUtils.findAllDocuments(Blog);
+
+	const response = await Promise.all(
+		blog.map(async item => {
+			const tags = await Promise.all(
+				item.tag.map(async tag => {
+					const tagName = await dbUtils.findOneDocument(Tag, tag);
+					return tagName[0].tag;
+				})
+			);
+
+			const body = {
+				_id: item._id,
+				title: item.title,
+				content: item.cotent,
+				image: item.image,
+				tag: tags,
+				category: item.category,
+				date_created: item.date_created,
+				date_updated: item.date_updated
+			};
+
+			return body;
+		})
+	);
 
 	if (blog) {
-		ctx.response.body = { blog };
+		ctx.response.body = response;
 	}
 
 	await next();
@@ -100,7 +124,7 @@ async function blogDelete (ctx) {
 }
 
 module.exports = router => {
-	router.get('/', ensureAuth, blogGet);
+	router.get('/', blogGet);
 	router.post('/create', ensureAuth, blogCreate);
 	router.patch('/update', ensureAuth, blogUpdate);
 	router.delete('/:id', ensureAuth, blogDelete);
