@@ -4,7 +4,11 @@ import { taxonomy } from '../css/taxonomy.js';
 export default class Blog extends LitElement {
 	static get properties () {
 		return {
-			blogItems: { type: Array }
+			blogItems: {
+				type: Array,
+				attribute: false
+			},
+			category: { type: String }
 		};
 	}
 
@@ -41,9 +45,26 @@ export default class Blog extends LitElement {
 		];
 	}
 
+	async connectedCallback () {
+		super.connectedCallback();
+		this.fetchData()
+			.then(data => {
+				this.blogItems = data;
+			});
+	}
+
 	constructor () {
 		super();
 		this.blogItems = [];
+		this.category = '';
+	}
+
+	async fetchData () {
+		const url = new URL(`http://localhost:5000/blog/${this.category}`);
+		const response = await fetch(url);
+		const data = await response.json();
+
+		return data;
 	}
 
 	render () {
@@ -51,9 +72,7 @@ export default class Blog extends LitElement {
 			return html`<p> Loading Blog Item...</p>`;
 		}
 
-		return html`<p>Hello</p>`;
-
-		/* return html`
+		return html`
 			<section>
 				${this.blogItems.map(
 					blog => html`
@@ -83,7 +102,7 @@ export default class Blog extends LitElement {
 					</article>`
 				)}
 			</section>
-		`; */
+		`;
 	}
 }
 

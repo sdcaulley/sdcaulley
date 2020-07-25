@@ -1,9 +1,10 @@
-import { LitElement, html, css } from 'lit-element';
+import { html, css } from 'lit-element';
+import Component from './base-component.js';
 import './header.js';
 import './footer.js';
 import './category.js';
 
-class Site extends LitElement {
+class Site extends Component {
 	constructor () {
 		super();
 		this.categories = ['code', 'craft', 'culture'];

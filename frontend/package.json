@@ -20,7 +20,10 @@
   "standard": {
     "globals": [
       "customElements",
-      "fetch"
+      "fetch",
+			"URL",
+			"Proxy"
     ]
-  }
+  },
+	"proxy": "localhost:5000"
 }
