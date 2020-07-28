@@ -1,8 +1,7 @@
-import { html, css } from 'lit-element';
-import Component from './base-component.js';
+import { LitElement, html, css } from 'lit-element';
 import { taxonomy } from '../css/taxonomy';
 
-export default class Header extends Component {
+export default class Header extends LitElement {
 	static get styles () {
 		return [
 			taxonomy,

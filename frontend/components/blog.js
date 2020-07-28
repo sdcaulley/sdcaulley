@@ -4,11 +4,11 @@ import { taxonomy } from '../css/taxonomy.js';
 export default class Blog extends LitElement {
 	static get properties () {
 		return {
+			category: { type: String },
 			blogItems: {
 				type: Array,
-				attribute: false
-			},
-			category: { type: String }
+				reflect: true
+			}
 		};
 	}
 
@@ -45,38 +45,23 @@ export default class Blog extends LitElement {
 		];
 	}
 
-	async connectedCallback () {
-		super.connectedCallback();
-		this.fetchData()
-			.then(data => {
-				this.blogItems = data;
-			});
-	}
-
 	constructor () {
 		super();
 		this.blogItems = [];
-		this.category = '';
-	}
-
-	async fetchData () {
-		const url = new URL(`http://localhost:5000/blog/${this.category}`);
-		const response = await fetch(url);
-		const data = await response.json();
-
-		return data;
 	}
 
 	render () {
-		if (this.blogItems.length < 1) {
-			return html`<p> Loading Blog Item...</p>`;
+		if (this.blogItems.length === 0) {
+			return html`<p>No blog items yet.</p>`;
 		}
+
+		console.log('blogItems: ', this.blogItems);
 
 		return html`
 			<section>
 				${this.blogItems.map(
 					blog => html`
-					<article class=${this.filter}>
+					<article class=${this.category}>
 						<h4>${blog.title}</h4>
 						<p>Created: ${blog.date_created}</p>
 						<p>Updated: ${blog.date_updated}</p>

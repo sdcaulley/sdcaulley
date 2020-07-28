@@ -4,12 +4,11 @@
   "description": "frontend for sdcaulley",
   "main": "index.html",
   "scripts": {
-    "start": "es-dev-server --app-index index.html --node-resolve --watch --open --cors=true"
+    "start": "es-dev-server --node-resolve --watch --app-index index.html --open"
   },
   "author": "sdcaulley",
   "license": "GPL-3.0-or-later",
   "devDependencies": {
-    "es-dev-server": "^1.56.0",
     "happiness": "^10.0.2"
   },
   "dependencies": {
@@ -21,9 +20,9 @@
     "globals": [
       "customElements",
       "fetch",
-			"URL",
-			"Proxy"
+      "URL",
+      "Proxy"
     ]
   },
-	"proxy": "localhost:5000"
+  "proxy": "localhost:5000"
 }
