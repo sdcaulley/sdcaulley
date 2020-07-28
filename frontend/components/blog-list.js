@@ -34,7 +34,7 @@ export default class BlogList extends LitElement {
 	async firstUpdated () {
 		this.blogItems = await fetcher({
 			method: 'GET',
-			path: '/blog'
+			path: `/blog/${this.category}`
 		});
 	}
 

@@ -85,7 +85,6 @@ async function blogFilter (ctx, next) {
 					return tagName[0].tag;
 				})
 			);
-
 			const body = {
 				id: item._id,
 				title: item.title,
@@ -93,8 +92,8 @@ async function blogFilter (ctx, next) {
 				image: item.image,
 				tag: tags,
 				category: item.category,
-				date_created: item.date_created,
-				date_updated: item.date_updated
+				date_created: Date(item.date_created),
+				date_updated: Date(item.date_updated)
 			};
 
 			return body;

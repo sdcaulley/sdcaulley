@@ -55,7 +55,7 @@ export default class Blog extends LitElement {
 			return html`<p>No blog items yet.</p>`;
 		}
 
-		console.log('blogItems: ', this.blogItems);
+		console.log(typeof this.blogItems[0].date_created);
 
 		return html`
 			<section>
@@ -63,9 +63,9 @@ export default class Blog extends LitElement {
 					blog => html`
 					<article class=${this.category}>
 						<h4>${blog.title}</h4>
-						<p>Created: ${blog.date_created}</p>
-						<p>Updated: ${blog.date_updated}</p>
-						${blog.content.map(
+						<p>Created: ${blog.date_created.split(' ').slice(0, 4).join(' ')}</p>
+						<p>Updated: ${blog.date_updated.split(' ').slice(0, 4).join(' ')}</p>
+						${blog.content.split('\n').map(
 							item => html`<p>${item}</p>`
 						)}
 						<p>Tags:</p>
