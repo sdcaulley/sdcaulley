@@ -42,5 +42,10 @@ export const taxonomy = css`
 		font-family: "Dosis", sans-serif;
 		font-size: 1em;
 		font-weight: bold;
+		text-decoration: none;
+	}
+
+	ul {
+		list-style: none;
 	}
 	`;

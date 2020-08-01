@@ -5,6 +5,7 @@ import fetcher from '../utils/fetcher.js';
 import './header.js';
 import './blog.js';
 import './footer.js';
+import './tag-menu.js';
 
 export default class BlogList extends LitElement {
 	static get properties () {
@@ -43,6 +44,7 @@ export default class BlogList extends LitElement {
 
 		return html`
 			<site-header category=${this.category}></site-header>
+			<tag-menu category=${this.category} .blogItems=${this.blogItems}></tag-menu>
 			<blog-item category=${this.category} .blogItems=${this.blogItems}></blog-item>
 			<site-footer></site-footer>
 		`;

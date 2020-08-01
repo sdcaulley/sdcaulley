@@ -16,14 +16,6 @@ export default class Blog extends LitElement {
 		return [
 			taxonomy,
 			css`
-				a {
-					text-decoration: none;
-				}
-
-				ul {
-					list-style: none;
-				}
-
 				li {
 					display: inline-block;
 					margin: 1em;
@@ -54,8 +46,6 @@ export default class Blog extends LitElement {
 		if (this.blogItems.length === 0) {
 			return html`<p>No blog items yet.</p>`;
 		}
-
-		console.log(typeof this.blogItems[0].date_created);
 
 		return html`
 			<section>
