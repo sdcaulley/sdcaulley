@@ -1,11 +1,21 @@
 import { LitElement, html, css } from 'lit-element';
-import { taxonomy } from '../css/taxonomy';
+import { taxonomy } from '../css/taxonomy.js';
 
 export default class Header extends LitElement {
 	static get styles () {
 		return [
 			taxonomy,
 			css`
+				:host {
+					display: block;
+					margin: auto;
+					width: 90%;
+				}
+
+				h1 {
+					text-align: center;
+				}
+
 				h3 {
 					text-align: center;
 				}
@@ -16,14 +26,12 @@ export default class Header extends LitElement {
 				}
 
 				header {
-					background-image: url('ricepaper_v3.png');
 					background-color: rgba(250, 240, 230, 0.7);
 					border-style: outset;
 					border-width: 0.25em;
 					box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 					margin: auto;
 					padding: 1em 3em;
-					width: 50%;
 				}
 			`
 		];

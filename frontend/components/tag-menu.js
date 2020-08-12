@@ -1,5 +1,4 @@
 import { LitElement, html, css } from 'lit-element';
-import { taxonomy } from '../css/taxonomy.js';
 
 export default class TagMenu extends LitElement {
 	static get properties () {
@@ -12,7 +11,6 @@ export default class TagMenu extends LitElement {
 
 	static get styles () {
 		return [
-			taxonomy,
 			css`
 				div {
 					background-color: rgba(250, 240, 230, 0.7);

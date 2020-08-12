@@ -1,5 +1,4 @@
 import { LitElement, html, css } from 'lit-element';
-import { taxonomy } from '../css/taxonomy.js';
 
 export default class Blog extends LitElement {
 	static get properties () {
@@ -14,7 +13,6 @@ export default class Blog extends LitElement {
 
 	static get styles () {
 		return [
-			taxonomy,
 			css`
 				li {
 					display: inline-block;

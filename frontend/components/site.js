@@ -1,29 +1,32 @@
-import { LitElement, html, css } from 'lit-element';
-import './header.js';
-import './footer.js';
+import { html, css } from 'lit-element';
+import { ViewBase } from './view-base.js';
 import './category.js';
 
-class Site extends LitElement {
+class Site extends ViewBase {
 	constructor () {
 		super();
 		this.categories = ['code', 'craft', 'culture'];
 	}
 
 	static get styles () {
-		return css`
-			site-category {
-				display: flex;
-				justify-content: space-around;
-				margin: auto;
-				width: 90%;
-			}`;
+		return [
+			css`
+				:host {
+					display: block;
+					margin: auto;
+					width: 90%;
+				}
+
+				site-category {
+					display: flex;
+					justify-content: space-around;
+				}`
+		];
 	}
 
 	render () {
 		return html`
-			<site-header></site-header>
 			<site-category .categories=${this.categories}></site-category>
-			<site-footer></site-footer>
 		`;
 	}
 }

@@ -1,6 +1,5 @@
 import { LitElement, html } from 'lit-element';
-import { taxonomy } from '../css/taxonomy.js';
-import { router } from './routes.js';
+import { router } from './site-main.js';
 import fetcher from '../utils/fetcher.js';
 import './header.js';
 import './blog.js';
@@ -21,7 +20,6 @@ export default class BlogList extends LitElement {
 
 	static get styles () {
 		return [
-			taxonomy
 		];
 	}
 

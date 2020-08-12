@@ -24,7 +24,6 @@ export default class Category extends LitElement {
 					margin: 1em;
 					line-height: 5em;
 					text-align: center;
-					text-decoration: none;
 					width: 5em;
 				}
 			`

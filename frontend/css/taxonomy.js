@@ -3,33 +3,27 @@ import { css } from 'lit-element';
 export const taxonomy = css`
 	h1 {
 		font-family: "Podkova", serif;
-		font-size: 2.986em;
-		text-align: center;
+		font-size: 1.802em;
 	}
 
 	h2 {
 		font-family: "Podkova", serif;
-		font-size: 2.488em;
+		font-size: 1.602em;
 	}
 
 	h3 {
 		font-family: "Podkova", serif;
-		font-size: 2.074em;
+		font-size: 1.424em;
 	}
 
 	h4 {
 		font-family: "Podkova", serif;
-		font-size: 1.728em;
+		font-size: 1.266em;
 	}
 
 	h5 {
 		font-family: "Podkova", serif;
-		font-size: 1.44em;
-	}
-
-	h6 {
-		font-family: "Podkova", serif;
-		font-size: 1.2em;
+		font-size: 1.125em;
 	}
 
 	html, p {
@@ -45,7 +39,30 @@ export const taxonomy = css`
 		text-decoration: none;
 	}
 
-	ul {
-		list-style: none;
+	@media(min-width: 1000px) {
+		h1 {
+			font-family: "Podkova", serif;
+			font-size: 3.052em;
+		}
+
+		h2 {
+			font-family: "Podkova", serif;
+			font-size: 2.441em;
+		}
+
+		h3 {
+			font-family: "Podkova", serif;
+			font-size: 1.953em;
+		}
+
+		h4 {
+			font-family: "Podkova", serif;
+			font-size: 1.5638em;
+		}
+
+		h5 {
+			font-family: "Podkova", serif;
+			font-size: 1.25em;
+		}
 	}
-	`;
+`;

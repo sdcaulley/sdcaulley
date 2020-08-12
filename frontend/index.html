@@ -2,14 +2,32 @@
 <html lang="en" dir="ltr">
 	<head>
 		<meta charset="utf-8">
+		<meta name="viewport"
+			content="width=device-width, initial-scale=1.0, viewport=cover" />
 		<link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Dosis&family=Podkova"
     />
+		<style>
+			body {
+				background-image: url('cork-board.png');
+			}
+			
+      view-container {
+        display: block;
+        width: 100vw;
+      }
+		</style>
 		<title>sdcaulley</title>
 	</head>
-	<body style="background-image:url('cork-board.png')">
-		<div id="root"></div>
-		<script type="module" src="./components/routes.js"></script>
+	<body>
+		<noscript>
+			You need to enable Javascript to see this site.
+		</noscript>
+
+		<site-container></site-container>
+		<site-main></site-main>
+
+		<script type="module" src="./components/site-main.js"></script>
 	</body>
 </html>
