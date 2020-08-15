@@ -16,11 +16,7 @@ class Site extends ViewBase {
 					margin: auto;
 					width: 90%;
 				}
-
-				site-category {
-					display: flex;
-					justify-content: space-around;
-				}`
+			`
 		];
 	}
 

@@ -43,6 +43,11 @@ export default class Header extends LitElement {
 		};
 	}
 
+	constructor () {
+		super();
+		this.category = '';
+	}
+
 	render () {
 		return html`
 			<header>

@@ -1,11 +1,16 @@
 import { LitElement, html, css } from 'lit-element';
+import { router } from './site-main.js';
 import './header.js';
 import './footer.js';
 
-const defaultDocTitle = 'Home of scaulley';
-const currPageTitle = pageTitle => `${pageTitle} - sdcaulley`;
-
 export class ViewBase extends LitElement {
+	static get properties () {
+		return {
+			location: { type: Object, attribute: false },
+			category: { type: String }
+		};
+	}
+
 	static get styles () {
 		return [
 			css`
@@ -17,13 +22,17 @@ export class ViewBase extends LitElement {
 		];
 	}
 
-	setDocumentTitle (pageTitle) {
-		document.title = pageTitle ? currPageTitle(pageTitle) : defaultDocTitle;
+	constructor () {
+		super();
+		this.location = router.location;
+		this.category = '';
 	}
 
 	render () {
+		this.category = this.location.params.category;
+
 		return html`
-			<site-header></site-header>
+			<site-header category=${this.category}></site-header>
 			<slot></slot>
 			<site-footer></site-footer>
 		`;
