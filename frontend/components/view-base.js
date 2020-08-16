@@ -29,7 +29,7 @@ export class ViewBase extends LitElement {
 	}
 
 	render () {
-		this.category = this.location.params.category;
+		this.category = this.location.params.category || 'Home';
 
 		return html`
 			<site-header category=${this.category}></site-header>

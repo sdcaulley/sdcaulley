@@ -16,6 +16,11 @@ export default class Category extends LitElement {
 		];
 	}
 
+	constructor () {
+		super();
+		this.categories = ['code', 'craft', 'culture'];
+	}
+
 	render () {
 		if (!this.categories) {
 			return html``;

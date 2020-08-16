@@ -3,11 +3,6 @@ import { ViewBase } from './view-base.js';
 import './category.js';
 
 class Site extends ViewBase {
-	constructor () {
-		super();
-		this.categories = ['code', 'craft', 'culture'];
-	}
-
 	static get styles () {
 		return [
 			css`
@@ -22,7 +17,7 @@ class Site extends ViewBase {
 
 	render () {
 		return html`
-			<site-category .categories=${this.categories}></site-category>
+			<site-category></site-category>
 		`;
 	}
 }

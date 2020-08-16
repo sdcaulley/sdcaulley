@@ -22,6 +22,7 @@ export const placement = css`
 		color: black;
 		display: inline-block;
 		font-weight: bold;
+		margin: 0.25em;
 		padding: 10% 0.5em;
 		text-align: center;
 		text-decoration: none;
