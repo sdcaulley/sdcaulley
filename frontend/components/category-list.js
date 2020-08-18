@@ -1,19 +1,21 @@
-import { LitElement, html } from 'lit-element';
+import { html } from 'lit-element';
+import { ViewBase } from './view-base.js';
 import { placement } from '../css/category-css.js';
 import { taxonomy } from '../css/taxonomy.js';
 
-export default class Category extends LitElement {
+class CategoryList extends ViewBase {
+	static get styles () {
+		return [
+			super.styles,
+			placement,
+			taxonomy
+		];
+	}
+
 	static get properties () {
 		return {
 			categories: { type: Array }
 		};
-	}
-
-	static get styles () {
-		return [
-			placement,
-			taxonomy
-		];
 	}
 
 	constructor () {
@@ -38,4 +40,4 @@ export default class Category extends LitElement {
 	}
 }
 
-customElements.define('site-category', Category);
+customElements.define('category-list', CategoryList);

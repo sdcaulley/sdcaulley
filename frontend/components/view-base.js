@@ -1,5 +1,5 @@
 import { LitElement, html, css } from 'lit-element';
-import { router } from './site-main.js';
+import { router } from './site-routes.js';
 import './header.js';
 import './footer.js';
 
@@ -16,6 +16,7 @@ export class ViewBase extends LitElement {
 			css`
 				:host {
 					display: block;
+					position: inherit;
 					width: 100%;
 				}
 			`

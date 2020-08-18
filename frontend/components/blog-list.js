@@ -1,13 +1,19 @@
-import { LitElement, html } from 'lit-element';
-import { router } from './site-main.js';
+import { html } from 'lit-element';
+import { ViewBase } from './view-base.js';
+import { router } from './site-routes.js';
 import fetcher from '../utils/fetcher.js';
-import './blog.js';
+import { placement } from '../css/blog-list-css.js';
+import { taxonomy } from '../css/taxonomy.js';
+import './blog-item.js';
 import './tag-menu.js';
 
-export default class BlogList extends LitElement {
+export default class BlogList extends ViewBase {
 	static get properties () {
 		return {
-			location: { type: Object, attribute: false },
+			location: {
+				type: Object,
+				attribute: false
+			},
 			blogItems: {
 				type: Array,
 				reflect: true
@@ -18,6 +24,9 @@ export default class BlogList extends LitElement {
 
 	static get styles () {
 		return [
+			super.styles,
+			placement,
+			taxonomy
 		];
 	}
 
@@ -39,8 +48,12 @@ export default class BlogList extends LitElement {
 		this.category = this.location.params.category;
 
 		return html`
-			<tag-menu category=${this.category} .blogItems=${this.blogItems}></tag-menu>
-			<blog-item category=${this.category} .blogItems=${this.blogItems}></blog-item>
+			<section id='right-sidebar'>
+				<tag-menu category=${this.category} .blogItems=${this.blogItems}></tag-menu>
+			</section>
+			<section id='main'>
+				<blog-item category=${this.category} .blogItems=${this.blogItems}></blog-item>
+			</section>
 		`;
 	}
 }

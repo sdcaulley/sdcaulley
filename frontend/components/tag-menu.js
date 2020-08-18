@@ -1,4 +1,6 @@
-import { LitElement, html, css } from 'lit-element';
+import { LitElement, html } from 'lit-element';
+import { taxonomy } from '../css/taxonomy.js';
+import { menu } from '../css/tag-menu-css.js';
 
 export default class TagMenu extends LitElement {
 	static get properties () {
@@ -11,16 +13,8 @@ export default class TagMenu extends LitElement {
 
 	static get styles () {
 		return [
-			css`
-				div {
-					background-color: rgba(250, 240, 230, 0.7);
-					border-style: outset;
-					border-width: 0.25em;
-					box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-					margin: 1em;
-					padding: 1em 3em;
-				}
-			`
+			taxonomy,
+			menu
 		];
 	}
 
@@ -44,13 +38,12 @@ export default class TagMenu extends LitElement {
 		for (const key in map) {
 			this.tags.push(`${key} (${map[key]})`);
 		}
-		console.log('this.tags: ', this.tags);
 	}
 
 	render () {
 		if (this.blogItems.length > 0) {
 			return html`
-				<div id='tag-menu'>
+				<section id='tag-menu'>
 					<h4>Categories</h4>
 					<ul>
 						${this.tagsMenu()}
@@ -58,7 +51,7 @@ export default class TagMenu extends LitElement {
 							<li><a>${item}</a></li>
 						`)}
 					</ul>
-				</div>
+				</section>
 			`;
 		}
 	}

@@ -11,10 +11,13 @@
 		<style>
 			body {
 				background-image: url('cork-board.png');
+				position: relative;
+				z-index: 1;
 			}
 
       view-container {
         display: block;
+				postion: relative;
         width: 100vw;
       }
 		</style>
@@ -26,8 +29,8 @@
 		</noscript>
 
 		<site-container></site-container>
-		<site-main></site-main>
+		<site-routes></site-routes>
 
-		<script type="module" src="./components/site-main.js"></script>
+		<script type="module" src="./components/site-routes.js"></script>
 	</body>
 </html>

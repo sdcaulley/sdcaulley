@@ -1,4 +1,6 @@
-import { LitElement, html, css } from 'lit-element';
+import { LitElement, html } from 'lit-element';
+import { placement } from '../css/blog-item-css.js';
+import { taxonomy } from '../css/taxonomy.js';
 
 export default class Blog extends LitElement {
 	static get properties () {
@@ -13,31 +15,15 @@ export default class Blog extends LitElement {
 
 	static get styles () {
 		return [
-			css`
-				li {
-					display: inline-block;
-					margin: 1em;
-				}
-
-				article {
-					background-color: rgba(250, 240, 230, 0.7);
-					border-style: outset;
-					border-width: 0.25em;
-					box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-					margin: 1em;
-					padding: 1em 3em;
-				}
-
-				h4 {
-					margin: 1em;
-				}
-			`
+			placement,
+			taxonomy
 		];
 	}
 
 	constructor () {
 		super();
 		this.blogItems = [];
+		this.category = '';
 	}
 
 	render () {
@@ -51,12 +37,12 @@ export default class Blog extends LitElement {
 					blog => html`
 					<article class=${this.category}>
 						<h4>${blog.title}</h4>
-						<p>Created: ${blog.date_created.split(' ').slice(0, 4).join(' ')}</p>
-						<p>Updated: ${blog.date_updated.split(' ').slice(0, 4).join(' ')}</p>
+						<p><strong>Created:</strong> ${blog.date_created.split(' ').slice(0, 4).join(' ')}</p>
+						<p><strong>Updated:</strong> ${blog.date_updated.split(' ').slice(0, 4).join(' ')}</p>
 						${blog.content.split('\n').map(
 							item => html`<p>${item}</p>`
 						)}
-						<p>Tags:</p>
+						<p><strong>Tags:</strong></p>
 						<ul>
 							${blog.tag.map(
 								tag => html`
@@ -64,7 +50,7 @@ export default class Blog extends LitElement {
 								`
 							)}
 						</ul>
-						<p>Categories:</p>
+						<p><strong>Categories:</strong></p>
 						<ul>
 							${blog.category.map(
 								item => html`
@@ -74,8 +60,7 @@ export default class Blog extends LitElement {
 						</ul>
 					</article>`
 				)}
-			</section>
-		`;
+			</section>`;
 	}
 }
 

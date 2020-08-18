@@ -1,10 +1,6 @@
 import { css } from 'lit-element';
 
 export const placement = css`
-	:host{
-		width: 100%;
-	}
-
 	section {
 		align-items: center;
 		display: flex;
@@ -15,6 +11,7 @@ export const placement = css`
 
 	a {
 		background-color: rgba(250, 240, 230, 0.7);
+		background-image: url('../css/ricepaper_v3.png');
 		border-color: grey;
 		border-style: outset;
 		border-width: 0.25em;
@@ -27,6 +24,7 @@ export const placement = css`
 		text-align: center;
 		text-decoration: none;
 		width: 25%;
+		z-index: 2;
 	}
 
 	@media(min-width: 1000px) {

@@ -38,6 +38,10 @@ export const taxonomy = css`
 		text-decoration: none;
 	}
 
+	ul {
+		list-style-type: none;
+	}
+
 	@media(min-width: 1000px) {
 		h1 {
 			font-family: "Podkova", serif;
