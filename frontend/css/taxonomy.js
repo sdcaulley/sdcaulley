@@ -26,15 +26,13 @@ export const taxonomy = css`
 		font-size: 1.125em;
 	}
 
-	p {
+	a, p {
 		font-family: "Dosis", sans-serif;
 		font-size: 1em;
 		font-weight: normal;
 	}
 
 	a {
-		font-size: 1.1em;
-		font-weight: bold;
 		text-decoration: none;
 	}
 
@@ -66,10 +64,6 @@ export const taxonomy = css`
 		h5 {
 			font-family: "Podkova", serif;
 			font-size: 1.25em;
-		}
-
-		a {
-			font-size: 2em;
 		}
 	}
 `;

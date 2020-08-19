@@ -44,11 +44,11 @@ export default class TagMenu extends LitElement {
 		if (this.blogItems.length > 0) {
 			return html`
 				<section id='tag-menu'>
-					<h4>Categories</h4>
+					<h4 id='${this.category}'>Categories</h4>
 					<ul>
 						${this.tagsMenu()}
 						${this.tags.map(item => html`
-							<li><a>${item}</a></li>
+							<li><a class='${this.category}'>${item}</a></li>
 						`)}
 					</ul>
 				</section>

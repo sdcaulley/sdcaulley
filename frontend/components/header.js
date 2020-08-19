@@ -1,41 +1,13 @@
-import { LitElement, html, css } from 'lit-element';
+import { LitElement, html } from 'lit-element';
 import { taxonomy } from '../css/taxonomy.js';
+import { placement } from '../css/header-css.js';
+import './main-menu.js';
 
 export default class Header extends LitElement {
 	static get styles () {
 		return [
 			taxonomy,
-			css`
-				:host {
-					display: block;
-					margin: auto;
-					position: inherit;
-					width: 100%;
-				}
-
-				h1 {
-					text-align: center;
-				}
-
-				h3 {
-					text-align: center;
-				}
-
-				h2 {
-					text-align: center;
-					text-transform: capitalize;
-				}
-
-				header {
-					background-color: rgba(250, 240, 230, 0.7);
-					background-image: url('../css/ricepaper_v3.png');
-					border-radius: 1em;
-					box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-					margin: 0.5em;
-					padding: 1em 3em;
-					z-index: 2;
-				}
-			`
+			placement
 		];
 	}
 
@@ -53,9 +25,14 @@ export default class Header extends LitElement {
 	render () {
 		return html`
 			<header>
-				<h1>sdcaulley</h1>
-				<h3>Bringing intention to my daily life</h3>
-				<h2>${this.category}</h2>
+				<section id='menu'>
+					<main-menu category=${this.category}></main-menu>
+				</section>
+				<section id='headings'>
+					<h1>sdcaulley</h1>
+					<h3>Bringing intention to my daily life</h3>
+					<h2 id='${this.category}'>${this.category}</h2>
+				</section>
 			</header>
 		`;
 	}
