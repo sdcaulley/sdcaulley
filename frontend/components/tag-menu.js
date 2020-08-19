@@ -1,6 +1,7 @@
 import { LitElement, html } from 'lit-element';
 import { taxonomy } from '../css/taxonomy.js';
 import { menu } from '../css/tag-menu-css.js';
+import { colors } from '../css/color.js';
 
 export default class TagMenu extends LitElement {
 	static get properties () {
@@ -13,6 +14,7 @@ export default class TagMenu extends LitElement {
 
 	static get styles () {
 		return [
+			colors,
 			taxonomy,
 			menu
 		];
@@ -44,11 +46,11 @@ export default class TagMenu extends LitElement {
 		if (this.blogItems.length > 0) {
 			return html`
 				<section id='tag-menu'>
-					<h4 id='${this.category}'>Categories</h4>
+					<h4 class=${this.category}-header>Categories</h4>
 					<ul>
 						${this.tagsMenu()}
 						${this.tags.map(item => html`
-							<li><a class='${this.category}'>${item}</a></li>
+							<li><a class=${this.category}-link>${item}</a></li>
 						`)}
 					</ul>
 				</section>

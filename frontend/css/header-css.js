@@ -20,18 +20,6 @@ export const placement = css`
 		width: 10%;
 	}
 
-	#code {
-		color: #385400;
-	}
-
-	#craft {
-		color: #5a0000;
-	}
-
-	#culture {
-		color: #003636;
-	}
-
 	h1, h2, h3 {
 		margin: 0.25em;
 		text-align: center;

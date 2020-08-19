@@ -1,10 +1,12 @@
 import { LitElement, html } from 'lit-element';
 import { taxonomy } from '../css/taxonomy.js';
 import { menu } from '../css/main-menu-css.js';
+import { colors } from '../css/color.js';
 
 export default class MainMenu extends LitElement {
 	static get styles () {
 		return [
+			colors,
 			taxonomy,
 			menu
 		];
@@ -29,7 +31,7 @@ export default class MainMenu extends LitElement {
 							src='../css/menu.svg'
 							alt='Menu icon'></img>
 						<section>
-							<a class='code' href='/'>Home</a>
+							<a class=${this.category}-link href='/'>Home</a>
 						</section>
 					</nav>
 				`;
@@ -40,7 +42,7 @@ export default class MainMenu extends LitElement {
 							src='../css/menu.svg'
 							alt='Menu icon'></img>
 						<section>
-							<a class='craft' href='/'>Home</a>
+							<a class=${this.category}-link href='/'>Home</a>
 						</section>
 					</nav>
 				`;
@@ -51,7 +53,7 @@ export default class MainMenu extends LitElement {
 							src='../css/menu.svg'
 							alt='Menu icon'></img>
 						<section>
-							<a class='craft' href='/'>Home</a>
+							<a class=${this.category}-link href='/'>Home</a>
 						</section>
 					</nav>
 				`;

@@ -6,30 +6,6 @@ export const menu = css`
 		width: 100%;
 	}
 
-	#code {
-		color: #385400;
-	}
-
-	.code {
-		color: #7da134;
-	}
-
-	#craft {
-		color: #5a0000;
-	}
-
-	.craft {
-		color: #ad3838;
-	}
-
-	#culture {
-		color: #003636;
-	}
-
-	.culture {
-		color: #226868;
-	}
-
 	section {
 		background-color: rgba(250, 240, 230, 0.7);
 		background-image: url('../css/ricepaper_v3.png');

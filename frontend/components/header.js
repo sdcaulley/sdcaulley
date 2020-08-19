@@ -1,11 +1,13 @@
 import { LitElement, html } from 'lit-element';
 import { taxonomy } from '../css/taxonomy.js';
 import { placement } from '../css/header-css.js';
+import { colors } from '../css/color.js';
 import './main-menu.js';
 
 export default class Header extends LitElement {
 	static get styles () {
 		return [
+			colors,
 			taxonomy,
 			placement
 		];
@@ -31,7 +33,7 @@ export default class Header extends LitElement {
 				<section id='headings'>
 					<h1>sdcaulley</h1>
 					<h3>Bringing intention to my daily life</h3>
-					<h2 id='${this.category}'>${this.category}</h2>
+					<h2 class=${this.category}-header>${this.category}</h2>
 				</section>
 			</header>
 		`;

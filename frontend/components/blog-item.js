@@ -1,4 +1,5 @@
 import { LitElement, html } from 'lit-element';
+import { colors } from '../css/color.js';
 import { placement } from '../css/blog-item-css.js';
 import { taxonomy } from '../css/taxonomy.js';
 
@@ -15,6 +16,7 @@ export default class Blog extends LitElement {
 
 	static get styles () {
 		return [
+			colors,
 			placement,
 			taxonomy
 		];
@@ -36,25 +38,37 @@ export default class Blog extends LitElement {
 				${this.blogItems.map(
 					blog => html`
 					<article class=${this.category}>
-						<h4>${blog.title}</h4>
-						<p><strong>Created:</strong> ${blog.date_created.split(' ').slice(0, 4).join(' ')}</p>
-						<p><strong>Updated:</strong> ${blog.date_updated.split(' ').slice(0, 4).join(' ')}</p>
+						<h4 class=${this.category}-header>
+							${blog.title}
+						</h4>
+						<p>
+							<strong class=${this.category}-label>Created:</strong>
+								${blog.date_created.split(' ').slice(0, 4).join(' ')}
+						</p>
+						<p>
+							<strong class=${this.category}-label>Updated:</strong>
+								${blog.date_updated.split(' ').slice(0, 4).join(' ')}
+						</p>
 						${blog.content.split('\n').map(
 							item => html`<p>${item}</p>`
 						)}
-						<p><strong>Tags:</strong></p>
+						<p>
+							<strong class=${this.category}-label>Tags:</strong>
+						</p>
 						<ul>
 							${blog.tag.map(
 								tag => html`
-									<li><a>${tag}</a></li>
+									<li><a class=${this.category}-link>${tag}</a></li>
 								`
 							)}
 						</ul>
-						<p><strong>Categories:</strong></p>
+						<p>
+							<strong class=${this.category}-label>Categories:</strong>
+						</p>
 						<ul>
 							${blog.category.map(
 								item => html`
-									<li><a>${item}</a></li>
+									<li><a class=${this.category}-link>${item}</a></li>
 								`
 							)}
 						</ul>

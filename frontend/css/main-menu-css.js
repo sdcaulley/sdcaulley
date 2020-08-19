@@ -8,18 +8,6 @@ export const menu = css`
 		width: 100%;
 	}
 
-	.code {
-		color: #7da134;
-	}
-
-	.craft {
-		color: #ad3838;
-	}
-
-	.culture {
-		color: # 226868;
-	}
-
 	nav {
 		display: inline-block;
 		position: relative;
@@ -57,6 +45,10 @@ export const menu = css`
 		nav {
 			display: block;
 			width: 100%;
+		}
+
+		nav:hover section {
+			display: flex;
 		}
 
 		section {
