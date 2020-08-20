@@ -38,7 +38,7 @@ export default class TagMenu extends LitElement {
 		}, {});
 
 		for (const key in map) {
-			this.tags.push(`${key} (${map[key]})`);
+			this.tags.push({ tag: key, number: map[key] });
 		}
 	}
 
@@ -49,9 +49,11 @@ export default class TagMenu extends LitElement {
 					<h4 class=${this.category}-header>Categories</h4>
 					<ul>
 						${this.tagsMenu()}
-						${this.tags.map(item => html`
-							<li><a class=${this.category}-link>${item}</a></li>
-						`)}
+						${this.tags.map(item => {
+							return html`
+							<li><a class=${this.category}-link href=/${item.tag}>${item.tag} (${item.number})</a></li>
+							`;
+						})}
 					</ul>
 				</section>
 			`;

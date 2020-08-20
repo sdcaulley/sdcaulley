@@ -46,6 +46,7 @@ export default class BlogList extends ViewBase {
 
 	render () {
 		this.category = this.location.params.category;
+		console.log('category: ', this.category);
 
 		return html`
 			<section id='right-sidebar'>

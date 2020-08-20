@@ -75,7 +75,15 @@ async function blogGetAll (ctx, next) {
 
 async function blogFilter (ctx, next) {
 	const category = dbUtils.splitUrl(ctx.request.url);
-	const blog = await dbUtils.findOneDocument(Blog, { category: category });
+	let blog;
+
+	if (category === 'code' || category === 'craft' || category === 'culture') {
+		blog = await dbUtils.findOneDocument(Blog, { category: category });
+	} else {
+		console.log('category: ', category);
+		const tagId = await dbUtils.findOneDocument(Tag, { tag: category });
+		blog = await dbUtils.findOneDocument(Blog, { tag: tagId[0]._id });
+	}
 
 	const response = await Promise.all(
 		blog.map(async item => {

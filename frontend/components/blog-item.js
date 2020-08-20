@@ -58,7 +58,7 @@ export default class Blog extends LitElement {
 						<ul>
 							${blog.tag.map(
 								tag => html`
-									<li><a class=${this.category}-link>${tag}</a></li>
+									<li><a class=${this.category}-link href=/${tag}>${tag}</a></li>
 								`
 							)}
 						</ul>

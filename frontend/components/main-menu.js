@@ -59,7 +59,14 @@ export default class MainMenu extends LitElement {
 				`;
 			default:
 				return html`
-					<nav></nav>
+					<nav>
+						<img
+							src='../css/menu.svg'
+							alt='Menu icon'></img>
+						<section>
+							<a class=${this.category}-link href='/'>Home</a>
+						</section>
+					</nav>
 				`;
 		}
 	}
