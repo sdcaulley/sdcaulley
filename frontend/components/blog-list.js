@@ -1,30 +1,22 @@
-import { html } from 'lit-element';
-import { ViewBase } from './view-base.js';
-import { router } from './site-routes.js';
-import fetcher from '../utils/fetcher.js';
+import { LitElement, html } from 'lit-element';
+import { colors } from '../css/color.js';
 import { placement } from '../css/blog-list-css.js';
 import { taxonomy } from '../css/taxonomy.js';
-import './blog-item.js';
-import './tag-menu.js';
 
-export default class BlogList extends ViewBase {
+export default class BlogList extends LitElement {
 	static get properties () {
 		return {
-			location: {
-				type: Object,
-				attribute: false
-			},
+			category: { type: String },
 			blogItems: {
 				type: Array,
 				reflect: true
-			},
-			category: { type: String }
+			}
 		};
 	}
 
 	static get styles () {
 		return [
-			super.styles,
+			colors,
 			placement,
 			taxonomy
 		];
@@ -32,30 +24,44 @@ export default class BlogList extends ViewBase {
 
 	constructor () {
 		super();
-		this.location = router.location;
 		this.blogItems = [];
 		this.category = '';
 	}
 
-	async firstUpdated () {
-		this.blogItems = await fetcher({
-			method: 'GET',
-			path: `/blog/${this.category}`
-		});
+	teaser (item) {
+		const array = item.split('.');
+		return html`<p>${array[0]}.  ${array[1]}.</p>`;
 	}
 
 	render () {
-		this.category = this.location.params.category;
-		console.log('category: ', this.category);
+		if (this.blogItems.length === 0) {
+			return html`<p>No blog items yet.</p>`;
+		}
 
 		return html`
-			<section id='right-sidebar'>
-				<tag-menu category=${this.category} .blogItems=${this.blogItems}></tag-menu>
-			</section>
-			<section id='main'>
-				<blog-item category=${this.category} .blogItems=${this.blogItems}></blog-item>
-			</section>
-		`;
+			<section>
+				${this.blogItems.map(
+					blog => html`
+					<article class=${this.category} id=${blog._id}>
+						<h4 class=${this.category}-header>
+							<a>${blog.title}</a>
+						</h4>
+						<p>
+							<strong class=${this.category}-label>Updated:</strong>
+								${blog.date_updated.split(' ').slice(0, 4).join(' ')}
+						</p>
+						${this.teaser(blog.content)}
+						<p class='tags'>
+							<strong class=${this.category}-label>Tags:</strong>
+						</p>
+							${blog.tag.map(
+								tag => html`
+									<a class='tags ${this.category}-link' href=/${tag}>${tag}</a>
+								`
+							)}
+					</article>`
+				)}
+			</section>`;
 	}
 }
 
