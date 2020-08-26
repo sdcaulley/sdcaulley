@@ -36,6 +36,10 @@ export const taxonomy = css`
 		text-decoration: none;
 	}
 
+	a:hover {
+		text-decoration: underline;
+	}
+
 	ul {
 		list-style-type: none;
 	}
