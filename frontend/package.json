@@ -13,6 +13,7 @@
     "happiness": "^10.0.2"
   },
   "dependencies": {
+    "@danielturner/lit-state": "^1.0.1",
     "@vaadin/router": "^1.7.2",
     "lit-element": "^2.4.0",
     "normalize.css": "^8.0.1"

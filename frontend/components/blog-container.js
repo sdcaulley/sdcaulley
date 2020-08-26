@@ -18,7 +18,8 @@ export default class BlogContainer extends ViewBase {
 				type: Array,
 				reflect: true
 			},
-			category: { type: String }
+			category: { type: String },
+			state: { type: Object }
 		};
 	}
 
@@ -35,6 +36,9 @@ export default class BlogContainer extends ViewBase {
 		this.location = router.location;
 		this.blogItems = [];
 		this.category = '';
+		this.state = {
+			category: this.category
+		};
 	}
 
 	async firstUpdated () {
@@ -42,11 +46,11 @@ export default class BlogContainer extends ViewBase {
 			method: 'GET',
 			path: `/blog/${this.category}`
 		});
+		this.notifyChange('blogItems', this.blogItems);
 	}
 
 	render () {
 		this.category = this.location.params.category;
-		console.log('blogItems: ', this.blogItems);
 
 		return html`
 			<section id='right-sidebar'>

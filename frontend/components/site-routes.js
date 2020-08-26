@@ -3,6 +3,7 @@ import { Router } from '@vaadin/router';
 import './view-base.js';
 import './category-list.js';
 import './blog-container.js';
+import './blog-item.js';
 
 const viewPlaceholder = document.querySelector('site-container');
 const router = new Router(viewPlaceholder);
@@ -15,6 +16,10 @@ const childRoutes = [
 	{
 		path: '/:category',
 		component: 'blog-container'
+	},
+	{
+		path: '/blog/:title',
+		component: 'blog-item'
 	}
 ];
 

@@ -1,16 +1,20 @@
-import { LitElement, html } from 'lit-element';
+import { html } from 'lit-element';
+import { LitState } from '@danielturner/lit-state';
+import { router } from './site-routes.js';
 import { colors } from '../css/color.js';
 import { placement } from '../css/blog-item-css.js';
 import { taxonomy } from '../css/taxonomy.js';
 
-export default class Blog extends LitElement {
+export default class Blog extends LitState {
 	static get properties () {
 		return {
+			location: {
+				type: Object,
+				attribute: false
+			},
 			category: { type: String },
-			blogItems: {
-				type: Array,
-				reflect: true
-			}
+			state: { type: Object },
+			title: { type: String }
 		};
 	}
 
@@ -24,39 +28,45 @@ export default class Blog extends LitElement {
 
 	constructor () {
 		super();
-		this.blogItems = [];
+		this.location = router.location;
 		this.category = '';
+		this.title = '';
+		this.state = {
+			blogItems: [],
+			category: ''
+		};
 	}
 
-	render () {
-		if (this.blogItems.length === 0) {
-			return html`<p>No blog items yet.</p>`;
-		}
+	findBlog () {
+		console.log('state: ', this.state);
+		console.log('title: ', this.title);
+		const blogItem = this.state.blogItems.find(item => {
+			return item.title === this.title;
+		});
+
+		console.log('blogItem: ', blogItem);
 
 		return html`
-			<section>
-				${this.blogItems.map(
-					blog => html`
 					<article class=${this.category}>
 						<h4 class=${this.category}-header>
-							${blog.title}
+							${blogItem.title}
 						</h4>
 						<p>
 							<strong class=${this.category}-label>Created:</strong>
-								${blog.date_created.split(' ').slice(0, 4).join(' ')}
+								${blogItem.date_created.split(' ').slice(0, 4).join(' ')}
 						</p>
 						<p>
 							<strong class=${this.category}-label>Updated:</strong>
-								${blog.date_updated.split(' ').slice(0, 4).join(' ')}
+								${blogItem.date_updated.split(' ').slice(0, 4).join(' ')}
 						</p>
-						${blog.content.split('\n').map(
+						${blogItem.content.split('\n').map(
 							item => html`<p>${item}</p>`
 						)}
 						<p>
 							<strong class=${this.category}-label>Tags:</strong>
 						</p>
 						<ul>
-							${blog.tag.map(
+							${blogItem.tag.map(
 								tag => html`
 									<li><a class=${this.category}-link href=/${tag}>${tag}</a></li>
 								`
@@ -66,15 +76,20 @@ export default class Blog extends LitElement {
 							<strong class=${this.category}-label>Categories:</strong>
 						</p>
 						<ul>
-							${blog.category.map(
+							${blogItem.category.map(
 								item => html`
 									<li><a class=${this.category}-link>${item}</a></li>
 								`
 							)}
 						</ul>
-					</article>`
-				)}
-			</section>`;
+					</article>
+				`;
+	}
+
+	render () {
+		this.itemId = this.location.params.title;
+
+		this.findBlog();
 	}
 }
 

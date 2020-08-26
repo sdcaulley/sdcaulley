@@ -32,6 +32,8 @@ export default class MainMenu extends LitElement {
 							alt='Menu icon'></img>
 						<section>
 							<a class=${this.category}-link href='/'>Home</a>
+							<a class=${this.category}-link href='/craft'>Craft</a>
+							<a class=${this.category}-link href='/culture'>Culture</a>
 						</section>
 					</nav>
 				`;
@@ -43,6 +45,8 @@ export default class MainMenu extends LitElement {
 							alt='Menu icon'></img>
 						<section>
 							<a class=${this.category}-link href='/'>Home</a>
+							<a class=${this.category}-link href='/code'>Code</a>
+							<a class=${this.category}-link href='/culture'>Culture</a>
 						</section>
 					</nav>
 				`;
@@ -54,6 +58,8 @@ export default class MainMenu extends LitElement {
 							alt='Menu icon'></img>
 						<section>
 							<a class=${this.category}-link href='/'>Home</a>
+							<a class=${this.category}-link href='/code'>Code</a>
+							<a class=${this.category}-link href='/craft'>Craft</a>
 						</section>
 					</nav>
 				`;

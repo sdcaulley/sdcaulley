@@ -41,27 +41,28 @@ export default class BlogList extends LitElement {
 		return html`
 			<section>
 				${this.blogItems.map(
-					blog => html`
-					<article class=${this.category} id=${blog._id}>
-						<h4 class=${this.category}-header>
-							<a>${blog.title}</a>
-						</h4>
-						<p>
-							<strong class=${this.category}-label>Updated:</strong>
-								${blog.date_updated.split(' ').slice(0, 4).join(' ')}
-						</p>
-						${this.teaser(blog.content)}
-						<p class='tags'>
-							<strong class=${this.category}-label>Tags:</strong>
-						</p>
-							${blog.tag.map(
-								tag => html`
-									<a class='tags ${this.category}-link' href=/${tag}>${tag}</a>
-								`
-							)}
-					</article>`
-				)}
-			</section>`;
+					blog => {
+						return html`
+						<article class=${this.category}>
+							<h4>
+								<a class=${this.category}-header href=/blog/${blog.title}>${blog.title}</a>
+							</h4>
+							<p>
+								<strong class=${this.category}-label>Updated:</strong>
+									${blog.date_updated.split(' ').slice(0, 4).join(' ')}
+							</p>
+							${this.teaser(blog.content)}
+							<p class='tags'>
+								<strong class=${this.category}-label>Tags:</strong>
+							</p>
+								${blog.tag.map(
+									tag => html`
+										<a class='tags ${this.category}-link' href=/${tag}>${tag}</a>
+									`
+								)}
+						</article>`;
+					})}
+				</section>`;
 	}
 }
 
