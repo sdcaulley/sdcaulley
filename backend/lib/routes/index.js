@@ -6,7 +6,8 @@ const routerConfigs = [
   { folder: 'user', prefix: '/user' },
   { folder: 'tag', prefix: '/tag' },
   { folder: 'quote', prefix: '/quote' },
-  { folder: 'blog', prefix: '/blog' }
+  { folder: 'blog', prefix: '/blog' },
+	{ folder: 'resources', prefix: '/resource' }
 ];
 
 function routes () {
