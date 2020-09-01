@@ -1,9 +1,11 @@
-import { LitElement, html } from 'lit-element';
+import { html } from 'lit-element';
+import { MobxLitElement } from '@adobe/lit-mobx';
+import { store } from '../state/store.js';
 import { taxonomy } from '../css/taxonomy.js';
 import { menu } from '../css/main-menu-css.js';
 import { colors } from '../css/color.js';
 
-export default class MainMenu extends LitElement {
+export default class MainMenu extends MobxLitElement {
 	static get styles () {
 		return [
 			colors,
@@ -12,14 +14,8 @@ export default class MainMenu extends LitElement {
 		];
 	}
 
-	static get properties () {
-		return {
-			category: { type: String }
-		};
-	}
-
 	displayMenu () {
-		switch (this.category) {
+		switch (store.category) {
 			case 'home':
 				return html`
 					<nav></nav>
@@ -31,9 +27,10 @@ export default class MainMenu extends LitElement {
 							src='../css/menu.svg'
 							alt='Menu icon'></img>
 						<section>
-							<a class=${this.category}-link href='/'>Home</a>
-							<a class=${this.category}-link href='/craft'>Craft</a>
-							<a class=${this.category}-link href='/culture'>Culture</a>
+							<a class=${store.category}-link href='/'>Home</a>
+							<a class=${store.category}-link href='/blog/craft'>Craft</a>
+							<a class=${store.category}-link href='/blog/culture'>Culture</a>
+							<a class=${store.category}-link href='/resources'>Resources</a>
 						</section>
 					</nav>
 				`;
@@ -44,9 +41,10 @@ export default class MainMenu extends LitElement {
 							src='../css/menu.svg'
 							alt='Menu icon'></img>
 						<section>
-							<a class=${this.category}-link href='/'>Home</a>
-							<a class=${this.category}-link href='/code'>Code</a>
-							<a class=${this.category}-link href='/culture'>Culture</a>
+							<a class=${store.category}-link href='/'>Home</a>
+							<a class=${store.category}-link href='/blog/code'>Code</a>
+							<a class=${store.category}-link href='/blog/culture'>Culture</a>
+							<a class=${store.category}-link href='/resources'>Resources</a>
 						</section>
 					</nav>
 				`;
@@ -57,9 +55,10 @@ export default class MainMenu extends LitElement {
 							src='../css/menu.svg'
 							alt='Menu icon'></img>
 						<section>
-							<a class=${this.category}-link href='/'>Home</a>
-							<a class=${this.category}-link href='/code'>Code</a>
-							<a class=${this.category}-link href='/craft'>Craft</a>
+							<a class=${store.category}-link href='/'>Home</a>
+							<a class=${store.category}-link href='/blog/code'>Code</a>
+							<a class=${store.category}-link href='/blog/craft'>Craft</a>
+							<a class=${store.category}-link href='/resources'>Resources</a>
 						</section>
 					</nav>
 				`;
@@ -70,7 +69,7 @@ export default class MainMenu extends LitElement {
 							src='../css/menu.svg'
 							alt='Menu icon'></img>
 						<section>
-							<a class=${this.category}-link href='/'>Home</a>
+							<a class=${store.category}-link href='/'>Home</a>
 						</section>
 					</nav>
 				`;

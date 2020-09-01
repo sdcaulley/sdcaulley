@@ -1,18 +1,10 @@
 import { html, css } from 'lit-element';
-import { LitState } from '@danielturner/lit-state';
-import { router } from './site-routes.js';
+import { MobxLitElement } from '@adobe/lit-mobx';
+import { store } from '../state/store.js';
 import './header.js';
 import './footer.js';
 
-export class ViewBase extends LitState {
-	static get properties () {
-		return {
-			location: { type: Object, attribute: false },
-			category: { type: String },
-			state: { type: Object }
-		};
-	}
-
+export class ViewBase extends MobxLitElement {
 	static get styles () {
 		return [
 			css`
@@ -25,21 +17,9 @@ export class ViewBase extends LitState {
 		];
 	}
 
-	constructor () {
-		super();
-		this.location = router.location;
-		this.category = '';
-		this.state = {
-			category: this.category
-		};
-	}
-
 	render () {
-		this.category = this.location.params.category || 'Home';
-
 		return html`
-			<lit-controller></lit-controller>
-			<site-header category=${this.category}></site-header>
+			<site-header></site-header>
 			<slot></slot>
 			<site-footer></site-footer>
 		`;

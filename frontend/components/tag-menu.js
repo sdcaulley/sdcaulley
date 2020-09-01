@@ -1,13 +1,13 @@
-import { LitElement, html } from 'lit-element';
+import { html } from 'lit-element';
+import { MobxLitElement } from '@adobe/lit-mobx';
+import { store } from '../state/store.js';
 import { taxonomy } from '../css/taxonomy.js';
 import { menu } from '../css/tag-menu-css.js';
 import { colors } from '../css/color.js';
 
-export default class TagMenu extends LitElement {
+export default class TagMenu extends MobxLitElement {
 	static get properties () {
 		return {
-			category: { type: String },
-			blogItems: { type: Array, reflect: true },
 			tags: { type: Array }
 		};
 	}
@@ -22,13 +22,11 @@ export default class TagMenu extends LitElement {
 
 	constructor () {
 		super();
-		this.category = '';
-		this.blogItems = [];
 		this.tags = [];
 	}
 
 	tagsMenu () {
-		const concatArray = this.blogItems.reduce((acc, curr) => {
+		const concatArray = store.blogItems.reduce((acc, curr) => {
 			return acc.concat(curr.tag);
 		}, []);
 
@@ -43,15 +41,15 @@ export default class TagMenu extends LitElement {
 	}
 
 	render () {
-		if (this.blogItems.length > 0) {
+		if (store.blogItems.length > 0) {
 			return html`
 				<section id='tag-menu'>
-					<h4 class=${this.category}-header>Categories</h4>
+					<h4 class=${store.category}-header>Categories</h4>
 					<ul>
 						${this.tagsMenu()}
 						${this.tags.map(item => {
 							return html`
-							<li><a class=${this.category}-link href=/${item.tag}>${item.tag} (${item.number})</a></li>
+							<li><a class=${store.category}-link href=/${item.tag}>${item.tag} (${item.number})</a></li>
 							`;
 						})}
 					</ul>
