@@ -14,4 +14,6 @@ Exploring BEM structure for files and styling.
 
 ## Frontend
 - web components
+- lit-element
 - auth with jwt
+- Mobx with the adobe/lit-mobx base class

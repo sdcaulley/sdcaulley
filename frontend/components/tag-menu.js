@@ -26,6 +26,8 @@ export default class TagMenu extends MobxLitElement {
 	}
 
 	tagsMenu () {
+		this.tags = [];
+
 		const concatArray = store.blogItems.reduce((acc, curr) => {
 			return acc.concat(curr.tag);
 		}, []);
@@ -49,7 +51,7 @@ export default class TagMenu extends MobxLitElement {
 						${this.tagsMenu()}
 						${this.tags.map(item => {
 							return html`
-							<li><a class=${store.category}-link href=/${item.tag}>${item.tag} (${item.number})</a></li>
+							<li><a class=${store.category}-link href=/${item.tag}/blog>${item.tag} (${item.number})</a></li>
 							`;
 						})}
 					</ul>

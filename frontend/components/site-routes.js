@@ -15,15 +15,15 @@ const childRoutes = [
 		component: 'category-list'
 	},
 	{
-		path: '/blog/:category',
+		path: '/:category/blog',
 		component: 'blog-container'
 	},
 	{
-		path: '/blog/:title',
+		path: '/:category/blog/:title',
 		component: 'blog-item'
 	},
 	{
-		path: '/resources',
+		path: '/:category/resources',
 		component: 'resource-container'
 	}
 ];

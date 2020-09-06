@@ -28,9 +28,9 @@ export default class MainMenu extends MobxLitElement {
 							alt='Menu icon'></img>
 						<section>
 							<a class=${store.category}-link href='/'>Home</a>
-							<a class=${store.category}-link href='/blog/craft'>Craft</a>
-							<a class=${store.category}-link href='/blog/culture'>Culture</a>
-							<a class=${store.category}-link href='/resources'>Resources</a>
+							<a class=${store.category}-link href='/craft/blog'>Craft</a>
+							<a class=${store.category}-link href='/culture/blog'>Culture</a>
+							<a class=${store.category}-link href='/code/resources'>Resources</a>
 						</section>
 					</nav>
 				`;
@@ -42,9 +42,9 @@ export default class MainMenu extends MobxLitElement {
 							alt='Menu icon'></img>
 						<section>
 							<a class=${store.category}-link href='/'>Home</a>
-							<a class=${store.category}-link href='/blog/code'>Code</a>
-							<a class=${store.category}-link href='/blog/culture'>Culture</a>
-							<a class=${store.category}-link href='/resources'>Resources</a>
+							<a class=${store.category}-link href='/code/blog'>Code</a>
+							<a class=${store.category}-link href='/culture/blog'>Culture</a>
+							<a class=${store.category}-link href='/craft/resources'>Resources</a>
 						</section>
 					</nav>
 				`;
@@ -56,9 +56,9 @@ export default class MainMenu extends MobxLitElement {
 							alt='Menu icon'></img>
 						<section>
 							<a class=${store.category}-link href='/'>Home</a>
-							<a class=${store.category}-link href='/blog/code'>Code</a>
-							<a class=${store.category}-link href='/blog/craft'>Craft</a>
-							<a class=${store.category}-link href='/resources'>Resources</a>
+							<a class=${store.category}-link href='/code/blog'>Code</a>
+							<a class=${store.category}-link href='/craft/blog'>Craft</a>
+							<a class=${store.category}-link href='/culture/resources'>Resources</a>
 						</section>
 					</nav>
 				`;

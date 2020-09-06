@@ -64,7 +64,7 @@ export default class BlogItem extends ViewBase {
 						<ul>
 							${blogItem.tag.map(
 								tag => html`
-									<li><a class=${store.category}-link href=/${tag}>${tag}</a></li>
+									<li><a class=${store.category}-link href=/${tag}/blog>${tag}</a></li>
 								`
 							)}
 						</ul>
@@ -74,7 +74,7 @@ export default class BlogItem extends ViewBase {
 						<ul>
 							${blogItem.category.map(
 								item => html`
-									<li><a class=${store.category}-link>${item}</a></li>
+									<li><a class=${store.category}-link href=/${store.category}/blog>${item}</a></li>
 								`
 							)}
 						</ul>

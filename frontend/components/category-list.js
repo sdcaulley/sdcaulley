@@ -30,7 +30,7 @@ class CategoryList extends ViewBase {
 			<section>
 				${this.categories.map(
 					category => html`
-						<a class=${category}-link href=/blog/${category} id=${category}><strong>${category}</strong></a>
+						<a class=${category}-link href=/${category}/blog id=${category}><strong>${category}</strong></a>
 					`
 				)}
 			</section>

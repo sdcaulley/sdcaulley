@@ -1,6 +1,5 @@
 import { html, css } from 'lit-element';
 import { MobxLitElement } from '@adobe/lit-mobx';
-import { store } from '../state/store.js';
 import './header.js';
 import './footer.js';
 

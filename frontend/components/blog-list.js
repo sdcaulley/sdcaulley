@@ -28,10 +28,15 @@ export default class BlogList extends MobxLitElement {
 			<section>
 				${store.blogItems.map(
 					blog => {
+						const titleHref = `/${store.category}/blog/${blog.title}`;
 						return html`
 						<article class=${store.category}>
 							<h4>
-								<a class=${store.category}-header href=/blog/${blog.title}>${blog.title}</a>
+								<a
+								class=${store.category}-header
+								href=${titleHref}>
+									${blog.title}
+								</a>
 							</h4>
 							<p>
 								<strong class=${store.category}-label>Updated:</strong>
@@ -43,7 +48,7 @@ export default class BlogList extends MobxLitElement {
 							</p>
 								${blog.tag.map(
 									tag => html`
-										<a class='tags ${store.category}-link' href=/${tag}>${tag}</a>
+										<a class='tags ${store.category}-link' href=/${tag}/blog>${tag}</a>
 									`
 								)}
 						</article>`;
