@@ -1,8 +1,8 @@
 import { html } from 'lit-element';
-import { ViewBase } from './view-base.js';
+import { ViewBase } from '../../site/components/view-base.js';
 import { placement } from '../css/category-css.js';
-import { taxonomy } from '../css/taxonomy.js';
-import { colors } from '../css/color.js';
+import { taxonomy } from '../../css/taxonomy.js';
+import { colors } from '../../css/color.js';
 
 class CategoryList extends ViewBase {
 	static get styles () {

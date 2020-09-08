@@ -1,10 +1,10 @@
 import { html } from 'lit-element';
-import { ViewBase } from './view-base.js';
-import { store } from '../state/store.js';
-import { router } from './site-routes.js';
-import { colors } from '../css/color.js';
+import { ViewBase } from '../../site/components/view-base.js';
 import { placement } from '../css/blog-item-css.js';
-import { taxonomy } from '../css/taxonomy.js';
+import { router } from '../../site/components/site-routes.js';
+import { store } from '../../site/state/store.js';
+import { taxonomy } from '../../css/taxonomy.js';
+import { colors } from '../../css/color.js';
 
 export default class BlogItem extends ViewBase {
 	static get properties () {
@@ -62,7 +62,7 @@ export default class BlogItem extends ViewBase {
 							item => html`<p>${item}</p>`
 						)}
 						<div class='flex-container'>
-							<p>
+							<p class='tags'>
 								<strong class=${store.category}-label>Tags:</strong>
 							</p>
 							${blogItem.tag.map(
@@ -72,7 +72,7 @@ export default class BlogItem extends ViewBase {
 							)}
 						</div>
 						<div class='flex-container'>
-							<p>
+							<p class='tags'>
 								<strong class=${store.category}-label>Categories:</strong>
 							</p>
 							${blogItem.category.map(

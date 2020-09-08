@@ -1,10 +1,10 @@
 import { html } from 'lit-element';
-import { ViewBase } from './view-base.js';
-import { router } from './site-routes.js';
-import fetcher from '../utils/fetcher.js';
-import { store } from '../state/store.js';
+import { ViewBase } from '../../site/components/view-base.js';
+import { router } from '../../site/components/site-routes.js';
+import fetcher from '../../utils/fetcher.js';
+import { store } from '../../site/state/store.js';
 import { placement } from '../css/blog-container-css.js';
-import { taxonomy } from '../css/taxonomy.js';
+import { taxonomy } from '../../css/taxonomy.js';
 import './blog-list.js';
 import './tag-menu.js';
 

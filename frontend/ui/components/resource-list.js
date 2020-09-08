@@ -1,9 +1,9 @@
 import { html } from 'lit-element';
 import { MobxLitElement } from '@adobe/lit-mobx';
-import { store } from '../state/store.js';
-import { colors } from '../css/color.js';
-import { placement } from '../css/blog-list-css.js';
-import { taxonomy } from '../css/taxonomy.js';
+import { store } from '../../site/state/store.js';
+import { taxonomy } from '../../css/taxonomy.js';
+import { colors } from '../../css/color.js';
+import { placement } from '../css/resource-list-css.js';
 
 export default class ResourceList extends MobxLitElement {
 	static get styles () {

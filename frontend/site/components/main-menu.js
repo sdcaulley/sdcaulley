@@ -1,9 +1,9 @@
 import { html } from 'lit-element';
 import { MobxLitElement } from '@adobe/lit-mobx';
 import { store } from '../state/store.js';
-import { taxonomy } from '../css/taxonomy.js';
+import { taxonomy } from '../../css/taxonomy.js';
 import { menu } from '../css/main-menu-css.js';
-import { colors } from '../css/color.js';
+import { colors } from '../../css/color.js';
 
 export default class MainMenu extends MobxLitElement {
 	static get styles () {
@@ -24,7 +24,7 @@ export default class MainMenu extends MobxLitElement {
 				return html`
 					<nav>
 						<img
-							src='../css/menu.svg'
+							src='../../css/menu.svg'
 							alt='Menu icon'></img>
 						<section>
 							<a class=${store.category}-link href='/'>Home</a>

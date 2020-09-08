@@ -1,9 +1,9 @@
 import { html } from 'lit-element';
 import { MobxLitElement } from '@adobe/lit-mobx';
-import { store } from '../state/store.js';
-import { taxonomy } from '../css/taxonomy.js';
+import { store } from '../../site/state/store.js';
+import { taxonomy } from '../../css/taxonomy.js';
+import { colors } from '../../css/color.js';
 import { menu } from '../css/tag-menu-css.js';
-import { colors } from '../css/color.js';
 
 export default class TagMenu extends MobxLitElement {
 	static get properties () {

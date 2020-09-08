@@ -1,5 +1,5 @@
 import { LitElement, html, css } from 'lit-element';
-import { taxonomy } from '../css/taxonomy.js';
+import { taxonomy } from '../../css/taxonomy.js';
 
 export default class Footer extends LitElement {
 	static get styles () {

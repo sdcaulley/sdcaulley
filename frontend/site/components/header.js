@@ -1,9 +1,9 @@
 import { html } from 'lit-element';
 import { MobxLitElement } from '@adobe/lit-mobx';
 import { store } from '../state/store.js';
-import { taxonomy } from '../css/taxonomy.js';
+import { taxonomy } from '../../css/taxonomy.js';
 import { placement } from '../css/header-css.js';
-import { colors } from '../css/color.js';
+import { colors } from '../../css/color.js';
 import './main-menu.js';
 
 export default class Header extends MobxLitElement {
