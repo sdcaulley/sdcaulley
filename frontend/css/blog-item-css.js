@@ -6,11 +6,6 @@ export const placement = css`
 		width: 100%;
 	}
 
-	li {
-		display: inline-block;
-		margin: 1em;
-	}
-
 	article {
 		background-color: rgba(250, 240, 230, 0.7);
 		background-image: url('../css/ricepaper_v3.png');
@@ -26,8 +21,16 @@ export const placement = css`
 		padding: 0.25em;
 	}
 
-	p {
-		margin: 0;
-		padding: 0.25em;
+	a {
+		display: inline-block;
+		margin: 1em;
+	}
+
+	.flex-container {
+		display: flex;
+	}
+
+	.tags {
+		display: inline-block;
 	}
 `;

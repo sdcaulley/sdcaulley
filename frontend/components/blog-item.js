@@ -13,7 +13,8 @@ export default class BlogItem extends ViewBase {
 				type: Object,
 				attribute: false
 			},
-			title: { type: String }
+			title: { type: String },
+			titleUrl: { type: String }
 		};
 	}
 
@@ -28,6 +29,7 @@ export default class BlogItem extends ViewBase {
 	constructor () {
 		super();
 		this.location = router.location;
+		this.titleUrl = '';
 		this.title = '';
 	}
 
@@ -38,7 +40,8 @@ export default class BlogItem extends ViewBase {
 	}
 
 	render () {
-		this.title = this.location.params.title;
+		this.titleUrl = this.location.params.title;
+		this.title = this.titleUrl.split('_').join(' ');
 
 		const blogItem = this.findBlog();
 
@@ -58,26 +61,26 @@ export default class BlogItem extends ViewBase {
 						${blogItem.content.split('\n').map(
 							item => html`<p>${item}</p>`
 						)}
-						<p>
-							<strong class=${store.category}-label>Tags:</strong>
-						</p>
-						<ul>
+						<div class='flex-container'>
+							<p>
+								<strong class=${store.category}-label>Tags:</strong>
+							</p>
 							${blogItem.tag.map(
 								tag => html`
-									<li><a class=${store.category}-link href=/${tag}/blog>${tag}</a></li>
+									<a class=${store.category}-link href=/${tag}/blog>${tag}</a>
 								`
 							)}
-						</ul>
-						<p>
-							<strong class=${store.category}-label>Categories:</strong>
-						</p>
-						<ul>
+						</div>
+						<div class='flex-container'>
+							<p>
+								<strong class=${store.category}-label>Categories:</strong>
+							</p>
 							${blogItem.category.map(
 								item => html`
-									<li><a class=${store.category}-link href=/${store.category}/blog>${item}</a></li>
+									<a class=${store.category}-link href=/${store.category}/blog>${item}</a>
 								`
 							)}
-						</ul>
+						</div>
 					</article>
 				`;
 	}

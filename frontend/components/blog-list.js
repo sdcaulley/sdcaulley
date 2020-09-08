@@ -28,7 +28,8 @@ export default class BlogList extends MobxLitElement {
 			<section>
 				${store.blogItems.map(
 					blog => {
-						const titleHref = `/${store.category}/blog/${blog.title}`;
+						const title = blog.title.split(' ').join('_');
+						const titleHref = `/${store.category}/blog/${title}`;
 						return html`
 						<article class=${store.category}>
 							<h4>
