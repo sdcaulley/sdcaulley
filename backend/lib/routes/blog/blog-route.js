@@ -168,7 +168,7 @@ async function blogDelete (ctx) {
 module.exports = router => {
 	router.get('/', blogGetAll);
 	router.get('/:category', blogFilter);
-	router.post('/create', ensureAuth, blogCreate);
+	router.post('/create', blogCreate); // TODO: replace ensureAuth
 	router.patch('/update', ensureAuth, blogUpdate);
 	router.delete('/:id', ensureAuth, blogDelete);
 };
