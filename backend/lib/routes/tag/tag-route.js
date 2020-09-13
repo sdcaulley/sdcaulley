@@ -21,7 +21,7 @@ async function tagGet (ctx, next) {
 	const tag = await dbUtils.findAllDocuments(Tag);
 
 	if (tag) {
-		ctx.response.body = { tag };
+		ctx.response.body = tag;
 	}
 
 	await next();
@@ -61,7 +61,7 @@ async function tagDelete (ctx) {
 }
 
 module.exports = router => {
-	router.get('/', ensureAuth, tagGet);
+	router.get('/', tagGet);
 	router.post('/create', ensureAuth, tagCreate);
 	router.patch('/update', ensureAuth, tagUpdate);
 	router.delete('/:id', ensureAuth, tagDelete);

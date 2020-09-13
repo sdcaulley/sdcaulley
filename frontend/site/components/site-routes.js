@@ -5,6 +5,8 @@ import '../../ui/components/category-list.js';
 import '../../ui/components/blog-container.js';
 import '../../ui/components/blog-item.js';
 import '../../ui/components/resource-container.js';
+import '../../admin/components/admin-container.js';
+import '../../admin/components/admin-blog-item.js';
 
 const viewPlaceholder = document.querySelector('site-container');
 const router = new Router(viewPlaceholder);
@@ -25,6 +27,14 @@ const childRoutes = [
 	{
 		path: '/:category/resources',
 		component: 'resource-container'
+	},
+	{
+		path: '/admin',
+		component: 'admin-container'
+	},
+	{
+		path: '/admin/blog-item',
+		component: 'admin-blog'
 	}
 ];
 
