@@ -27,6 +27,7 @@ export default class AdminBlogItem extends ViewBase {
 	}
 
 	async formSubmit (e) {
+		console.log('formSubmit');
 		const result = await fetcher({
 			method: 'POST',
 			path: '/blog/create',
@@ -56,37 +57,39 @@ export default class AdminBlogItem extends ViewBase {
 
 			this.body[name] = tag;
 		}
-
-		console.log('this.body: ', this.body);
 	}
 
 	render () {
 		return html`
 			<form>
-				<label for=title>Title:</label>
-				<input
-					type=text
-					name=title
-					@change=${this.handleChange}>
-				<label for=content>Content:</label>
-				<textarea
-					name=content
-					@change=${this.handleChange}></textarea>
-				<label for=tags>Tags:</label>
-				<select name=tags @change=${this.handleChange} multiple>
-					${store.tags.map(tag => {
-						return html`<option value=${tag.tag}>${tag.tag}</option>`;
-					})}
-				</select>
-				<label for=category>Category:</label>
-				<select name=category @change=${this.handleChange} multiple>
-					${this.category.map(cat => {
-						return html`
-							<option value=${cat}>${cat}</option>
-						`;
-					})}
-				</select>
-				<button @click=${this.formSubmit}>Submit</button>
+				<fieldset>
+					<legend>New Blog Entry</legend>
+					<label for=title>Title:</label>
+					<input
+						type=text
+						name=title
+						@change=${this.handleChange}>
+					<label for=content>Content:</label>
+					<textarea
+						name=content
+						@change=${this.handleChange}></textarea>
+					<label for=tags>Tags:</label>
+					<select name=tag @change=${this.handleChange} multiple>
+						${store.tags.map(tag => {
+							return html`<option value=${tag.tag}>${tag.tag}</option>`;
+						})}
+					</select>
+					<label for=category>Category:</label>
+					<select name=category @change=${this.handleChange} multiple>
+						${this.category.map(cat => {
+							return html`
+								<option value=${cat}>${cat}</option>
+							`;
+						})}
+					</select>
+					<button type=button @click=${this.formSubmit}>Submit</button>
+					<button type=reset>Reset</button>
+				</fieldset>
 			</form>
 		`;
 	}

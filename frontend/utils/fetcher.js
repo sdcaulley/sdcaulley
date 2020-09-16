@@ -1,4 +1,5 @@
 export default function fetcher (options) {
+	console.log('fetcher');
 	const { method, path, body, token } = options;
 	return fetch(`http://localhost:5000${path}`, {
 		method: method,

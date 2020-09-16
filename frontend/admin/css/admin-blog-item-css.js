@@ -19,17 +19,6 @@ export const placement = css`
 
 	label {
 		display: block;
-	}
-
-	input {
-		display: block;
-	}
-
-	textarea {
-		display: block;
-	}
-
-	select-element {
-		display: block;
+		margin: 0.5em;
 	}
 `;

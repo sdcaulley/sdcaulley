@@ -4,6 +4,7 @@ const dbUtils = require('../../utilities/db-utils.js');
 const ensureAuth = require('../../auth/ensure-auth.js');
 
 async function blogCreate (ctx, next) {
+	console.log('hello');
 	const tags = await Promise.all(
 		ctx.request.body.tag.map(async tag => {
 			const tagRes = await dbUtils.findOneDocument(Tag, { tag: tag });
