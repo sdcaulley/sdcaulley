@@ -18,7 +18,19 @@ export const placement = css`
 	}
 
 	label {
-		display: block;
+		display: inline-block;
+		vertical-align: top;
+	}
+
+	input {
+		display: inline-block;
+	}
+
+	select {
+		display: inline-block;
+	}
+
+	section {
 		margin: 0.5em;
 	}
 `;

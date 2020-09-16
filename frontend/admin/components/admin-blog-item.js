@@ -64,31 +64,41 @@ export default class AdminBlogItem extends ViewBase {
 			<form>
 				<fieldset>
 					<legend>New Blog Entry</legend>
-					<label for=title>Title:</label>
-					<input
-						type=text
-						name=title
-						@change=${this.handleChange}>
-					<label for=content>Content:</label>
-					<textarea
-						name=content
-						@change=${this.handleChange}></textarea>
-					<label for=tags>Tags:</label>
-					<select name=tag @change=${this.handleChange} multiple>
-						${store.tags.map(tag => {
-							return html`<option value=${tag.tag}>${tag.tag}</option>`;
-						})}
-					</select>
-					<label for=category>Category:</label>
-					<select name=category @change=${this.handleChange} multiple>
-						${this.category.map(cat => {
-							return html`
-								<option value=${cat}>${cat}</option>
-							`;
-						})}
-					</select>
-					<button type=button @click=${this.formSubmit}>Submit</button>
-					<button type=reset>Reset</button>
+					<section>
+						<label for=title>Title:</label>
+						<input
+							type=text
+							name=title
+							@change=${this.handleChange}>
+					</section>
+					<section>
+						<label for=content>Content:</label>
+						<textarea
+							name=content
+							@change=${this.handleChange}></textarea>
+					</section>
+					<section>
+						<label for=tags>Tags:</label>
+						<select name=tag @change=${this.handleChange} multiple>
+							${store.tags.map(tag => {
+								return html`<option value=${tag.tag}>${tag.tag}</option>`;
+							})}
+						</select>
+					</section>
+					<section>
+						<label for=category>Category:</label>
+						<select name=category @change=${this.handleChange} multiple>
+							${this.category.map(cat => {
+								return html`
+									<option value=${cat}>${cat}</option>
+								`;
+							})}
+						</select>
+					</section>
+					<section>
+						<input type=button @click=${this.formSubmit} value=Submit>
+						<input type=reset value=Reset>
+					</section>
 				</fieldset>
 			</form>
 		`;
