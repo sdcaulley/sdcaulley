@@ -10,6 +10,7 @@ class Store {
 		this.resources = [];
 		this.blogItem = {};
 		this.tags = [];
+		this.resource = {};
 	}
 }
 
@@ -18,7 +19,8 @@ decorate(Store, {
 	category: observable,
 	resources: observable,
 	blogItem: observable,
-	tags: observable
+	tags: observable,
+	resource: observable
 });
 
 export const store = new Store();

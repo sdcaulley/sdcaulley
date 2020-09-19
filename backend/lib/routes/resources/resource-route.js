@@ -3,17 +3,34 @@ const dbUtils = require('../../utilities/db-utils.js');
 const ensureAuth = require('../../auth/ensure-auth.js');
 
 async function resourceCreate (ctx, next) {
-	const resource = await dbUtils.makeNewDocument(Resource, ctx.request.body);
+	const body = {
+		title: ctx.request.body.title,
+		kind: ctx.request.body.kind,
+		url: ctx.request.body.url,
+		description: ctx.request.body.description,
+		category: ctx.request.body.category,
+		date_created: Date.now(),
+		date_updated: Date.now()
+	};
+	const resource = await dbUtils.makeNewDocument(Resource, body);
 
 	if (resource) {
 		ctx.response.body = {
-			quote: {
-				_id: resource._id,
-				quote: resource.quote,
-				author: resource.author,
-				reference: resource.reference,
-				category: resource.category
-			}
+			title: resource.title,
+			kind: resource.kind,
+			url: resource.url,
+			description: resource.description,
+			category: resource.category,
+			date_created: resource.date_created.toLocaleDateString('en-GB', {
+				year: 'numeric',
+				month: 'long',
+				day: 'numeric'
+			}),
+			date_updated: resource.date_updated.toLocaleDateString('en-GB', {
+				year: 'numeric',
+				month: 'long',
+				day: 'numeric'
+			})
 		};
 	}
 
@@ -85,10 +102,10 @@ async function resourceDelete (ctx) {
 		};
 	}
 }
-
+// TODO: readd ensureAuth to create
 module.exports = router => {
 	router.get('/:category', resourceFilter);
-	router.post('/create', ensureAuth, resourceCreate);
+	router.post('/create', resourceCreate);
 	router.patch('/update', ensureAuth, resourceUpdate);
 	router.delete('/:id', ensureAuth, resourceDelete);
 };

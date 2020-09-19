@@ -8,6 +8,8 @@ import '../../ui/components/resource-container.js';
 import '../../admin/components/admin-container.js';
 import '../../admin/components/admin-blog-form.js';
 import '../../admin/components/admin-blog-preview.js';
+import '../../admin/components/admin-resource-form.js';
+import '../../admin/components/admin-resource-preview.js';
 
 const viewPlaceholder = document.querySelector('site-container');
 const router = new Router(viewPlaceholder);
@@ -40,6 +42,14 @@ const childRoutes = [
 	{
 		path: '/admin/blog-preview',
 		component: 'admin-blog-preview'
+	},
+	{
+		path: '/admin/resource-form',
+		component: 'admin-resource-form'
+	},
+	{
+		path: '/admin/resource-preview',
+		component: 'admin-resource-preview'
 	}
 ];
 
