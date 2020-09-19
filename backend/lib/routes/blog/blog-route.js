@@ -18,23 +18,29 @@ async function blogCreate (ctx, next) {
 		image: ctx.request.body.image,
 		tag: tags,
 		category: ctx.request.body.category,
-		date_created: new Date(),
-		date_updated: new Date()
+		date_created: Date.now(),
+		date_updated: Date.now()
 	};
 	const blog = await dbUtils.makeNewDocument(Blog, body);
 
 	if (blog) {
 		ctx.response.body = {
-			blog: {
-				_id: blog._id,
-				title: blog.title,
-				content: blog.content,
-				image: blog.image,
-				tag: ctx.request.body.tag,
-				category: blog.category,
-				date_created: blog.date_created,
-				date_updated: blog.date_updated
-			}
+			_id: blog._id,
+			title: blog.title,
+			content: blog.content,
+			image: blog.image,
+			tag: ctx.request.body.tag,
+			category: blog.category,
+			date_created: blog.date_created.toLocaleDateString('en-GB', {
+				year: 'numeric',
+				month: 'long',
+				day: 'numeric'
+			}),
+			date_updated: blog.date_updated.toLocaleDateString('en-GB', {
+				year: 'numeric',
+				month: 'long',
+				day: 'numeric'
+			})
 		};
 	}
 	await next();

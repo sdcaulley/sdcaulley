@@ -26,7 +26,7 @@ export const taxonomy = css`
 		font-size: 1.125em;
 	}
 
-	a, p {
+	a, p, input, select, option, button, textarea, label {
 		font-family: "Dosis", sans-serif;
 		font-size: 1em;
 		font-weight: normal;

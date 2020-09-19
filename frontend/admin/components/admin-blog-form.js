@@ -1,11 +1,12 @@
 import { html } from 'lit-element';
+import { Router } from '@vaadin/router';
 import { ViewBase } from '../../site/components/view-base.js';
 import fetcher from '../../utils/fetcher.js';
 import { store } from '../../site/state/store.js';
-import { placement } from '../css/admin-blog-item-css.js';
+import { placement } from '../css/admin-blog-form-css.js';
 import { taxonomy } from '../../css/taxonomy.js';
 
-export default class AdminBlogItem extends ViewBase {
+export default class AdminBlogForm extends ViewBase {
 	static get styles () {
 		return [
 			placement,
@@ -27,8 +28,7 @@ export default class AdminBlogItem extends ViewBase {
 	}
 
 	async formSubmit (e) {
-		console.log('formSubmit');
-		const result = await fetcher({
+		store.blogItem = await fetcher({
 			method: 'POST',
 			path: '/blog/create',
 			headers: {
@@ -38,7 +38,7 @@ export default class AdminBlogItem extends ViewBase {
 			body: this.body
 		});
 
-		console.log('result: ', result);
+		Router.go('/admin/blog-preview');
 	}
 
 	handleChange (e) {
@@ -105,4 +105,4 @@ export default class AdminBlogItem extends ViewBase {
 	}
 }
 
-customElements.define('admin-blog', AdminBlogItem);
+customElements.define('admin-blog-form', AdminBlogForm);

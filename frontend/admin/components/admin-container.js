@@ -23,7 +23,7 @@ export default class AdminContainer extends ViewBase {
 	render () {
 		return html`
 			<section>
-				<a href=/admin/blog-item>Blog Item</a>
+				<a href=/admin/blog-form>Blog Item</a>
 				<a href=/admin/resource-item>Resource Item</a>
 				<a href=/admin/quote>Quote</a>
 			</section>

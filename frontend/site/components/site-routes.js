@@ -6,7 +6,8 @@ import '../../ui/components/blog-container.js';
 import '../../ui/components/blog-item.js';
 import '../../ui/components/resource-container.js';
 import '../../admin/components/admin-container.js';
-import '../../admin/components/admin-blog-item.js';
+import '../../admin/components/admin-blog-form.js';
+import '../../admin/components/admin-blog-preview.js';
 
 const viewPlaceholder = document.querySelector('site-container');
 const router = new Router(viewPlaceholder);
@@ -33,8 +34,12 @@ const childRoutes = [
 		component: 'admin-container'
 	},
 	{
-		path: '/admin/blog-item',
-		component: 'admin-blog'
+		path: '/admin/blog-form',
+		component: 'admin-blog-form'
+	},
+	{
+		path: '/admin/blog-preview',
+		component: 'admin-blog-preview'
 	}
 ];
 
