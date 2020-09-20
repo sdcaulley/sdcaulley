@@ -6,7 +6,7 @@ import { store } from '../../site/state/store.js'
 import { placement } from '../css/admin-blog-form-css.js'
 import { taxonomy } from '../../css/taxonomy.js'
 
-export default class AdminBlogForm extends ViewBase {
+export default class AdminQuoteForm extends ViewBase {
   static get styles () {
     return [placement, taxonomy]
   }
@@ -25,24 +25,22 @@ export default class AdminBlogForm extends ViewBase {
   }
 
   async formSubmit (e) {
-    store.blogItem = await fetcher({
+    store.quote = await fetcher({
       method: 'POST',
-      path: '/blog/create',
+      path: '/quote/create',
       headers: {
         'Content-Type': 'application/json'
       },
       body: this.body
     })
 
-    Router.go('/admin/blog-preview')
+    Router.go('/admin/quote-preview')
   }
 
   handleChange (e) {
     const name = e.target.name
 
-    if (name === 'title' || name === 'content') {
-      this.body[name] = e.target.value
-    } else {
+    if (name === 'category') {
       const ele = e.target
       const values = ele.selectedOptions
       const tag = []
@@ -52,6 +50,8 @@ export default class AdminBlogForm extends ViewBase {
       }
 
       this.body[name] = tag
+    } else {
+      this.body[name] = e.target.value
     }
   }
 
@@ -59,24 +59,18 @@ export default class AdminBlogForm extends ViewBase {
     return html`
       <form>
         <fieldset>
-          <legend>New Blog Entry</legend>
+          <legend>New Quote:</legend>
           <section>
-            <label for="title">Title:</label>
-            <input type="text" name="title" @change=${this.handleChange} />
+            <label for="quote">Quote:</label>
+            <textarea name="quote" @change=${this.handleChange}></textarea>
           </section>
           <section>
-            <label for="content">Content:</label>
-            <textarea name="content" @change=${this.handleChange}></textarea>
+            <label for="author">Author:</label>
+            <input type="text" name="author" @change=${this.handleChange} />
           </section>
           <section>
-            <label for="tags">Tags:</label>
-            <select name="tag" @change=${this.handleChange} multiple>
-              ${store.tags.map(tag => {
-                return html`
-                  <option value=${tag.tag}>${tag.tag}</option>
-                `
-              })}
-            </select>
+            <label for="reference">Reference:</label>
+            <input type="text" name="reference" @change=${this.handleChange} />
           </section>
           <section>
             <label for="category">Category:</label>
@@ -98,4 +92,4 @@ export default class AdminBlogForm extends ViewBase {
   }
 }
 
-customElements.define('admin-blog-form', AdminBlogForm)
+customElements.define('admin-quote-form', AdminQuoteForm)

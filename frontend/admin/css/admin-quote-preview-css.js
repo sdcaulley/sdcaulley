@@ -6,7 +6,7 @@ export const placement = css`
     width: 100%;
   }
 
-  article {
+  section {
     background-color: rgba(250, 240, 230, 0.7);
     background-image: url('../../css/ricepaper_v3.png');
     border-radius: 1em;
@@ -16,7 +16,7 @@ export const placement = css`
     z-index: 2;
   }
 
-  h4 {
+  blockquote {
     margin: 0;
     padding: 0.25em;
   }
@@ -24,11 +24,5 @@ export const placement = css`
   p {
     margin: 0;
     padding: 0.25em;
-  }
-
-  .type {
-    display: inline-block;
-    margin-right: 0.5em;
-    margin-top: 0.5em;
   }
 `

@@ -73,10 +73,10 @@ async function quoteDelete (ctx) {
 		};
 	}
 }
-
+// TODO: reapply ensureAuth to create route
 module.exports = router => {
-	router.get('/', ensureAuth, quoteGet);
-	router.post('/create', ensureAuth, quoteCreate);
+	router.get('/', quoteGet);
+	router.post('/create', quoteCreate);
 	router.patch('/update', ensureAuth, quoteUpdate);
 	router.delete('/:id', ensureAuth, quoteDelete);
 };
