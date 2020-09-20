@@ -9,6 +9,13 @@ export default class AdminBlogPreview extends ViewBase {
     return [placement, taxonomy]
   }
 
+  ISOtoLongDate (isoString, locale = 'en-GB') {
+    const options = { month: 'long', day: 'numeric', year: 'numeric' }
+    const date = new Date(isoString)
+    const longDate = new Intl.DateTimeFormat(locale, options).format(date)
+    return longDate
+  }
+
   render () {
     return html`
       <article>
@@ -17,11 +24,15 @@ export default class AdminBlogPreview extends ViewBase {
         </h4>
         <p>
           <strong>Created:</strong>
-          ${store.blogItem.date_created}
+          <time datetime=${store.blogItem.date_created}>
+            ${this.ISOtoLongDate(this.store.blogItem.date_created)}
+          <time>
         </p>
         <p>
           <strong>Updated:</strong>
-          ${store.blogItem.date_updated}
+          <time datetime=${store.blogItem.date_updated}>
+            ${this.ISOtoLongDate(this.store.blogItem.date_updated)}
+          <time>
         </p>
         ${store.blogItem.content.split('\n').map(
           item =>
