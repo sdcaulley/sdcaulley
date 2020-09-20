@@ -59,7 +59,7 @@ const childRoutes = [
   },
   {
     path: '/admin/quote-preview',
-    components: 'admin-quote-preview'
+    component: 'admin-quote-preview'
   }
 ]
 

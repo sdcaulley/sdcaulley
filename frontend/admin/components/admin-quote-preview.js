@@ -27,7 +27,7 @@ export default class AdminQuotePreview extends ViewBase {
     return html`
       <section>
         <blockquote>${store.quote.quote}</blockquote>
-        ${this.citeReference}
+        ${this.citeReference()}
       </section>
     `
   }
