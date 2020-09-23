@@ -165,6 +165,6 @@ module.exports = router => {
   router.get('/', blogGetAll)
   router.get('/:category', blogFilter)
   router.post('/create', blogCreate) // TODO: replace ensureAuth
-  router.patch('/update', ensureAuth, blogUpdate)
-  router.delete('/:id', ensureAuth, blogDelete)
+  router.patch('/update', blogUpdate)
+  router.delete('/:id', blogDelete)
 }

@@ -21,16 +21,13 @@ export const placement = css`
     padding: 0.25em;
   }
 
-  a {
-    display: inline-block;
-    margin: 1em;
-  }
-
-  .flex-container {
-    display: flex;
+  p {
+    margin: 0;
+    padding: 0.25em;
   }
 
   .tags {
     display: inline-block;
+    padding: 0.25em;
   }
 `

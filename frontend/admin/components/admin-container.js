@@ -23,6 +23,7 @@ export default class AdminContainer extends ViewBase {
         <a href=/admin/blog-form>Blog Item</a>
         <a href=/admin/resource-form>Resource Item</a>
         <a href=/admin/quote-form>Quote</a>
+        <a href=/admin/edit-item>Edit Items</a>
       </section>
   `
   }

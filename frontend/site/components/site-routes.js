@@ -12,6 +12,9 @@ import '../../admin/components/admin-resource-form.js'
 import '../../admin/components/admin-resource-preview.js'
 import '../../admin/components/admin-quote-form.js'
 import '../../admin/components/admin-quote-preview.js'
+import '../../admin/components/admin-edit-item.js'
+import '../../admin/components/admin-blog-container.js'
+import '../../admin/components/admin-blog-item.js'
 
 const viewPlaceholder = document.querySelector('site-container')
 const router = new Router(viewPlaceholder)
@@ -60,6 +63,18 @@ const childRoutes = [
   {
     path: '/admin/quote-preview',
     component: 'admin-quote-preview'
+  },
+  {
+    path: '/admin/edit-item',
+    component: 'admin-edit-item'
+  },
+  {
+    path: '/admin/blog-list',
+    component: 'admin-blog-container'
+  },
+  {
+    path: '/admin/edit/:title',
+    component: 'admin-blog-item'
   }
 ]
 
