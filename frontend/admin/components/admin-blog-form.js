@@ -1,5 +1,6 @@
 import { html } from 'lit-element'
 import { Router } from '@vaadin/router'
+import * as mobx from 'mobx'
 import { ViewBase } from '../../site/components/view-base.js'
 import fetcher from '../../utils/fetcher.js'
 import { store } from '../../site/state/store.js'
@@ -14,14 +15,42 @@ export default class AdminBlogForm extends ViewBase {
   static get properties () {
     return {
       body: { type: Object },
-      category: { type: Array }
+      category: { type: Array },
+      tags: { type: Array },
+      newTags: { type: Array },
+      newTag: { type: String }
     }
   }
 
   constructor () {
     super()
-    this.body = {}
+    this.body = {
+      category: [],
+      tag: []
+    }
     this.category = ['code', 'craft', 'culture']
+    this.tags = mobx.toJS(store.tags)
+    this.newTags = []
+    this.newTag = ''
+  }
+
+  async shortcutListener (e) {
+    if (e.key === 'Enter') {
+      this.handleNewTag(this.newTag)
+    }
+  }
+
+  async updateTag (e) {
+    this.newTag = e.target.value
+  }
+
+  async handleNewTag (value) {
+    console.log('value: ', value)
+    this.body.tag.push(value)
+    this.newTags.push(value)
+    console.log('body: ', this.body)
+    console.log('newTags: ', this.newTags)
+    this.newTag = ''
   }
 
   async formSubmit (e) {
@@ -40,19 +69,18 @@ export default class AdminBlogForm extends ViewBase {
   handleChange (e) {
     const name = e.target.name
 
-    if (name === 'title' || name === 'content') {
-      this.body[name] = e.target.value
-    } else {
+    if (name === 'category' || name === 'tag') {
       const ele = e.target
       const values = ele.selectedOptions
-      const tag = []
 
       for (let i = 0; i < values.length; i++) {
-        tag.push(values[i].label)
+        this.body[name].push(values[i].label)
       }
-
-      this.body[name] = tag
+    } else {
+      this.body[name] = e.target.value
     }
+
+    console.log('body: ', this.body)
   }
 
   render () {
@@ -68,15 +96,24 @@ export default class AdminBlogForm extends ViewBase {
             <label for="content">Content:</label>
             <textarea name="content" @change=${this.handleChange}></textarea>
           </section>
-          <section>
-            <label for="tags">Tags:</label>
+          <section @keyup=${this.shortcutListener}>
+            <label for="tag">Tags:</label>
             <select name="tag" @change=${this.handleChange} multiple>
-              ${store.tags.map(tag => {
+              ${this.tags.map(tag => {
                 return html`
                   <option value=${tag.tag}>${tag.tag}</option>
                 `
               })}
             </select>
+            <label for="newTag">New Tag(s):</label>
+            <input type="text" name="newTag" @change=${this.updateTag} />
+            <ul>
+              ${this.newTags.map(tag => {
+                return html`
+                  <li>${tag}</li>
+                `
+              })}
+            </ul>
           </section>
           <section>
             <label for="category">Category:</label>

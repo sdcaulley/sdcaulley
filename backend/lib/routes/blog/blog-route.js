@@ -3,19 +3,27 @@ const Tag = require('../../models/tag-schema.js')
 const dbUtils = require('../../utilities/db-utils.js')
 const ensureAuth = require('../../auth/ensure-auth.js')
 
+async function tagFind () {
+  return await dbUtils.findAllDocuments(Tag)
+}
+
 async function blogCreate (ctx, next) {
-  const tags = await Promise.all(
-    ctx.request.body.tag.map(async tag => {
-      const tagRes = await dbUtils.findOneDocument(Tag, { tag: tag })
-      return tagRes[0]._id
-    })
-  )
+  const tags = await tagFind()
+
+  const tagsForBlog = ctx.request.body.tag.map(async tag => {
+    if (tags.includes(tag)) {
+      return tag
+    } else {
+      const newTag = await dbUtils.makeNewDocument(Tag, { name: tag })
+      return newTag._id
+    }
+  })
 
   const body = {
     title: ctx.request.body.title,
     content: ctx.request.body.content,
     image: ctx.request.body.image,
-    tag: tags,
+    tag: tagsForBlog,
     category: ctx.request.body.category,
     date_created: Date.now(),
     date_updated: Date.now()
@@ -107,6 +115,7 @@ async function blogFilter (ctx, next) {
 
 async function blogUpdate (ctx, next) {
   const data = ctx.request.body
+  console.log('data: ', data)
   const payload = {
     date_updated: Date.now()
   }
