@@ -41,8 +41,6 @@ export default class AdminBlogForm extends ViewBase {
   async handleNewTag () {
     this.body.tag.push(this.newTag)
     this.newTags.push(this.newTag)
-    console.log('body: ', this.body)
-    console.log('newTags: ', this.newTags)
     this.newTag = ''
   }
 

@@ -65,8 +65,6 @@ export default class AdminBlogItem extends ViewBase {
 
       this.body[name] = tag
     }
-
-    console.log(this.body)
   }
 
   ISOtoLongDate (isoString, locale = 'en-GB') {
@@ -89,6 +87,7 @@ export default class AdminBlogItem extends ViewBase {
     this.title = this.titleUrl.split('_').join(' ')
 
     const blogItem = this.findBlog()
+    this.body._id = blogItem.id
     const tags = mobx.toJS(store.tags)
 
     return html`
