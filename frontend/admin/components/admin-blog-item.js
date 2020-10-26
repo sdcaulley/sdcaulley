@@ -23,7 +23,9 @@ export default class AdminBlogItem extends ViewBase {
       title: { type: String },
       titleUrl: { type: String },
       body: { type: Object },
-      category: { type: Array }
+      category: { type: Array },
+      newTags: { type: Array },
+      newTag: { type: String }
     }
   }
 
@@ -34,6 +36,8 @@ export default class AdminBlogItem extends ViewBase {
     this.title = ''
     this.body = {}
     this.category = ['code', 'craft', 'culture']
+    this.newTags = []
+    this.newTag = ''
   }
 
   async formSubmit (e) {
@@ -82,6 +86,16 @@ export default class AdminBlogItem extends ViewBase {
     return mobx.toJS(blogItem)
   }
 
+  async updateTag (e) {
+    this.newTag = e.target.value
+  }
+
+  async handleNewTag () {
+    this.body.tag.push(this.newTag)
+    this.newTags.push(this.newTag)
+    this.newTag = ''
+  }
+
   render () {
     this.titleUrl = this.location.params.title
     this.title = this.titleUrl.split('_').join(' ')
@@ -126,6 +140,16 @@ export default class AdminBlogItem extends ViewBase {
                 }
               })}
             </select>
+            <label for="newTag">New Tag(s):</label>
+            <input type="text" name="newTag" @change=${this.updateTag} />
+            <input type="button" @click=${this.handleNewTag} value="New Tag" />
+            <ul>
+              ${this.newTags.map(tag => {
+                return html`
+                  <li>${tag}</li>
+                `
+              })}
+            </ul>
           </section>
           <section>
             <label for="category">Category:</label>

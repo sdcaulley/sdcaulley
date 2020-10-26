@@ -70,8 +70,6 @@ export default class AdminBlogForm extends ViewBase {
     } else {
       this.body[name] = e.target.value
     }
-
-    console.log('body: ', this.body)
   }
 
   render () {
