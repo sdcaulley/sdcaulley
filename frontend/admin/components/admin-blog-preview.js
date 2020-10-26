@@ -10,8 +10,6 @@ export default class AdminBlogPreview extends ViewBase {
   }
 
   ISOtoLongDate (isoString, locale = 'en-GB') {
-    console.log('isoString: ', isoString)
-    console.log(typeof isoString)
     const options = { month: 'long', day: 'numeric', year: 'numeric' }
     const date = new Date(isoString)
     const longDate = new Intl.DateTimeFormat(locale, options).format(date)
@@ -19,7 +17,6 @@ export default class AdminBlogPreview extends ViewBase {
   }
 
   render () {
-    console.log('blogItem; ', store.blogItem)
     return html`
       <article>
         <h4>

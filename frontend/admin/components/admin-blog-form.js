@@ -34,20 +34,13 @@ export default class AdminBlogForm extends ViewBase {
     this.newTag = ''
   }
 
-  async shortcutListener (e) {
-    if (e.key === 'Enter') {
-      this.handleNewTag(this.newTag)
-    }
-  }
-
   async updateTag (e) {
     this.newTag = e.target.value
   }
 
-  async handleNewTag (value) {
-    console.log('value: ', value)
-    this.body.tag.push(value)
-    this.newTags.push(value)
+  async handleNewTag () {
+    this.body.tag.push(this.newTag)
+    this.newTags.push(this.newTag)
     console.log('body: ', this.body)
     console.log('newTags: ', this.newTags)
     this.newTag = ''
@@ -96,7 +89,7 @@ export default class AdminBlogForm extends ViewBase {
             <label for="content">Content:</label>
             <textarea name="content" @change=${this.handleChange}></textarea>
           </section>
-          <section @keyup=${this.shortcutListener}>
+          <section>
             <label for="tag">Tags:</label>
             <select name="tag" @change=${this.handleChange} multiple>
               ${this.tags.map(tag => {
@@ -107,6 +100,7 @@ export default class AdminBlogForm extends ViewBase {
             </select>
             <label for="newTag">New Tag(s):</label>
             <input type="text" name="newTag" @change=${this.updateTag} />
+            <input type="button" @click=${this.handleNewTag} value="New Tag" />
             <ul>
               ${this.newTags.map(tag => {
                 return html`
