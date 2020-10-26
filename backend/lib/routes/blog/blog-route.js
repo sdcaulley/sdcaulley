@@ -3,36 +3,49 @@ const Tag = require('../../models/tag-schema.js')
 const dbUtils = require('../../utilities/db-utils.js')
 const ensureAuth = require('../../auth/ensure-auth.js')
 
-async function tagFind () {
-  return await dbUtils.findAllDocuments(Tag)
+async function tagsForBlog (tags) {
+  const tagArray = await tags.map(async tag => {
+    const response = await dbUtils.findOneDocument(Tag, { tag: tag })
+    if (response.length === 0) {
+      const newTag = await new Tag({ tag: tag })
+      newTag.save()
+      return newTag._id
+    } else {
+      return response[0]._id
+    }
+  })
+
+  return Promise.all(tagArray)
 }
 
 async function blogCreate (ctx, next) {
-  const tags = await tagFind()
-
-  const tagsForBlog = ctx.request.body.tag.map(async tag => {
-    if (tags.includes(tag)) {
-      return tag
-    } else {
-      const newTag = await dbUtils.makeNewDocument(Tag, { name: tag })
-      return newTag._id
-    }
-  })
+  const tags = await tagsForBlog(ctx.request.body.tag)
 
   const body = {
     title: ctx.request.body.title,
     content: ctx.request.body.content,
     image: ctx.request.body.image,
-    tag: tagsForBlog,
+    tag: tags,
     category: ctx.request.body.category,
     date_created: Date.now(),
     date_updated: Date.now()
   }
 
-  const blog = await dbUtils.makeNewDocument(Blog, body)
+  const blog = await new Blog(body)
+  blog.save()
+
+  const response = {
+    title: blog.title,
+    content: blog.content,
+    image: blog.image,
+    tag: ctx.request.body.tag,
+    category: blog.category,
+    date_created: blog.date_created,
+    date_updated: blog.date_updated
+  }
 
   if (blog) {
-    ctx.response.body = { blog }
+    ctx.response.body = response
   }
   await next()
 }

@@ -4,7 +4,7 @@ const dbUtils = require('../../utilities/db-utils.js')
 const ensureAuth = require('../../auth/ensure-auth.js')
 
 async function userRegistration (ctx, next) {
-  const user = await dbUtils.makeNewDocument(User, ctx.request.body)
+  const user = await new User(ctx.request.body)
 
   if (user) {
     const userToken = await token.sign(user)

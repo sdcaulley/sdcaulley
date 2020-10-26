@@ -3,7 +3,7 @@ const dbUtils = require('../../utilities/db-utils.js')
 const ensureAuth = require('../../auth/ensure-auth.js')
 
 async function quoteCreate (ctx, next) {
-  const quote = await dbUtils.makeNewDocument(Quote, ctx.request.body)
+  const quote = await new Quote(ctx.request.body)
 
   if (quote) {
     ctx.response.body = {

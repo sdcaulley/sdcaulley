@@ -12,7 +12,7 @@ async function resourceCreate (ctx, next) {
     date_created: Date.now(),
     date_updated: Date.now()
   }
-  const resource = await dbUtils.makeNewDocument(Resource, body)
+  const resource = await new Resource(body)
 
   if (resource) {
     ctx.response.body = {
