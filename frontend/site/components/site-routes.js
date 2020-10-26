@@ -15,6 +15,7 @@ import '../../admin/components/admin-quote-preview.js'
 import '../../admin/components/admin-edit-item.js'
 import '../../admin/components/admin-blog-container.js'
 import '../../admin/components/admin-blog-item.js'
+import '../../admin/components/admin-quote-container.js'
 
 const viewPlaceholder = document.querySelector('site-container')
 const router = new Router(viewPlaceholder)
@@ -75,6 +76,10 @@ const childRoutes = [
   {
     path: '/admin/edit/:title',
     component: 'admin-blog-item'
+  },
+  {
+    path: '/admin/quote-list',
+    component: 'admin-quote-container'
   }
 ]
 

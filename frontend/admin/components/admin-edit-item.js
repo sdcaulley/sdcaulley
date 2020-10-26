@@ -13,7 +13,7 @@ export default class AdminEditItem extends ViewBase {
       <section>
         <a href=/admin/blog-list>Blog List</a>
         <a href=/admin/resource-list>Resource List</a>
-        <a href=/admin/quote-form>Quote List</a>
+        <a href=/admin/quote-list>Quote List</a>
       </section>
   `
   }

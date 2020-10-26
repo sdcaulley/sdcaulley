@@ -19,10 +19,10 @@ async function quoteCreate (ctx, next) {
 }
 
 async function quoteGet (ctx, next) {
-  const quote = dbUtils.findAllDocuments(Quote)
+  const quote = await dbUtils.findAllDocuments(Quote)
 
   if (quote) {
-    ctx.response.body = { quote }
+    ctx.response.body = quote
   }
 
   await next()

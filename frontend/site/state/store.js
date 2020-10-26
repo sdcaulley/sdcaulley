@@ -9,6 +9,7 @@ class Store {
     this.tags = []
     this.resource = {}
     this.quote = {}
+    this.quotes = []
   }
 }
 
@@ -19,7 +20,8 @@ decorate(Store, {
   blogItem: observable,
   tags: observable,
   resource: observable,
-  quote: observable
+  quote: observable,
+  quotes: observable
 })
 
 export const store = new Store()
