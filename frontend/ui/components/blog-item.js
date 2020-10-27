@@ -5,6 +5,7 @@ import { router } from '../../site/components/site-routes.js'
 import { store } from '../../site/state/store.js'
 import { taxonomy } from '../../css/taxonomy.js'
 import { colors } from '../../css/color.js'
+import { paper } from '../../css/paper-effect.js'
 
 export default class BlogItem extends ViewBase {
   static get properties () {
@@ -19,7 +20,7 @@ export default class BlogItem extends ViewBase {
   }
 
   static get styles () {
-    return [colors, placement, taxonomy]
+    return [colors, placement, taxonomy, paper]
   }
 
   constructor () {
@@ -49,7 +50,7 @@ export default class BlogItem extends ViewBase {
     const blogItem = this.findBlog()
 
     return html`
-      <article class=${store.category}>
+      <article class="${store.category} paper">
         <h4 class="${store.category}-header">
           ${blogItem.title}
         </h4>

@@ -4,6 +4,7 @@ import { store } from '../../site/state/store.js'
 import { taxonomy } from '../../css/taxonomy.js'
 import { colors } from '../../css/color.js'
 import { menu } from '../css/tag-menu-css.js'
+import { paper } from '../../css/paper-effect.js'
 
 export default class TagMenu extends MobxLitElement {
   static get properties () {
@@ -13,7 +14,7 @@ export default class TagMenu extends MobxLitElement {
   }
 
   static get styles () {
-    return [colors, taxonomy, menu]
+    return [colors, taxonomy, menu, paper]
   }
 
   constructor () {
@@ -41,7 +42,7 @@ export default class TagMenu extends MobxLitElement {
   render () {
     if (store.blogItems.length > 0) {
       return html`
-        <section id="tag-menu">
+        <section id="tag-menu" class="paper">
           <h4 class="${store.category}-header">Categories</h4>
           <ul>
             ${this.tagsMenu()}

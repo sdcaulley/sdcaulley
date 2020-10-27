@@ -4,10 +4,11 @@ import { store } from '../../site/state/store.js'
 import { taxonomy } from '../../css/taxonomy.js'
 import { colors } from '../../css/color.js'
 import { placement } from '../css/resource-list-css.js'
+import { paper } from '../../css/paper-effect.js'
 
 export default class ResourceList extends MobxLitElement {
   static get styles () {
-    return [colors, placement, taxonomy]
+    return [colors, placement, taxonomy, paper]
   }
 
   render () {
@@ -21,7 +22,7 @@ export default class ResourceList extends MobxLitElement {
       <section>
         ${store.resources.map(item => {
           return html`
-            <article class=${store.category}>
+            <article class=""${store.category} paper">
               <h4>
                 <a class="${store.category}-header" href=${item.url}
                   >${item.title}

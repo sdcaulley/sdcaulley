@@ -4,10 +4,11 @@ import { store } from '../../site/state/store.js'
 import { taxonomy } from '../../css/taxonomy.js'
 import { colors } from '../../css/color.js'
 import { placement } from '../css/blog-list-css.js'
+import { paper } from '../../css/paper-effect.js'
 
 export default class BlogList extends MobxLitElement {
   static get styles () {
-    return [colors, placement, taxonomy]
+    return [colors, placement, taxonomy, paper]
   }
 
   teaser (item) {
@@ -37,7 +38,7 @@ export default class BlogList extends MobxLitElement {
           const title = blog.title.split(' ').join('_')
           const titleHref = `/${store.category}/blog/${title}`
           return html`
-            <article class=${store.category}>
+            <article class="${store.category} paper">
               <h4>
                 <a class="${store.category}-header" href=${titleHref}>
                   ${blog.title}
