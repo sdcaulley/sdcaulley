@@ -42,7 +42,7 @@ export default class AdminBlogList extends MobxLitElement {
   async editItem (e) {
     const title = e.target.value
     const titleUrl = title.split(' ').join('_')
-    Router.go(`/admin/edit/${titleUrl}`)
+    Router.go(`/admin/edit/blog/${titleUrl}`)
   }
 
   render () {

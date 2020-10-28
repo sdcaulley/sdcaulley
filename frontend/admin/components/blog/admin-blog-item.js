@@ -108,7 +108,7 @@ export default class AdminBlogItem extends ViewBase {
     return html`
       <form class="paper">
         <fieldset>
-          <legend>Update Blog Item</legend>
+          <legend>Update Blog Item:</legend>
           <section>
             <label for="title">Title:</label>
             <input
@@ -155,14 +155,14 @@ export default class AdminBlogItem extends ViewBase {
           <section>
             <label for="category">Category:</label>
             <select name="category" @change=${this.handleChange} multiple>
-              ${this.category.map(cat => {
-                if (blogItem.category.includes(cat)) {
+              ${this.category.map(category => {
+                if (blogItem.category.includes(category)) {
                   return html`
-                    <option value=${cat} selected>${cat}</option>
+                    <option value=${category} selected>${category}</option>
                   `
                 } else {
                   return html`
-                    <option value=${cat}>${cat}</option>
+                    <option value=${category}>${category}</option>
                   `
                 }
               })}

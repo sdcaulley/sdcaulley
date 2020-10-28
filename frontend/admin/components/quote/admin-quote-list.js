@@ -45,13 +45,11 @@ export default class AdminQuoteList extends MobxLitElement {
   }
 
   async editItem (e) {
-    const title = e.target.value
-    const titleUrl = title.split(' ').join('_')
-    Router.go(`/admin/edit/${titleUrl}`)
+    const id = e.target.value
+    Router.go(`/admin/edit/quote/${id}`)
   }
 
   render () {
-    console.log('store.quotes: ', store.quotes)
     return html`
       <section>
         ${store.quotes.map(quote => {
@@ -59,6 +57,22 @@ export default class AdminQuoteList extends MobxLitElement {
             <article class="paper">
               <blockquote>${quote.quote}</blockquote>
               ${this.citeReference(quote)}
+              <button
+                type="button"
+                name="edit"
+                value=${quote._id}
+                @click=${this.editItem}
+              >
+                Edit
+              </button>
+              <button
+                type="button"
+                name="delete"
+                value=${quote._id}
+                @click=${this.deleteItem}
+              >
+                Delete
+              </button>
             </article>
           `
         })}

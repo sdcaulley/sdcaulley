@@ -49,13 +49,11 @@ async function quoteUpdate (ctx, next) {
   const updatedQuote = await quote.save()
 
   ctx.response.body = {
-    quote: {
-      _id: updatedQuote._id,
-      quote: updatedQuote.quote,
-      author: updatedQuote.author,
-      reference: updatedQuote.reference,
-      category: updatedQuote.category
-    }
+    _id: updatedQuote._id,
+    quote: updatedQuote.quote,
+    author: updatedQuote.author,
+    reference: updatedQuote.reference,
+    category: updatedQuote.category
   }
 
   await next()
@@ -75,6 +73,6 @@ async function quoteDelete (ctx) {
 module.exports = router => {
   router.get('/', quoteGet)
   router.post('/create', quoteCreate)
-  router.patch('/update', ensureAuth, quoteUpdate)
-  router.delete('/:id', ensureAuth, quoteDelete)
+  router.patch('/update', quoteUpdate)
+  router.delete('/:id', quoteDelete)
 }
