@@ -1,15 +1,16 @@
 import { html } from 'lit-element'
 import { MobxLitElement } from '@adobe/lit-mobx'
 import { Router } from '@vaadin/router'
-import { store } from '../../site/state/store.js'
-import fetcher from '../../utils/fetcher.js'
-import { taxonomy } from '../../css/taxonomy.js'
-import { colors } from '../../css/color.js'
-import { placement } from '../css/admin-blog-list-css.js'
+import { store } from '../../../site/state/store.js'
+import fetcher from '../../../utils/fetcher.js'
+import { taxonomy } from '../../../css/taxonomy.js'
+import { colors } from '../../../css/color.js'
+import { placement } from '../../css/admin-blog-list-css.js'
+import { paper } from '../../../css/paper-effect.js'
 
 export default class AdminBlogList extends MobxLitElement {
   static get styles () {
-    return [colors, placement, taxonomy]
+    return [colors, placement, taxonomy, paper]
   }
 
   teaser (item) {
@@ -55,7 +56,7 @@ export default class AdminBlogList extends MobxLitElement {
       <section>
         ${store.blogItems.map(blog => {
           return html`
-            <article>
+            <article class="paper">
               <h4>
                 <a>${blog.title}</a>
               </h4>

@@ -1,14 +1,15 @@
 import { html } from 'lit-element'
 import { Router } from '@vaadin/router'
-import { ViewBase } from '../../site/components/view-base.js'
-import fetcher from '../../utils/fetcher.js'
-import { store } from '../../site/state/store.js'
-import { placement } from '../css/admin-blog-form-css.js'
-import { taxonomy } from '../../css/taxonomy.js'
+import { ViewBase } from '../../../site/components/view-base.js'
+import fetcher from '../../../utils/fetcher.js'
+import { store } from '../../../site/state/store.js'
+import { placement } from '../../css/admin-resource-form-css.js'
+import { taxonomy } from '../../../css/taxonomy.js'
+import { paper } from '../../../css/paper-effect.js'
 
-export default class AdminQuoteForm extends ViewBase {
+export default class AdminResourceForm extends ViewBase {
   static get styles () {
-    return [placement, taxonomy]
+    return [placement, taxonomy, paper]
   }
 
   static get properties () {
@@ -25,16 +26,17 @@ export default class AdminQuoteForm extends ViewBase {
   }
 
   async formSubmit (e) {
-    store.quote = await fetcher({
+    store.resource = await fetcher({
       method: 'POST',
-      path: '/quote/create',
+      path: '/resource/create',
       headers: {
+        Accept: 'application/json',
         'Content-Type': 'application/json'
       },
       body: this.body
     })
 
-    Router.go('/admin/quote-preview')
+    Router.go('/admin/resource-preview')
   }
 
   handleChange (e) {
@@ -57,20 +59,26 @@ export default class AdminQuoteForm extends ViewBase {
 
   render () {
     return html`
-      <form>
+      <form class="paper">
         <fieldset>
-          <legend>New Quote:</legend>
           <section>
-            <label for="quote">Quote:</label>
-            <textarea name="quote" @change=${this.handleChange}></textarea>
+            <label for="title">Title:</label>
+            <input type="text" name="title" @change=${this.handleChange} />
           </section>
           <section>
-            <label for="author">Author:</label>
-            <input type="text" name="author" @change=${this.handleChange} />
+            <label for="kind">Kind:</label>
+            <input type="text" name="kind" @change=${this.handleChange} />
           </section>
           <section>
-            <label for="reference">Reference:</label>
-            <input type="text" name="reference" @change=${this.handleChange} />
+            <label for="url">URL:</label>
+            <input type="url" name="url" @change=${this.handleChange} />
+          </section>
+          <section>
+            <label for="description">Description:</label>
+            <textarea
+              name="description"
+              @change=${this.handleChange}
+            ></textarea>
           </section>
           <section>
             <label for="category">Category:</label>
@@ -92,4 +100,4 @@ export default class AdminQuoteForm extends ViewBase {
   }
 }
 
-customElements.define('admin-quote-form', AdminQuoteForm)
+customElements.define('admin-resource-form', AdminResourceForm)

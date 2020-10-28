@@ -2,15 +2,16 @@ import { html } from 'lit-element'
 import { ViewBase } from '../../site/components/view-base.js'
 import { taxonomy } from '../../css/taxonomy.js'
 import { placement } from '../css/admin-container-css.js'
+import { paper } from '../../css/paper-effect.js'
 
 export default class AdminEditItem extends ViewBase {
   static get styles () {
-    return [taxonomy, placement]
+    return [taxonomy, placement, paper]
   }
 
   render () {
     return html`
-      <section>
+      <section class=paper>
         <a href=/admin/blog-list>Blog List</a>
         <a href=/admin/resource-list>Resource List</a>
         <a href=/admin/quote-list>Quote List</a>

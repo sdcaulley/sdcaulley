@@ -1,12 +1,13 @@
 import { html } from 'lit-element'
-import { ViewBase } from '../../site/components/view-base.js'
-import { store } from '../../site/state/store.js'
-import { placement } from '../css/admin-quote-preview-css.js'
-import { taxonomy } from '../../css/taxonomy.js'
+import { ViewBase } from '../../../site/components/view-base.js'
+import { store } from '../../../site/state/store.js'
+import { placement } from '../../css/admin-quote-preview-css.js'
+import { taxonomy } from '../../../css/taxonomy.js'
+import { paper } from '../../../css/paper-effect.js'
 
 export default class AdminQuotePreview extends ViewBase {
   static get styles () {
-    return [placement, taxonomy]
+    return [placement, taxonomy, paper]
   }
 
   citeReference () {
@@ -25,7 +26,7 @@ export default class AdminQuotePreview extends ViewBase {
 
   render () {
     return html`
-      <section>
+      <section class="paper">
         <blockquote>${store.quote.quote}</blockquote>
         ${this.citeReference()}
       </section>

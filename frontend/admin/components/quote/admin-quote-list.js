@@ -1,15 +1,16 @@
 import { html } from 'lit-element'
 import { MobxLitElement } from '@adobe/lit-mobx'
 import { Router } from '@vaadin/router'
-import { store } from '../../site/state/store.js'
-import fetcher from '../../utils/fetcher.js'
-import { taxonomy } from '../../css/taxonomy.js'
-import { colors } from '../../css/color.js'
-import { placement } from '../css/admin-blog-list-css.js'
+import { store } from '../../../site/state/store.js'
+import fetcher from '../../../utils/fetcher.js'
+import { taxonomy } from '../../../css/taxonomy.js'
+import { colors } from '../../../css/color.js'
+import { placement } from '../../css/admin-blog-list-css.js'
+import { paper } from '../../../css/paper-effect.js'
 
 export default class AdminQuoteList extends MobxLitElement {
   static get styles () {
-    return [taxonomy, colors, placement]
+    return [taxonomy, colors, placement, paper]
   }
 
   ISOtoLongDate (isoString, locale = 'en-GB') {
@@ -55,7 +56,7 @@ export default class AdminQuoteList extends MobxLitElement {
       <section>
         ${store.quotes.map(quote => {
           return html`
-            <article>
+            <article class="paper">
               <blockquote>${quote.quote}</blockquote>
               ${this.citeReference(quote)}
             </article>

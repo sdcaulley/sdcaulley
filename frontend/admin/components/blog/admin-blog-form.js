@@ -1,15 +1,16 @@
 import { html } from 'lit-element'
 import { Router } from '@vaadin/router'
 import * as mobx from 'mobx'
-import { ViewBase } from '../../site/components/view-base.js'
-import fetcher from '../../utils/fetcher.js'
-import { store } from '../../site/state/store.js'
-import { placement } from '../css/admin-blog-form-css.js'
-import { taxonomy } from '../../css/taxonomy.js'
+import { ViewBase } from '../../../site/components/view-base.js'
+import fetcher from '../../../utils/fetcher.js'
+import { store } from '../../../site/state/store.js'
+import { placement } from '../../css/admin-blog-form-css.js'
+import { taxonomy } from '../../../css/taxonomy.js'
+import { paper } from '../../../css/paper-effect.js'
 
 export default class AdminBlogForm extends ViewBase {
   static get styles () {
-    return [placement, taxonomy]
+    return [placement, taxonomy, paper]
   }
 
   static get properties () {
@@ -74,7 +75,7 @@ export default class AdminBlogForm extends ViewBase {
 
   render () {
     return html`
-      <form>
+      <form class="paper">
         <fieldset>
           <legend>New Blog Entry</legend>
           <section>

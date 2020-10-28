@@ -1,12 +1,13 @@
 import { html } from 'lit-element'
-import { ViewBase } from '../../site/components/view-base.js'
-import { placement } from '../css/admin-blog-preview-css.js'
-import { store } from '../../site/state/store.js'
-import { taxonomy } from '../../css/taxonomy.js'
+import { ViewBase } from '../../../site/components/view-base.js'
+import { placement } from '../../css/admin-blog-preview-css.js'
+import { store } from '../../../site/state/store.js'
+import { taxonomy } from '../../../css/taxonomy.js'
+import { paper } from '../../../css/paper-effect.js'
 
 export default class AdminBlogPreview extends ViewBase {
   static get styles () {
-    return [placement, taxonomy]
+    return [placement, taxonomy, paper]
   }
 
   ISOtoLongDate (isoString, locale = 'en-GB') {
@@ -18,7 +19,7 @@ export default class AdminBlogPreview extends ViewBase {
 
   render () {
     return html`
-      <article>
+      <article class=paper>
         <h4>
           ${store.blogItem.title}
         </h4>

@@ -4,10 +4,11 @@ import fetcher from '../../utils/fetcher.js'
 import { store } from '../../site/state/store.js'
 import { taxonomy } from '../../css/taxonomy.js'
 import { placement } from '../css/admin-container-css.js'
+import { paper } from '../../css/paper-effect.js'
 
 export default class AdminContainer extends ViewBase {
   static get styles () {
-    return [taxonomy, placement]
+    return [taxonomy, placement, paper]
   }
 
   async firstUpdated () {
@@ -19,10 +20,10 @@ export default class AdminContainer extends ViewBase {
 
   render () {
     return html`
-      <section>
-        <a href=/admin/blog-form>Blog Item</a>
-        <a href=/admin/resource-form>Resource Item</a>
-        <a href=/admin/quote-form>Quote</a>
+      <section class=paper>
+        <a href=/admin/blog-form>New Blog Item</a>
+        <a href=/admin/resource-form>New Resource Item</a>
+        <a href=/admin/quote-form>New Quote</a>
         <a href=/admin/edit-item>Edit Items</a>
       </section>
   `

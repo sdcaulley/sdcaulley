@@ -1,17 +1,18 @@
 import { html } from 'lit-element'
 import { Router } from '@vaadin/router'
 import * as mobx from 'mobx'
-import { ViewBase } from '../../site/components/view-base.js'
-import { store } from '../../site/state/store.js'
-import { router } from '../../site/components/site-routes.js'
-import fetcher from '../../utils/fetcher.js'
-import { placement } from '../css/admin-blog-item-css.js'
-import { taxonomy } from '../../css/taxonomy.js'
-import { colors } from '../../css/color.js'
+import { ViewBase } from '../../../site/components/view-base.js'
+import { store } from '../../../site/state/store.js'
+import { router } from '../../../site/components/site-routes.js'
+import fetcher from '../../../utils/fetcher.js'
+import { placement } from '../../css/admin-blog-item-css.js'
+import { taxonomy } from '../../../css/taxonomy.js'
+import { colors } from '../../../css/color.js'
+import { paper } from '../../../css/paper-effect.js'
 
 export default class AdminBlogItem extends ViewBase {
   static get styles () {
-    return [colors, placement, taxonomy]
+    return [colors, placement, taxonomy, paper]
   }
 
   static get properties () {
@@ -105,7 +106,7 @@ export default class AdminBlogItem extends ViewBase {
     const tags = mobx.toJS(store.tags)
 
     return html`
-      <form>
+      <form class="paper">
         <fieldset>
           <legend>Update Blog Item</legend>
           <section>

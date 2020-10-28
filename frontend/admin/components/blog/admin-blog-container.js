@@ -1,10 +1,10 @@
 import { html } from 'lit-element'
-import { ViewBase } from '../../site/components/view-base.js'
-import { router } from '../../site/components/site-routes.js'
-import fetcher from '../../utils/fetcher.js'
-import { store } from '../../site/state/store.js'
-import { placement } from '../css/admin-blog-container-css.js'
-import { taxonomy } from '../../css/taxonomy.js'
+import { ViewBase } from '../../../site/components/view-base.js'
+import { router } from '../../../site/components/site-routes.js'
+import fetcher from '../../../utils/fetcher.js'
+import { store } from '../../../site/state/store.js'
+import { placement } from '../../css/admin-blog-container-css.js'
+import { taxonomy } from '../../../css/taxonomy.js'
 import './admin-blog-list.js'
 
 export default class AdminBlogContainer extends ViewBase {
