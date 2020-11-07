@@ -6,11 +6,11 @@ import '../../ui/components/blog-container.js'
 import '../../ui/components/blog-item.js'
 import '../../ui/components/resource-container.js'
 import '../../admin/components/admin-container.js'
-import '../../admin/components/admin-edit-item.js'
+import '../../admin/components/admin-create.js'
+import '../../admin/components/admin-edit.js'
 import '../../admin/components/blog/admin-blog-form.js'
 import '../../admin/components/blog/admin-blog-preview.js'
 import '../../admin/components/blog/admin-blog-container.js'
-import '../../admin/components/blog/admin-blog-item.js'
 import '../../admin/components/resource/admin-resource-form.js'
 import '../../admin/components/resource/admin-resource-preview.js'
 import '../../admin/components/quote/admin-quote-form.js'
@@ -22,6 +22,7 @@ const viewPlaceholder = document.querySelector('site-container')
 const router = new Router(viewPlaceholder)
 
 const childRoutes = [
+  // UI
   {
     path: '/',
     component: 'category-list'
@@ -38,18 +39,33 @@ const childRoutes = [
     path: '/:category/resources',
     component: 'resource-container'
   },
+  // Admin
   {
     path: '/admin',
     component: 'admin-container'
   },
   {
+    path: '/admin/create-item',
+    component: 'admin-create'
+  },
+  {
+    path: '/admin/edit-item',
+    component: 'admin-edit'
+  },
+  // Admin blog
+  {
     path: '/admin/blog-form',
     component: 'admin-blog-form'
+  },
+  {
+    path: '/admin/blog-list',
+    component: 'admin-blog-container'
   },
   {
     path: '/admin/blog-preview',
     component: 'admin-blog-preview'
   },
+  // Admin resource
   {
     path: '/admin/resource-form',
     component: 'admin-resource-form'
@@ -58,6 +74,7 @@ const childRoutes = [
     path: '/admin/resource-preview',
     component: 'admin-resource-preview'
   },
+  // Admin quote
   {
     path: '/admin/quote-form',
     component: 'admin-quote-form'
@@ -65,18 +82,6 @@ const childRoutes = [
   {
     path: '/admin/quote-preview',
     component: 'admin-quote-preview'
-  },
-  {
-    path: '/admin/edit-item',
-    component: 'admin-edit-item'
-  },
-  {
-    path: '/admin/blog-list',
-    component: 'admin-blog-container'
-  },
-  {
-    path: '/admin/edit/blog/:title',
-    component: 'admin-blog-item'
   },
   {
     path: '/admin/quote-list',

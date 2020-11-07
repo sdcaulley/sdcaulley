@@ -1,5 +1,6 @@
 import { html, css } from 'lit-element'
 import { MobxLitElement } from '@adobe/lit-mobx'
+import { store } from '../../../site/state/store.js'
 import './header.js'
 import './footer.js'
 
@@ -14,6 +15,11 @@ export class ViewBase extends MobxLitElement {
         }
       `
     ]
+  }
+
+  constructor () {
+    super()
+    store.categoryList = ['code', 'craft', 'culture']
   }
 
   render () {

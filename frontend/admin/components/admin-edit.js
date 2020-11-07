@@ -4,7 +4,7 @@ import { taxonomy } from '../../css/taxonomy.js'
 import { placement } from '../css/admin-container-css.js'
 import { paper } from '../../css/paper-effect.js'
 
-export default class AdminEditItem extends ViewBase {
+export default class AdminEdit extends ViewBase {
   static get styles () {
     return [taxonomy, placement, paper]
   }
@@ -12,6 +12,7 @@ export default class AdminEditItem extends ViewBase {
   render () {
     return html`
       <section class=paper>
+        <h4>Edit Items</h4>
         <a href=/admin/blog-list>Blog List</a>
         <a href=/admin/resource-list>Resource List</a>
         <a href=/admin/quote-list>Quote List</a>
@@ -20,4 +21,4 @@ export default class AdminEditItem extends ViewBase {
   }
 }
 
-customElements.define('admin-edit-item', AdminEditItem)
+customElements.define('admin-edit', AdminEdit)

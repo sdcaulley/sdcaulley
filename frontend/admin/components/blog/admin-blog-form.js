@@ -16,7 +16,6 @@ export default class AdminBlogForm extends ViewBase {
   static get properties () {
     return {
       body: { type: Object },
-      category: { type: Array },
       tags: { type: Array },
       newTags: { type: Array },
       newTag: { type: String }
@@ -29,10 +28,17 @@ export default class AdminBlogForm extends ViewBase {
       category: [],
       tag: []
     }
-    this.category = ['code', 'craft', 'culture']
     this.tags = mobx.toJS(store.tags)
     this.newTags = []
     this.newTag = ''
+    this.blogItem = mobx.toJS(store.blogItem)
+  }
+
+  ISOtoLongDate (isoString, locale = 'en-GB') {
+    const options = { month: 'long', day: 'numeric', year: 'numeric' }
+    const date = new Date(isoString)
+    const longDate = new Intl.DateTimeFormat(locale, options).format(date)
+    return longDate
   }
 
   async updateTag (e) {
@@ -46,14 +52,25 @@ export default class AdminBlogForm extends ViewBase {
   }
 
   async formSubmit (e) {
-    store.blogItem = await fetcher({
-      method: 'POST',
-      path: '/blog/create',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: this.body
-    })
+    if (store.formState === 'new') {
+      store.blogItem = await fetcher({
+        method: 'POST',
+        path: '/blog/create',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: this.body
+      })
+    } else {
+      store.blogItem = await fetcher({
+        method: 'PATCH',
+        path: '/blog/update',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: this.body
+      })
+    }
 
     Router.go('/admin/blog-preview')
   }
@@ -74,25 +91,48 @@ export default class AdminBlogForm extends ViewBase {
   }
 
   render () {
+    const length = Object.keys(this.blogItem)
+
     return html`
       <form class="paper">
         <fieldset>
-          <legend>New Blog Entry</legend>
+          <legend>${store.formState} Blog Entry</legend>
           <section>
             <label for="title">Title:</label>
-            <input type="text" name="title" @change=${this.handleChange} />
+            <input
+              type="text"
+              name="title"
+              placeholder=${this.blogItem.title}
+              @change=${this.handleChange}
+            />
           </section>
           <section>
             <label for="content">Content:</label>
-            <textarea name="content" @change=${this.handleChange}></textarea>
+            <textarea
+              name="content"
+              plcaceholder=${this.blogItem.content}
+              @change=${this.handleChange}
+            ></textarea>
           </section>
           <section>
-            <label for="tag">Tags:</label>
+            <label for="tags">Tags:</label>
             <select name="tag" @change=${this.handleChange} multiple>
               ${this.tags.map(tag => {
-                return html`
-                  <option value=${tag.tag}>${tag.tag}</option>
-                `
+                if (length.length > 0) {
+                  if (this.blogItem.tag.includes(tag.tag)) {
+                    return html`
+                      <option value=${tag.tag} selected>${tag.tag}</option>
+                    `
+                  } else {
+                    return html`
+                      <option value=${tag.tag}>${tag.tag}</option>
+                    `
+                  }
+                } else {
+                  return html`
+                    <option value=${tag.tag}>${tag.tag}</option>
+                  `
+                }
               })}
             </select>
             <label for="newTag">New Tag(s):</label>
@@ -109,10 +149,22 @@ export default class AdminBlogForm extends ViewBase {
           <section>
             <label for="category">Category:</label>
             <select name="category" @change=${this.handleChange} multiple>
-              ${this.category.map(cat => {
-                return html`
-                  <option value=${cat}>${cat}</option>
-                `
+              ${store.categoryList.map(category => {
+                if (length.length > 0) {
+                  if (this.blogItem.category.includes(category)) {
+                    return html`
+                      <option value=${category} selected>${category}</option>
+                    `
+                  } else {
+                    return html`
+                      <option value=${category}>${category}</option>
+                    `
+                  }
+                } else {
+                  return html`
+                    <option value=${category}>${category}</option>
+                  `
+                }
               })}
             </select>
           </section>

@@ -2,26 +2,32 @@ import { observable, decorate } from 'mobx'
 
 class Store {
   constructor () {
-    this.blogItems = []
-    this.category = 'Home'
-    this.resources = []
     this.blogItem = {}
-    this.tags = []
-    this.resource = {}
+    this.blogList = []
+    this.category = ''
+    this.categoryList = []
+    this.formState = ''
+    this.location = ''
     this.quote = {}
     this.quotes = []
+    this.resources = []
+    this.resource = {}
+    this.tags = []
   }
 }
 
 decorate(Store, {
-  blogItems: observable,
-  category: observable,
-  resources: observable,
   blogItem: observable,
-  tags: observable,
-  resource: observable,
+  blogList: observable,
+  category: observable,
+  categoryList: observable,
+  formState: observable,
+  location: observable,
   quote: observable,
-  quotes: observable
+  quotes: observable,
+  resources: observable,
+  resource: observable,
+  tags: observable
 })
 
 export const store = new Store()

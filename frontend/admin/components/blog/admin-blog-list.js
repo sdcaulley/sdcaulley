@@ -1,16 +1,16 @@
 import { html } from 'lit-element'
 import { MobxLitElement } from '@adobe/lit-mobx'
 import { Router } from '@vaadin/router'
+import * as mobx from 'mobx'
 import { store } from '../../../site/state/store.js'
 import fetcher from '../../../utils/fetcher.js'
 import { taxonomy } from '../../../css/taxonomy.js'
-import { colors } from '../../../css/color.js'
 import { placement } from '../../css/admin-blog-list-css.js'
 import { paper } from '../../../css/paper-effect.js'
 
 export default class AdminBlogList extends MobxLitElement {
   static get styles () {
-    return [colors, placement, taxonomy, paper]
+    return [placement, taxonomy, paper]
   }
 
   teaser (item) {
@@ -39,22 +39,31 @@ export default class AdminBlogList extends MobxLitElement {
     `
   }
 
+  findBlog (id) {
+    const blogItem = store.blogList.find(item => {
+      return item.id === id
+    })
+
+    return mobx.toJS(blogItem)
+  }
+
   async editItem (e) {
-    const title = e.target.value
-    const titleUrl = title.split(' ').join('_')
-    Router.go(`/admin/edit/blog/${titleUrl}`)
+    store.blogItem = await this.findBlog(e.target.value)
+    store.formState = 'edit'
+    Router.go('/admin/blog-form')
   }
 
   render () {
-    if (store.blogItems.length === 0) {
+    if (store.blogList.length === 0) {
       return html`
         <p>No blog items yet.</p>
       `
     }
 
     return html`
+      <h4>Blog List</h4>
       <section>
-        ${store.blogItems.map(blog => {
+        ${store.blogList.map(blog => {
           return html`
             <article class="paper">
               <h4>
@@ -79,7 +88,7 @@ export default class AdminBlogList extends MobxLitElement {
               <button
                 type="button"
                 name="edit"
-                value=${blog.title}
+                value=${blog.id}
                 @click=${this.editItem}
               >
                 Edit
@@ -87,7 +96,7 @@ export default class AdminBlogList extends MobxLitElement {
               <button
                 type="button"
                 name="delete"
-                value=${blog._id}
+                value=${blog.id}
                 @click=${this.deleteItem}
               >
                 Delete

@@ -1,6 +1,5 @@
 import { html } from 'lit-element'
 import { ViewBase } from '../../../site/components/view-base.js'
-import { router } from '../../../site/components/site-routes.js'
 import fetcher from '../../../utils/fetcher.js'
 import { store } from '../../../site/state/store.js'
 import { placement } from '../../css/admin-blog-container-css.js'
@@ -18,21 +17,19 @@ export default class AdminBlogContainer extends ViewBase {
     }
   }
 
-  constructor () {
-    super()
-    this.location = router.location
-  }
-
   async firstUpdated () {
-    store.blogItems = await fetcher({
+    store.blogList = await fetcher({
       method: 'GET',
       path: '/blog'
+    })
+
+    store.tags = await fetcher({
+      method: 'GET',
+      path: '/tag'
     })
   }
 
   render () {
-    store.category = this.location.params.category
-
     return html`
       <section>
         <admin-blog-list></admin-blog-list>

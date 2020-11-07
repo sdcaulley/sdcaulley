@@ -21,7 +21,7 @@ export default class Header extends MobxLitElement {
         <section id="headings">
           <h1>sdcaulley</h1>
           <h3>Bringing intention to my daily life</h3>
-          <h2 class="${store.category}-header">${store.category}</h2>
+          <h2 class="${store.category}-header">${store.location}</h2>
         </section>
       </header>
     `
