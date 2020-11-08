@@ -13,7 +13,7 @@ export default class AdminCreate extends ViewBase {
 
   constructor () {
     super()
-    store.formState = 'new'
+    store.formState = 'New'
   }
 
   async firstUpdated () {

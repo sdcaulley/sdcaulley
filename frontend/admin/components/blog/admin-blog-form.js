@@ -4,7 +4,7 @@ import * as mobx from 'mobx'
 import { ViewBase } from '../../../site/components/view-base.js'
 import fetcher from '../../../utils/fetcher.js'
 import { store } from '../../../site/state/store.js'
-import { placement } from '../../css/admin-blog-form-css.js'
+import { placement } from '../../css/admin-form-css.js'
 import { taxonomy } from '../../../css/taxonomy.js'
 import { paper } from '../../../css/paper-effect.js'
 

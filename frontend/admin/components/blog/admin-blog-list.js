@@ -39,7 +39,7 @@ export default class AdminBlogList extends MobxLitElement {
     `
   }
 
-  findBlog (id) {
+  async findBlog (id) {
     const blogItem = store.blogList.find(item => {
       return item.id === id
     })

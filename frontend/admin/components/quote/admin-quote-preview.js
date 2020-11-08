@@ -1,5 +1,4 @@
 import { html } from 'lit-element'
-import * as mobx from 'mobx'
 import { ViewBase } from '../../../site/components/view-base.js'
 import { store } from '../../../site/state/store.js'
 import { placement } from '../../css/admin-quote-preview-css.js'
@@ -12,25 +11,24 @@ export default class AdminQuotePreview extends ViewBase {
   }
 
   citeReference () {
-    if (store.quote.reference) {
+    if (store.quoteItem.reference) {
       return html`
         <p>
-          From <cite>${store.quote.reference}</cite> by ${store.quote.author}
+          From <cite>${store.quoteItem.reference}</cite> by
+          ${store.quoteItem.author}
         </p>
       `
     } else {
       return html`
-        <p>${store.quote.author}</p>
+        <p>${store.quoteItem.author}</p>
       `
     }
   }
 
   render () {
-    const quote = mobx.toJS(store.quote)
-    console.log('quote: ', quote)
     return html`
       <section class="paper">
-        <blockquote>${store.quote.quote}</blockquote>
+        <blockquote>${store.quoteItem.quote}</blockquote>
         ${this.citeReference()}
       </section>
     `

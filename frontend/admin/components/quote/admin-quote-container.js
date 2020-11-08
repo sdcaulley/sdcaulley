@@ -12,7 +12,7 @@ export default class AdminQuoteContainer extends ViewBase {
   }
 
   async firstUpdated () {
-    store.quotes = await fetcher({
+    store.quoteList = await fetcher({
       method: 'GET',
       path: '/quote'
     })

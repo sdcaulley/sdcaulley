@@ -8,8 +8,8 @@ class Store {
     this.categoryList = []
     this.formState = ''
     this.location = ''
-    this.quote = {}
-    this.quotes = []
+    this.quoteItem = {}
+    this.quoteList = []
     this.resources = []
     this.resource = {}
     this.tags = []
@@ -23,8 +23,8 @@ decorate(Store, {
   categoryList: observable,
   formState: observable,
   location: observable,
-  quote: observable,
-  quotes: observable,
+  quoteItem: observable,
+  quoteList: observable,
   resources: observable,
   resource: observable,
   tags: observable

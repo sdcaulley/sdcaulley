@@ -1,16 +1,16 @@
 import { html } from 'lit-element'
 import { MobxLitElement } from '@adobe/lit-mobx'
 import { Router } from '@vaadin/router'
+import * as mobx from 'mobx'
 import { store } from '../../../site/state/store.js'
 import fetcher from '../../../utils/fetcher.js'
-import { taxonomy } from '../../../css/taxonomy.js'
-import { colors } from '../../../css/color.js'
 import { placement } from '../../css/admin-blog-list-css.js'
 import { paper } from '../../../css/paper-effect.js'
+import { taxonomy } from '../../../css/taxonomy.js'
 
 export default class AdminQuoteList extends MobxLitElement {
   static get styles () {
-    return [taxonomy, colors, placement, paper]
+    return [placement, paper, taxonomy]
   }
 
   ISOtoLongDate (isoString, locale = 'en-GB') {
@@ -44,15 +44,23 @@ export default class AdminQuoteList extends MobxLitElement {
     `
   }
 
+  async findQuote (id) {
+    const quoteItem = store.quoteList.find(item => {
+      return item._id === id
+    })
+
+    return mobx.toJS(quoteItem)
+  }
+
   async editItem (e) {
-    const id = e.target.value
-    Router.go(`/admin/edit/quote/${id}`)
+    store.quoteItem = await this.findQuote(e.target.value)
+    Router.go('/admin/quote-form')
   }
 
   render () {
     return html`
       <section>
-        ${store.quotes.map(quote => {
+        ${store.quoteList.map(quote => {
           return html`
             <article class="paper">
               <blockquote>${quote.quote}</blockquote>
