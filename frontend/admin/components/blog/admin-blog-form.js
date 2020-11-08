@@ -25,8 +25,8 @@ export default class AdminBlogForm extends ViewBase {
   constructor () {
     super()
     this.body = {
-      category: [],
-      tag: []
+      tag: [],
+      category: []
     }
     this.tags = mobx.toJS(store.tags)
     this.newTags = []
@@ -46,7 +46,7 @@ export default class AdminBlogForm extends ViewBase {
   }
 
   async handleNewTag () {
-    this.body.tag.push(this.newTag)
+    this.tag.push(this.newTag)
     this.newTags.push(this.newTag)
     this.newTag = ''
   }
@@ -91,8 +91,6 @@ export default class AdminBlogForm extends ViewBase {
   }
 
   render () {
-    const length = Object.keys(this.blogItem)
-
     return html`
       <form class="paper">
         <fieldset>
@@ -118,8 +116,10 @@ export default class AdminBlogForm extends ViewBase {
             <label for="tags">Tags:</label>
             <select name="tag" @change=${this.handleChange} multiple>
               ${this.tags.map(tag => {
-                if (length.length > 0) {
+                if (store.formState === 'Edit') {
+                  this.body._id = this.blogItem.id
                   if (this.blogItem.tag.includes(tag.tag)) {
+                    this.body.tag.push(tag.tag)
                     return html`
                       <option value=${tag.tag} selected>${tag.tag}</option>
                     `
@@ -150,8 +150,9 @@ export default class AdminBlogForm extends ViewBase {
             <label for="category">Category:</label>
             <select name="category" @change=${this.handleChange} multiple>
               ${store.categoryList.map(category => {
-                if (length.length > 0) {
+                if (store.formState === 'Edit') {
                   if (this.blogItem.category.includes(category)) {
+                    this.body.category.push(category)
                     return html`
                       <option value=${category} selected>${category}</option>
                     `

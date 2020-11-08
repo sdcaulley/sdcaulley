@@ -128,6 +128,7 @@ async function blogFilter (ctx, next) {
 
 async function blogUpdate (ctx, next) {
   const data = ctx.request.body
+  console.log('data: ', data)
   const payload = {
     date_updated: Date.now()
   }

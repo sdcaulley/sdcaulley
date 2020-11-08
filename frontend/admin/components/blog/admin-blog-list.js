@@ -49,7 +49,6 @@ export default class AdminBlogList extends MobxLitElement {
 
   async editItem (e) {
     store.blogItem = await this.findBlog(e.target.value)
-    store.formState = 'edit'
     Router.go('/admin/blog-form')
   }
 
