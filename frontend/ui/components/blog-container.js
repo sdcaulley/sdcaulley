@@ -25,7 +25,7 @@ export default class BlogContainer extends ViewBase {
   }
 
   async firstUpdated () {
-    store.blogItems = await fetcher({
+    store.blogList = await fetcher({
       method: 'GET',
       path: `/blog/${store.category}`
     })

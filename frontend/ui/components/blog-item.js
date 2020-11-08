@@ -38,7 +38,7 @@ export default class BlogItem extends ViewBase {
   }
 
   findBlog () {
-    return store.blogItems.find(item => {
+    return store.blogList.find(item => {
       return item.title === this.title
     })
   }

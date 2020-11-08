@@ -25,7 +25,7 @@ export default class TagMenu extends MobxLitElement {
   tagsMenu () {
     this.tags = []
 
-    const concatArray = store.blogItems.reduce((acc, curr) => {
+    const concatArray = store.blogList.reduce((acc, curr) => {
       return acc.concat(curr.tag)
     }, [])
 
@@ -40,7 +40,7 @@ export default class TagMenu extends MobxLitElement {
   }
 
   render () {
-    if (store.blogItems.length > 0) {
+    if (store.blogList.length > 0) {
       return html`
         <section id="tag-menu" class="paper">
           <h4 class="${store.category}-header">Categories</h4>

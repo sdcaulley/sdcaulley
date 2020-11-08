@@ -26,7 +26,7 @@ export default class BlogList extends MobxLitElement {
   }
 
   render () {
-    if (store.blogItems.length === 0) {
+    if (store.blogList.length === 0) {
       return html`
         <p>No blog items yet.</p>
       `
@@ -34,7 +34,7 @@ export default class BlogList extends MobxLitElement {
 
     return html`
       <section>
-        ${store.blogItems.map(blog => {
+        ${store.blogList.map(blog => {
           const title = blog.title.split(' ').join('_')
           const titleHref = `/${store.category}/blog/${title}`
           return html`
