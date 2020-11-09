@@ -12,11 +12,21 @@ export default class MainMenu extends MobxLitElement {
   }
 
   displayMenu () {
-    switch (store.category) {
+    switch (store.location) {
       case 'home':
         return html`
           <nav></nav>
         `
+      case 'admin':
+        return html`
+          <nav>
+            <img src='../../css/menu.svg' alt='Menu icon'></img>
+            <section class=paper_nav>
+              <a href='/'>Home</a>
+              <a href='/admin'>Admin</a>
+            </section>
+          </nav>
+          `
       case 'code':
         return html`
           <nav>

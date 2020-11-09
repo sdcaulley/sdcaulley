@@ -17,6 +17,11 @@ class CategoryList extends ViewBase {
     }
   }
 
+  constructor () {
+    super()
+    store.location = 'home'
+  }
+
   render () {
     return html`
       <section>

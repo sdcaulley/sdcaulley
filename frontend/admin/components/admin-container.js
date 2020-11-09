@@ -12,7 +12,7 @@ export default class AdminContainer extends ViewBase {
 
   constructor () {
     super()
-    store.location = 'Admin'
+    store.location = 'admin'
   }
 
   render () {
