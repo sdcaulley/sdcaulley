@@ -25,5 +25,9 @@ export const placement = css`
       flex-direction: row;
       justify-content: space-between;
     }
+
+    .category-link {
+      font-size: 1.5em;
+    }
   }
 `

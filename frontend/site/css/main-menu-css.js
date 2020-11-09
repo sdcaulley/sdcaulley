@@ -9,7 +9,6 @@ export const menu = css`
   }
 
   nav {
-    display: inline-block;
     position: relative;
   }
 
@@ -56,6 +55,7 @@ export const menu = css`
 
     a {
       display: inline-block;
+      font-size: 1.5em;
     }
   }
 `

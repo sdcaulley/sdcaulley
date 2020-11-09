@@ -15,7 +15,12 @@ export default class MainMenu extends MobxLitElement {
     switch (store.location) {
       case 'home':
         return html`
-          <nav></nav>
+          <nav>
+            <img src='../../css/menu.svg' alt='Menu icon'></img>
+            <section class=paper_nav>
+              <a href='/'>Home</a>
+          </section>
+          </nav>
         `
       case 'admin':
         return html`

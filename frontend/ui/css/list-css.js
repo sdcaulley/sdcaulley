@@ -7,8 +7,8 @@ export const placement = css`
   }
 
   article {
-    margin: 0.5em;
-    padding: 0.5em;
+    margin: 0.25em 0;
+    width: 90%;
   }
 
   h4 {

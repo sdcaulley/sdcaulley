@@ -8,22 +8,10 @@ export const placement = css`
     width: 100%;
   }
 
-  #headings {
-    display: flex;
-    flex-direction: column;
-    margin: auto;
-    width: 90%;
-  }
-
-  #menu {
-    display: flex;
-    width: 10%;
-  }
-
   h1,
   h2,
   h3 {
-    margin: 0.25em;
+    margin: auto;
     text-align: center;
   }
 
@@ -32,8 +20,6 @@ export const placement = css`
   }
 
   header {
-    display: flex;
-    margin: 0.5em;
     padding: 0.5em;
   }
 
@@ -42,17 +28,11 @@ export const placement = css`
     margin: 0;
   }
 
+  h3 {
+    clear: both;
+  }
+
   @media (min-width: 700px) {
-    #headings {
-      display: block;
-      width: 100%;
-    }
-
-    #menu {
-      display: block;
-      width: 100%;
-    }
-
     header {
       display: block;
     }

@@ -1,20 +1,13 @@
-import { html, css } from 'lit-element'
+import { html } from 'lit-element'
 import { MobxLitElement } from '@adobe/lit-mobx'
 import { store } from '../../../site/state/store.js'
+import { placement } from '../css/view-base-css.js'
 import './header.js'
 import './footer.js'
 
 export class ViewBase extends MobxLitElement {
   static get styles () {
-    return [
-      css`
-        :host {
-          display: block;
-          position: inherit;
-          width: 100%;
-        }
-      `
-    ]
+    return [placement]
   }
 
   constructor () {

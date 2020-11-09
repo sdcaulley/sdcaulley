@@ -8,7 +8,7 @@ import { paper } from '../../css/paper-effect.js'
 
 class CategoryList extends ViewBase {
   static get styles () {
-    return [super.styles, colors, placement, taxonomy, paper]
+    return [colors, placement, taxonomy, paper]
   }
 
   static get properties () {
@@ -27,7 +27,7 @@ class CategoryList extends ViewBase {
       <section>
         ${store.categoryList.map(
           category =>
-            html`<a class="${category}-link paper" href=/${category}/blog id=${category}><strong>${category}</strong></a>`
+            html`<a class="${category}-link category-link paper" href=/${category}/blog id=${category}><strong>${category}</strong></a>`
         )}
       </section>
     `

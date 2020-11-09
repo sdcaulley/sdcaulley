@@ -10,7 +10,6 @@ export const footer = css`
 
   footer {
     clear: both;
-    margin: 0.5em;
     padding: 1em 3em;
   }
 `
