@@ -1,7 +1,7 @@
 import { html } from 'lit-element'
 import { ViewBase } from '../../../site/components/view-base.js'
 import { store } from '../../../site/state/store.js'
-import { placement } from '../../css/admin-quote-preview-css.js'
+import { placement } from '../../css/admin-preview-css.js'
 import { taxonomy } from '../../../css/taxonomy.js'
 import { paper } from '../../../css/paper-effect.js'
 
@@ -27,10 +27,10 @@ export default class AdminQuotePreview extends ViewBase {
 
   render () {
     return html`
-      <section class="paper">
+      <article class="paper">
         <blockquote>${store.quoteItem.quote}</blockquote>
         ${this.citeReference()}
-      </section>
+      </article>
     `
   }
 }
