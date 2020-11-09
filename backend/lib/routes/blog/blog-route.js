@@ -177,7 +177,7 @@ async function blogDelete (ctx) {
 
   if (confirm) {
     ctx.response.body = {
-      message: 'The quote has been deleted'
+      message: 'The blog has been deleted'
     }
   }
 }

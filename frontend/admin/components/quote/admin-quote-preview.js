@@ -26,6 +26,14 @@ export default class AdminQuotePreview extends ViewBase {
   }
 
   render () {
+    if (store.deleteResponse) {
+      return html`
+        <article class="paper">
+          <p>${store.deleteResponse.message}</p>
+        </article>
+      `
+    }
+
     return html`
       <article class="paper">
         <blockquote>${store.quoteItem.quote}</blockquote>

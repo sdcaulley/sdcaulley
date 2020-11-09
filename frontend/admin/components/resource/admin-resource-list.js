@@ -15,14 +15,12 @@ export default class AdminResourceList extends MobxLitElement {
 
   async deleteItem (e) {
     const id = e.target.value
-    const response = await fetcher({
+    store.deleteResponse = await fetcher({
       method: 'DELETE',
       path: `/resource/${id}`
     })
 
-    return html`
-      <p>${response}</p>
-    `
+    Router.go('/admin/resource-preview')
   }
 
   async findResource (id) {

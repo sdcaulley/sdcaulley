@@ -27,14 +27,12 @@ export default class AdminQuoteList extends MobxLitElement {
 
   async deleteItem (e) {
     const id = e.target.value
-    const response = await fetcher({
+    store.deleteResponse = await fetcher({
       method: 'DELETE',
       path: `/quote/${id}`
     })
 
-    return html`
-      <p>${response}</p>
-    `
+    Router.go('/admin/blog-preview')
   }
 
   async findQuote (id) {

@@ -18,6 +18,14 @@ export default class AdminBlogPreview extends ViewBase {
   }
 
   render () {
+    if (store.deleteResponse) {
+      return html`
+        <article class="paper">
+          <p>${store.deleteResponse.message}</p>
+        </article>
+      `
+    }
+
     return html`
       <article class=paper>
         <h4>
