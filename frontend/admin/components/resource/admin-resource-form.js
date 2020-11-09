@@ -1,5 +1,6 @@
 import { html } from 'lit-element'
 import { Router } from '@vaadin/router'
+import * as mobx from 'mobx'
 import { ViewBase } from '../../../site/components/view-base.js'
 import fetcher from '../../../utils/fetcher.js'
 import { store } from '../../../site/state/store.js'
@@ -21,20 +22,32 @@ export default class AdminResourceForm extends ViewBase {
 
   constructor () {
     super()
-    this.body = {}
-    this.category = ['code', 'craft', 'culture']
+    this.body = {
+      category: []
+    }
+    this.resourceItem = mobx.toJS(store.resourceItem)
   }
 
   async formSubmit (e) {
-    store.resource = await fetcher({
-      method: 'POST',
-      path: '/resource/create',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json'
-      },
-      body: this.body
-    })
+    if (store.formState === 'new') {
+      store.resourceItem = await fetcher({
+        method: 'POST',
+        path: '/resource/create',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: this.body
+      })
+    } else {
+      store.resourceItem = await fetcher({
+        method: 'PATCH',
+        path: '/resource/update',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: this.body
+      })
+    }
 
     Router.go('/admin/resource-preview')
   }
@@ -45,13 +58,10 @@ export default class AdminResourceForm extends ViewBase {
     if (name === 'category') {
       const ele = e.target
       const values = ele.selectedOptions
-      const tag = []
 
       for (let i = 0; i < values.length; i++) {
-        tag.push(values[i].label)
+        this.body[name].push(values[i].label)
       }
-
-      this.body[name] = tag
     } else {
       this.body[name] = e.target.value
     }
@@ -61,32 +71,63 @@ export default class AdminResourceForm extends ViewBase {
     return html`
       <form class="paper">
         <fieldset>
+          <legend>${store.formState} Resource</legend>
           <section>
             <label for="title">Title:</label>
-            <input type="text" name="title" @change=${this.handleChange} />
+            <input
+              type="text"
+              name="title"
+              placeholder=${this.resourceItem.title}
+              @change=${this.handleChange}
+            />
           </section>
           <section>
             <label for="kind">Kind:</label>
-            <input type="text" name="kind" @change=${this.handleChange} />
+            <input
+              type="text"
+              name="kind"
+              placeholder=${this.resourceItem.kind}
+              @change=${this.handleChange}
+            />
           </section>
           <section>
             <label for="url">URL:</label>
-            <input type="url" name="url" @change=${this.handleChange} />
+            <input
+              type="url"
+              name="url"
+              placeholder=${this.resourceItem.url}
+              @change=${this.handleChange}
+            />
           </section>
           <section>
             <label for="description">Description:</label>
             <textarea
               name="description"
+              placeholder=${this.resourceItem.description}
               @change=${this.handleChange}
             ></textarea>
           </section>
           <section>
             <label for="category">Category:</label>
             <select name="category" @change=${this.handleChange} multiple>
-              ${this.category.map(cat => {
-                return html`
-                  <option value=${cat}>${cat}</option>
-                `
+              ${store.categoryList.map(category => {
+                if (store.formState === 'Edit') {
+                  this.body._id = this.resourceItem._id
+                  if (this.resourceItem.category.includes(category)) {
+                    this.body.category.push(category)
+                    return html`
+                      <option value=${category} selected>${category}</option>
+                    `
+                  } else {
+                    return html`
+                      <option value=${category}>${category}</option>
+                    `
+                  }
+                } else {
+                  return html`
+                    <option value=${category}>${category}</option>
+                  `
+                }
               })}
             </select>
           </section>

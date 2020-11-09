@@ -33,6 +33,7 @@ export default class BlogContainer extends ViewBase {
 
   render () {
     store.category = this.location.params.category
+    store.location = this.location.params.category
 
     return html`
       <section id="right-sidebar">

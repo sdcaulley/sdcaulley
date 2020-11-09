@@ -4,32 +4,20 @@ import { Router } from '@vaadin/router'
 import * as mobx from 'mobx'
 import { store } from '../../../site/state/store.js'
 import fetcher from '../../../utils/fetcher.js'
+import { taxonomy } from '../../../css/taxonomy.js'
 import { placement } from '../../css/admin-list-css.js'
 import { paper } from '../../../css/paper-effect.js'
-import { taxonomy } from '../../../css/taxonomy.js'
 
-export default class AdminQuoteList extends MobxLitElement {
+export default class AdminResourceList extends MobxLitElement {
   static get styles () {
-    return [placement, paper, taxonomy]
-  }
-
-  citeReference (quote) {
-    if (quote.reference) {
-      return html`
-        <p>From <cite>${quote.reference}</cite> by ${quote.author}</p>
-      `
-    } else {
-      return html`
-        <p>${quote.author}</p>
-      `
-    }
+    return [placement, taxonomy, paper]
   }
 
   async deleteItem (e) {
     const id = e.target.value
     const response = await fetcher({
       method: 'DELETE',
-      path: `/quote/${id}`
+      path: `/resource/${id}`
     })
 
     return html`
@@ -37,32 +25,33 @@ export default class AdminQuoteList extends MobxLitElement {
     `
   }
 
-  async findQuote (id) {
-    const quoteItem = store.quoteList.find(item => {
+  async findResource (id) {
+    const resourceItem = store.resourceList.find(item => {
       return item._id === id
     })
 
-    return mobx.toJS(quoteItem)
+    return mobx.toJS(resourceItem)
   }
 
   async editItem (e) {
-    store.quoteItem = await this.findQuote(e.target.value)
-    Router.go('/admin/quote-form')
+    store.resourceItem = await this.findResource(e.target.value)
+    Router.go('/admin/resource-form')
   }
 
   render () {
     return html`
       <section>
-        <h4>Quote List</h4>
-        ${store.quoteList.map(quote => {
+        <h4>Resource List</h4>
+        ${store.resourceList.map(resource => {
           return html`
             <article class="paper">
-              <blockquote>${quote.quote}</blockquote>
-              ${this.citeReference(quote)}
+              <h3>${resource.title}</h3>
+              <p>${resource.description}</p>
+              <p>Type: ${resource.kind}</p>
               <button
                 type="button"
                 name="edit"
-                value=${quote._id}
+                value=${resource._id}
                 @click=${this.editItem}
               >
                 Edit
@@ -70,7 +59,7 @@ export default class AdminQuoteList extends MobxLitElement {
               <button
                 type="button"
                 name="delete"
-                value=${quote._id}
+                value=${resource._id}
                 @click=${this.deleteItem}
               >
                 Delete
@@ -83,4 +72,4 @@ export default class AdminQuoteList extends MobxLitElement {
   }
 }
 
-customElements.define('admin-quote-list', AdminQuoteList)
+customElements.define('admin-resource-list', AdminResourceList)

@@ -1,5 +1,6 @@
 import { html } from 'lit-element'
 import { ViewBase } from '../../site/components/view-base.js'
+import { store } from '../../site/state/store.js'
 import { placement } from '../css/category-css.js'
 import { taxonomy } from '../../css/taxonomy.js'
 import { colors } from '../../css/color.js'
@@ -16,15 +17,10 @@ class CategoryList extends ViewBase {
     }
   }
 
-  constructor () {
-    super()
-    this.categories = ['code', 'craft', 'culture']
-  }
-
   render () {
     return html`
       <section>
-        ${this.categories.map(
+        ${store.categoryList.map(
           category =>
             html`<a class="${category}-link paper" href=/${category}/blog id=${category}><strong>${category}</strong></a>`
         )}

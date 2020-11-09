@@ -11,6 +11,7 @@ import '../../admin/components/admin-edit.js'
 import '../../admin/components/blog/admin-blog-form.js'
 import '../../admin/components/blog/admin-blog-preview.js'
 import '../../admin/components/blog/admin-blog-container.js'
+import '../../admin/components/resource/admin-resource-container.js'
 import '../../admin/components/resource/admin-resource-form.js'
 import '../../admin/components/resource/admin-resource-preview.js'
 import '../../admin/components/quote/admin-quote-form.js'
@@ -65,6 +66,10 @@ const childRoutes = [
     component: 'admin-blog-preview'
   },
   // Admin resource
+  {
+    path: '/admin/resource-list',
+    component: 'admin-resource-container'
+  },
   {
     path: '/admin/resource-form',
     component: 'admin-resource-form'

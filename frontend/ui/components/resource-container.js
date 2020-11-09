@@ -4,6 +4,7 @@ import fetcher from '../../utils/fetcher.js'
 import { store } from '../../site/state/store.js'
 import { placement } from '../css/resource-container-css.js'
 import { taxonomy } from '../../css/taxonomy.js'
+import './resource-list.js'
 
 export default class ResourceContainer extends ViewBase {
   static get styles () {
@@ -11,9 +12,9 @@ export default class ResourceContainer extends ViewBase {
   }
 
   async firstUpdated () {
-    store.resources = await fetcher({
+    store.resourceList = await fetcher({
       method: 'GET',
-      path: `/resources/${store.category}`
+      path: `/resource/${store.category}`
     })
   }
 

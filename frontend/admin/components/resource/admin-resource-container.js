@@ -4,32 +4,27 @@ import fetcher from '../../../utils/fetcher.js'
 import { store } from '../../../site/state/store.js'
 import { placement } from '../../css/admin-container-css.js'
 import { taxonomy } from '../../../css/taxonomy.js'
-import './admin-blog-list.js'
+import './admin-resource-list.js'
 
-export default class AdminBlogContainer extends ViewBase {
+export default class AdminResourceContainer extends ViewBase {
   static get styles () {
     return [placement, taxonomy]
   }
 
   async firstUpdated () {
-    store.blogList = await fetcher({
+    store.resourceList = await fetcher({
       method: 'GET',
-      path: '/blog'
-    })
-
-    store.tags = await fetcher({
-      method: 'GET',
-      path: '/tag'
+      path: '/resource'
     })
   }
 
   render () {
     return html`
       <section>
-        <admin-blog-list></admin-blog-list>
+        <admin-resource-list></admin-resource-list>
       </section>
     `
   }
 }
 
-customElements.define('admin-blog-container', AdminBlogContainer)
+customElements.define('admin-resource-container', AdminResourceContainer)

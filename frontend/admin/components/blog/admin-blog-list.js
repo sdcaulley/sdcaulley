@@ -5,7 +5,7 @@ import * as mobx from 'mobx'
 import { store } from '../../../site/state/store.js'
 import fetcher from '../../../utils/fetcher.js'
 import { taxonomy } from '../../../css/taxonomy.js'
-import { placement } from '../../css/admin-blog-list-css.js'
+import { placement } from '../../css/admin-list-css.js'
 import { paper } from '../../../css/paper-effect.js'
 
 export default class AdminBlogList extends MobxLitElement {

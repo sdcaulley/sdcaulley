@@ -3,7 +3,7 @@ import { MobxLitElement } from '@adobe/lit-mobx'
 import { store } from '../../site/state/store.js'
 import { taxonomy } from '../../css/taxonomy.js'
 import { colors } from '../../css/color.js'
-import { placement } from '../css/blog-list-css.js'
+import { placement } from '../css/list-css.js'
 import { paper } from '../../css/paper-effect.js'
 
 export default class BlogList extends MobxLitElement {

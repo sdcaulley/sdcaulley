@@ -14,11 +14,11 @@ export default class AdminResourcePreview extends MobxLitElement {
     return html`
       <article class="paper">
         <h4>
-          <a href=${store.resource.url}>${store.resource.title}</a>
+          <a href=${store.resourceItem.url}>${store.resourceItem.title}</a>
         </h4>
-        <p>${store.resource.description}</p>
+        <p>${store.resourceItem.description}</p>
         <p class="type">Type:</p>
-        <p class="type">${store.resource.kind}</p>
+        <p class="type">${store.resourceItem.kind}</p>
       </article>
     `
   }

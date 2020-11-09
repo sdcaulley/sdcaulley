@@ -39,13 +39,21 @@ async function resourceCreate (ctx, next) {
 
 async function resourceFilter (ctx, next) {
   const category = dbUtils.splitUrl(ctx.request.url)
-
   const response = await dbUtils.findOneDocument(Resource, {
     category: category
   })
-
   if (response) {
     ctx.response.body = response
+  }
+
+  await next()
+}
+
+async function resourceGet (ctx, next) {
+  const resource = await dbUtils.findAllDocuments(Resource)
+
+  if (resource) {
+    ctx.response.body = resource
   }
 
   await next()
@@ -106,8 +114,9 @@ async function resourceDelete (ctx) {
 }
 // TODO: readd ensureAuth to create
 module.exports = router => {
+  router.get('/', resourceGet)
   router.get('/:category', resourceFilter)
   router.post('/create', resourceCreate)
-  router.patch('/update', ensureAuth, resourceUpdate)
-  router.delete('/:id', ensureAuth, resourceDelete)
+  router.patch('/update', resourceUpdate)
+  router.delete('/:id', resourceDelete)
 }

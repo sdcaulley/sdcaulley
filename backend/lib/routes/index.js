@@ -1,28 +1,28 @@
-const compose = require('koa-compose');
-const Router = require('@koa/router');
-const importDir = require('import-dir');
+const compose = require('koa-compose')
+const Router = require('@koa/router')
+const importDir = require('import-dir')
 
 const routerConfigs = [
   { folder: 'user', prefix: '/user' },
   { folder: 'tag', prefix: '/tag' },
   { folder: 'quote', prefix: '/quote' },
   { folder: 'blog', prefix: '/blog' },
-	{ folder: 'resources', prefix: '/resource' }
-];
+  { folder: 'resources', prefix: '/resource' }
+]
 
 function routes () {
-	const composed = routerConfigs.reduce((prev, curr) => {
-		const Routes = importDir(`./${curr.folder}`);
-		const router = new Router({
-			prefix: curr.prefix
-		});
+  const composed = routerConfigs.reduce((prev, curr) => {
+    const Routes = importDir(`./${curr.folder}`)
+    const router = new Router({
+      prefix: curr.prefix
+    })
 
-		Object.keys(Routes).map(name => Routes[name](router));
+    Object.keys(Routes).map(name => Routes[name](router))
 
-		return [router.routes(), router.allowedMethods(), ...prev];
-	}, []);
+    return [router.routes(), router.allowedMethods(), ...prev]
+  }, [])
 
-	return compose(composed);
+  return compose(composed)
 }
 
-module.exports = routes;
+module.exports = routes
