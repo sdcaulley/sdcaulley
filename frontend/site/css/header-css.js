@@ -8,36 +8,54 @@ export const placement = css`
     width: 100%;
   }
 
-  h1,
-  h2,
-  h3 {
-    margin: auto;
-    text-align: center;
-  }
-
-  h2 {
+  .location {
+    grid-area: location;
+    justify-self: center;
+    margin: 0.25em;
     text-transform: capitalize;
   }
 
-  header {
-    padding: 0.5em;
+  .tag-line {
+    grid-area: tag-line;
+    justify-self: center;
+    margin: 0.25em;
   }
 
-  main-menu {
-    display: inline-block;
-    margin: 0;
+  .site-heading {
+    grid-area: site-heading;
+    justify-self: center;
+    margin: 0.25em;
   }
 
-  h3 {
-    clear: both;
+  .main-menu {
+    grid-area: main-menu;
+    justify-self: center;
+    margin: 0.25em;
+  }
+
+  .header {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    grid-template-areas:
+      'main-menu site-heading'
+      'tag-line tag-line'
+      'location location';
+    margin: auto;
   }
 
   @media (min-width: 700px) {
-    header {
-      display: block;
+    .header {
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-template-areas:
+        'main-menu'
+        'site-heading'
+        'tag-line'
+        'location';
+      margin: auto;
     }
 
-    main-menu {
+    .main-menu {
       dispaly: block;
     }
   }

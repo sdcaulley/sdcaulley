@@ -1,6 +1,4 @@
-import { LitElement } from 'lit-element'
 import { Router } from '@vaadin/router'
-import './view-base.js'
 import '../../ui/components/category-list.js'
 import '../../ui/components/blog-container.js'
 import '../../ui/components/blog-item.js'
@@ -17,9 +15,6 @@ import '../../admin/components/resource/admin-resource-preview.js'
 import '../../admin/components/quote/admin-quote-form.js'
 import '../../admin/components/quote/admin-quote-preview.js'
 import '../../admin/components/quote/admin-quote-container.js'
-
-const viewPlaceholder = document.querySelector('site-container')
-const router = new Router(viewPlaceholder)
 
 const childRoutes = [
   // UI
@@ -101,10 +96,8 @@ const routes = [
   }
 ]
 
+const viewPlaceholder = document.getElementById('anchor')
+const router = new Router(viewPlaceholder)
 router.setRoutes(routes)
-
-export class SiteRoutes extends LitElement {}
-
-customElements.define('site-routes', SiteRoutes)
 
 export { router }

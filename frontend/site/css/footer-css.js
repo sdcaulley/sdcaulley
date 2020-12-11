@@ -8,8 +8,14 @@ export const footer = css`
     width: 100%;
   }
 
-  footer {
-    clear: both;
-    padding: 1em 3em;
+  .footer {
+    display: grid;
+    margin: auto;
+    min-height: 5em;
+  }
+
+  .copy-right {
+    align-self: center;
+    margin: 0.25em;
   }
 `

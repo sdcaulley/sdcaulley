@@ -10,7 +10,9 @@ export default class Footer extends LitElement {
 
   render () {
     return html`
-      <footer class=paper><p>made by sdcaulley &#169 2020</p></footer>
+      <footer class="paper footer">
+        <p class="copy-right">made by sdcaulley &#169 2020</p>
+      </footer>
     `
   }
 }

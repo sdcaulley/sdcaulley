@@ -14,11 +14,11 @@ export default class Header extends MobxLitElement {
 
   render () {
     return html`
-      <header class="paper">
-        <main-menu category=${store.category}></main-menu>
-        <h1>sdcaulley</h1>
-        <h3>Bringing intention to my daily life</h3>
-        <h2 class="${store.category}-header">${store.location}</h2>
+      <header class="paper header">
+        <main-menu class="main-menu" category=${store.category}></main-menu>
+        <h1 class="site-heading">sdcaulley</h1>
+        <h3 class="tag-line">Bringing intention to my daily life</h3>
+        <h2 class="${store.category}-header location">${store.location}</h2>
       </header>
     `
   }

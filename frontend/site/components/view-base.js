@@ -17,9 +17,11 @@ export class ViewBase extends MobxLitElement {
 
   render () {
     return html`
-      <site-header></site-header>
-      <slot></slot>
-      <site-footer></site-footer>
+      <div class="wrapper">
+        <site-header class="header"></site-header>
+        <div class="content"><slot></slot></div>
+        <site-footer class="footer"></site-footer>
+      </div>
     `
   }
 }
