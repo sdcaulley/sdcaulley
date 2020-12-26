@@ -12,6 +12,7 @@ export const footer = css`
     display: grid;
     margin: auto;
     min-height: 5em;
+    padding: 0.5em;
   }
 
   .copy-right {

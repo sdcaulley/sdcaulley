@@ -19,6 +19,7 @@ export const placement = css`
     grid-area: tag-line;
     justify-self: center;
     margin: 0.25em;
+    text-align: center;
   }
 
   .site-heading {

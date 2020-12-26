@@ -2,32 +2,31 @@ import { css } from 'lit-element'
 
 export const placement = css`
   section {
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    display: grid;
+    grid-auto-rows: minmax(5em auto);
+    gap: 1em;
+    margin: auto;
     padding: 1em;
+    width: 50%;
   }
 
-  a {
-    color: black;
-    display: inline-block;
+  .category-link {
+    align-items: center;
+    display: grid;
     font-weight: bold;
-    margin: 0.25em;
-    padding: 10% 0.5em;
+    min-height: 3em;
     text-align: center;
-    text-decoration: none;
-    width: 30%;
   }
 
   @media (min-width: 500px) {
     section {
-      flex-direction: row;
-      justify-content: space-between;
+      grid-template-columns: repeat(3, minmax(5em, 1fr));
+      width: 90%;
     }
 
     .category-link {
       font-size: 1.5em;
+      min-height: 5em;
     }
   }
 `
