@@ -26,8 +26,8 @@ export const placement = css`
     margin: 0 auto 0 auto;
     gap: 1em;
     grid-template-areas:
-      'header header'
-      'content content'
-      'footer footer';
+      'header'
+      'content'
+      'footer';
   }
 `
