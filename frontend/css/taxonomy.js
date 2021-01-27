@@ -77,5 +77,10 @@ export const taxonomy = css`
       font-family: 'Podkova', serif;
       font-size: 1.25em;
     }
+
+    .menu-item {
+      font-size: 1.5638em;
+      weight: bold;
+    }
   }
 `

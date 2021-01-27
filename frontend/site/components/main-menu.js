@@ -16,65 +16,67 @@ export default class MainMenu extends MobxLitElement {
       case 'home':
         return html`
           <nav>
-            <img src='../../css/menu.svg' alt='Menu icon'></img>
-            <section class=paper_nav>
-              <a href='/'>Home</a>
-          </section>
+            <a class="menu-item" href="/">Home</a>
           </nav>
         `
       case 'admin':
         return html`
           <nav>
-            <img src='../../css/menu.svg' alt='Menu icon'></img>
-            <section class=paper_nav>
-              <a href='/'>Home</a>
-              <a href='/admin'>Admin</a>
-            </section>
+            <a class="menu-item" href="/admin">Admin</a>
+            <a class="menu-item" href="/">Home</a>
           </nav>
-          `
+        `
       case 'code':
         return html`
           <nav>
-            <img src='../../css/menu.svg' alt='Menu icon'></img>
-            <section class=paper_nav>
-              <a class=${store.category}-link href='/'>Home</a>
-              <a class=${store.category}-link href='/craft/blog'>Craft</a>
-              <a class=${store.category}-link href='/culture/blog'>Culture</a>
-              <a class=${store.category}-link href='/code/resources'>Resources</a>
-            </section>
+            <a class="${store.category}-link menu-item" href="/">Home</a>
+            <a class="${store.category}-link menu-item" href="/craft/blog"
+              >Craft</a
+            >
+            <a class="${store.category}-link menu-item" href="/culture/blog"
+              >Culture</a
+            >
+            <a class="${store.category}-link menu-item" href="/code/resources"
+              >Resources</a
+            >
           </nav>
-          `
+        `
       case 'craft':
         return html`
           <nav>
-            <img src='../css/menu.svg' alt='Menu icon'></img>
-            <section class=paper_nav>
-              <a class=${store.category}-link href='/'>Home</a>
-              <a class=${store.category}-link href='/code/blog'>Code</a>
-              <a class=${store.category}-link href='/culture/blog'>Culture</a>
-              <a class=${store.category}-link href='/craft/resources'>Resources</a>
-            </section>
+            <a class="${store.category}-link menu-item" href="/">Home</a>
+            <a class="${store.category}-link menu-item" href="/code/blog"
+              >Code</a
+            >
+            <a class="${store.category}-link menu-item" href="/culture/blog"
+              >Culture</a
+            >
+            <a class="${store.category}-link menu-item" href="/craft/resources"
+              >Resources</a
+            >
           </nav>
-          `
+        `
       case 'culture':
         return html`
           <nav>
-            <img src='../css/menu.svg' alt='Menu icon'></img>
-            <section class=paper_nav>
-              <a class=${store.category}-link href='/'>Home</a>
-              <a class=${store.category}-link href='/code/blog'>Code</a>
-              <a class=${store.category}-link href='/craft/blog'>Craft</a>
-              <a class=${store.category}-link href='/culture/resources'>Resources</a>
-            </section>
+            <a class="${store.category}-link menu-item" href="/">Home</a>
+            <a class="${store.category}-link menu-item" href="/code/blog"
+              >Code</a
+            >
+            <a class="${store.category}-link menu-item" href="/craft/blog"
+              >Craft</a
+            >
+            <a
+              class="${store.category}-link menu-item"
+              href="/culture/resources"
+              >Resources</a
+            >
           </nav>
         `
       default:
         return html`
           <nav>
-            <img src='../css/menu.svg' alt='Menu icon'></img>
-            <section class=paper_nav>
-              <a class=${store.category}-link href='/'>Home</a>
-            </section>
+            <a class="${store.category}-link menu-item" href="/">Home</a>
           </nav>
         `
     }
