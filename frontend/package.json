@@ -4,12 +4,12 @@
   "description": "frontend for sdcaulley",
   "main": "index.html",
   "scripts": {
-    "start": "es-dev-server --node-resolve --watch --app-index index.html --open"
+    "start": "web-dev-server --node-resolve --watch --app-index index.html --open"
   },
   "author": "sdcaulley",
   "license": "GPL-3.0-or-later",
   "devDependencies": {
-    "es-dev-server": "^1.57.3",
+    "@web/dev-server": "^0.1.5",
     "standard": "^14.3.4"
   },
   "dependencies": {
