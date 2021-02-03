@@ -27,7 +27,7 @@ class CategoryList extends ViewBase {
       <section>
         ${store.categoryList.map(
           category =>
-            html`<a class="${category}-link category-link paper" href=/${category}/blog id=${category}><strong>${category}</strong></a>`
+            html`<a class="${category}-link category-link menue-item paper" href=/${category}/blog id=${category}><strong>${category}</strong></a>`
         )}
       </section>
     `

@@ -3,30 +3,25 @@ import { css } from 'lit-element'
 export const placement = css`
   section {
     display: grid;
-    grid-auto-rows: minmax(5em auto);
+    grid-template-columns: repeat(auto-fit, minmax(10em, 1fr));
     gap: 1em;
+    justify-items: center;
     margin: auto;
     padding: 1em;
-    width: 50%;
   }
 
   .category-link {
     align-items: center;
     display: grid;
     font-weight: bold;
-    min-height: 3em;
+    min-height: 8em;
     text-align: center;
+    min-width: 8em;
   }
 
-  @media (min-width: 500px) {
-    section {
-      grid-template-columns: repeat(3, minmax(5em, 1fr));
-      width: 90%;
-    }
-
+  @media (min-width: 1000px) {
     .category-link {
       font-size: 1.5em;
-      min-height: 5em;
     }
   }
 `
