@@ -6,18 +6,12 @@ export const menu = css`
     width: 100%;
   }
 
-  section {
-    margin: 0.5em;
-    padding: 0;
-  }
-
   ul {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-around;
     padding: 0;
-    margin: 0.25em;
   }
 
   li {
@@ -27,18 +21,14 @@ export const menu = css`
   }
 
   h4 {
-    margin: 0.5em;
     text-align: center;
+    margin-top: 0;
   }
 
   @media (min-width: 1000px) {
     ul {
       flex-direction: column;
       justify-content: center;
-    }
-
-    h4 {
-      text-align: center;
     }
 
     li {

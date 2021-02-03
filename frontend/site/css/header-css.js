@@ -34,7 +34,7 @@ export const placement = css`
       'tag-line'
       'location';
     justify-items: center;
-    margin: auto;
+    margin: 0 auto;
     padding: 0.5em;
   }
 `

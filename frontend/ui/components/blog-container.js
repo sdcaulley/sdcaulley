@@ -36,11 +36,9 @@ export default class BlogContainer extends ViewBase {
     store.location = this.location.params.category
 
     return html`
-      <section id="right-sidebar">
-        <tag-menu></tag-menu>
-      </section>
-      <section id="main">
-        <blog-list></blog-list>
+      <section class="blog-container">
+        <tag-menu class="col-1"></tag-menu>
+        <blog-list class="col-2"></blog-list>
       </section>
     `
   }

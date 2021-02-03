@@ -33,7 +33,7 @@ export default class BlogList extends MobxLitElement {
     }
 
     return html`
-      <section>
+      <section class="list-container">
         ${store.blogList.map(blog => {
           const title = blog.title.split(' ').join('_')
           const titleHref = `/${store.category}/blog/${title}`

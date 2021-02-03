@@ -6,9 +6,11 @@ export const placement = css`
     width: 100%;
   }
 
-  article {
-    margin: 0.25em 0;
-    width: 90%;
+  .list-container {
+    display: grid;
+    grid-template-colmuns: 1fr;
+    gap: 1em;
+    width: 100%;
   }
 
   h4 {

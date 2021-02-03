@@ -42,7 +42,7 @@ export default class TagMenu extends MobxLitElement {
   render () {
     if (store.blogList.length > 0) {
       return html`
-        <section id="tag-menu" class="paper">
+        <section class="paper">
           <h4 class="${store.category}-header">Categories</h4>
           <ul>
             ${this.tagsMenu()}
