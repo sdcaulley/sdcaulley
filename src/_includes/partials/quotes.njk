@@ -1,0 +1,11 @@
+{% set quote = quotes[location] | random %}
+
+{% if quote %}
+  <figure class="paper">
+    <blockquote>
+      <p>{{ quote.body }}</p>
+    </blockquote>
+    <hr class="{{ location }}-label">
+    <figcaption>{{ quote.author }}, <cite>{{ quote.source }}</cite></figcaption>
+  </figure>
+{% endif %}

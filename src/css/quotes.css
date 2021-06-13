@@ -1,0 +1,11 @@
+figure {
+  box-sizing: border-box;
+  margin: 1rem auto;
+  max-width: 60%;
+  padding: 1rem;
+}
+
+blockquote {
+  box-sizing: border-box;
+  margin: 0;
+}

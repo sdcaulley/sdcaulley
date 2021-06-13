@@ -1,0 +1,68 @@
+---
+layout: layouts/base.njk
+---
+{%  block content %}
+  {% set postlist = collections[location] %}
+
+  <header class="blog-header paper">
+    <h2 class="{{ location }}-header">{{ title }}</h2>
+    <h3 class="{{ location }}-header">{{ description }}</h3>
+
+    {% tagCloud postlist, location %}
+  </header>
+
+  {% include "partials/quotes.njk" %}
+
+  {% for post in pagination.items %}
+    <article class="blog-summary paper">
+      <h2>
+        <a class="{{ location }}-link" href="{{ post.url }}">
+          {{post.data.title}}
+        </a>
+      </h2>
+
+      {% if post.data.date %}
+        <p class="time">
+          <time datetime="{{ post.data.date | dateymd }}">
+            {{ post.data.date | datefriendly }}
+          </time>
+        </p>
+      {% endif %}
+
+      <p>{{ post.data.description }}</p>
+
+      <section class="summary-tags">
+        <p>Tags:</p>
+        <ul class="summary-tag-container">
+          {% for tag in post.data.tags %}
+            <li class="summary-tag-item">
+              <a class="{{ location }}-link" href="/tags/{{ tag }}">
+                {{ tag }}
+              </a>
+            </li>
+          {% endfor %}
+        </ul>
+      </section>
+    </article>
+  {% endfor %}
+
+  {% if pagination.href.previous or pagination.href.next %}
+    <nav class="pagenav paper">
+
+      {% if pagination.href.previous %}
+        <p><a class="{{ location }}-link" href="{{ pagination.href.previous }}">
+          <span class="material-icons">arrow_back</span>
+          <span>previous {{ location }} musing</span>
+        </a></p>
+      {% endif %}
+
+      {% if pagination.href.next %}
+        <p><a class="{{ location }}-link" href="{{ pagination.href.next }}">
+          <span>next {{ location }} musing</span>
+          <span class="material-icons">arrow_forward</span>
+        </a></p>
+      {% endif %}
+
+    </nav>
+  {% endif %}
+{% endblock %}

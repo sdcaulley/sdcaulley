@@ -1,0 +1,30 @@
+.site-header {
+  box-sizing: border-box;
+  margin: 1rem auto;
+  padding: 1rem;
+  text-align: center;
+}
+
+.main-nav-container {
+  display: flex;
+  justify-content: space-around;
+}
+
+.parent {
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  padding: 0;
+  position: absolute;
+  z-index: 1;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.child {
+  text-align: center;
+}

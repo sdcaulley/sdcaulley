@@ -1,0 +1,22 @@
+.blog-item {
+  box-sizing: border-box;
+  margin: 1rem auto;
+  padding: 1rem;
+}
+
+.blog-item h1 {
+  text-align: center;
+  text-transform: capitalize;
+}
+
+.blog-item section {
+  display: flex;
+}
+
+.blog-item section p {
+  flex: 1 1 auto;
+}
+
+.blog-item section p a {
+  text-transform: capitalize;
+}

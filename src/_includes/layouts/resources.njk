@@ -1,0 +1,32 @@
+---
+layout: layouts/base.njk
+---
+{% block content %}
+  <header class="resource-header paper">
+    <h2 class="{{ location }}-header">{{ title }}</h2>
+    <h3 class="{{ location }}-header">{{ description }}</h3>
+  </header>
+
+  {% include "partials/quotes.njk" %}
+
+  {% for resource in resources[location] %}
+    <article class="resource-item paper">
+      <h2>
+        <a class="{{ location }}-link" href="{{ resource.url }}">
+          {{ resource.title}}
+        </a>
+      </h2>
+
+      <p>{{ resource.description }}</p>
+
+      <nav class="resource-tag-container">
+        <p>Tags:</p>
+        <ul class="resource-tags-nav">
+          {% for tag in resource.tags %}
+            <li class="{{ location }}-link resource-tag-item">{{ tag }}</li>
+          {% endfor %}
+        </ul>
+      </nav>
+    </article>
+  {% endfor %}
+{% endblock %}

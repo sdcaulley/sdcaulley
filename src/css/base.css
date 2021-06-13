@@ -1,0 +1,133 @@
+body {
+  background-image: url('./cork-board.png');
+  box-sizing: border-box;
+  font-family: 'Dosis', sans-serif;
+  font-size: 1em;
+  font-weight: normal;
+  margin: auto;
+  max-width: 1000px;
+  padding: 0 1rem;
+}
+
+h1 {
+  font-family: 'Podkova', serif;
+  font-size: 1.802em;
+  margin: 0 0 1rem 0;
+
+}
+
+h2 {
+  font-family: 'Podkova', serif;
+  font-size: 1.602em;
+  margin: 0 0 1rem 0;
+}
+
+h3 {
+  font-family: 'Podkova', serif;
+  font-size: 1.424em;
+  margin: 0 0 1rem 0;
+}
+
+h4 {
+  font-family: 'Podkova', serif;
+  font-size: 1.266em;
+  margin: 0 0 1rem 0;
+}
+
+h5 {
+  font-family: 'Podkova', serif;
+  font-size: 1.125em;
+  margin: 0 0 1rem 0;
+}
+
+main {
+  box-sizing: border-box;
+  margin: auto;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+ul {
+  list-style-type: none;
+}
+
+.paper {
+  background-color: rgba(250, 240, 230, 0.7);
+  background-image: url('./ricepaper_v3.png');
+  border-radius: 1em;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  z-index: 2;
+}
+
+.code-header {
+  color: #385400;
+}
+
+.code-link {
+  color: #7da134;
+}
+
+.code-label {
+  color: #577913;
+}
+
+.craft-header {
+  color: #5a0000;
+}
+
+.craft-link {
+  color: #ad3838;
+}
+
+.craft-label {
+  color: #821414;
+}
+
+.culture-header {
+  color: #003636;
+}
+
+.culture-link {
+  color: #226868;
+}
+
+.culture-label {
+  color: 0c4e4e;
+}
+
+@media (min-width: 1000px) {
+  body {
+    font-size: 1.15rem;
+  }
+
+  h1 {
+    font-family: 'Podkova', serif;
+    font-size: 3.052em;
+  }
+
+  h2 {
+    font-family: 'Podkova', serif;
+    font-size: 2.441em;
+  }
+
+  h3 {
+    font-family: 'Podkova', serif;
+    font-size: 1.953em;
+  }
+
+  h4 {
+    font-family: 'Podkova', serif;
+    font-size: 1.5638em;
+  }
+
+  h5 {
+    font-family: 'Podkova', serif;
+    font-size: 1.25em;
+  }
+}

@@ -1,0 +1,28 @@
+.blog-tag-nav {
+  box-sizing: border-box;
+  display: inline-flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.blog-tag-nav p {
+  margin: 0 1rem 0 0;
+}
+
+.blog-tag-nav-item {
+  flex: 1 0 auto;
+}
+
+.blog-tag-container {
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+.blog-tag-item {
+  flex: 1 0 auto;
+  margin: 0;
+}

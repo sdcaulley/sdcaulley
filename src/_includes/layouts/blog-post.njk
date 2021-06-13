@@ -1,0 +1,69 @@
+---
+layout: layouts/base.njk
+---
+{% block content %}
+  {% include "partials/quotes.njk"%}
+
+  <article class="blog-item paper">
+    <h1 class="{{ location }}-header">{{ title }}</h1>
+
+    {% if date %}
+      <p class="time">
+        <time datetime="{{ date | dateymd }}">
+          {{ date | datefriendly }}
+        </time>
+      </p>
+    {% endif %}
+
+    {{ content | safe }}
+
+    <h5>Want to leave a comment?</h5>
+    <p>Feel free to send me an
+      <strong>
+        <a
+          class="{{ location }}-link"
+          href="mailto:comment@sdcaulley.com?subject={{ title }}"
+          target="_blank">
+          email
+        <a/>
+      </strong>.
+    </p>
+
+    <section class="summary-tags">
+      <p>Tags:</p>
+      <ul class="summary-tag-container">
+        {% for tag in tags %}
+          <li class="summary-tag-item">
+            <a class="{{ location }}-link" href="/tags/{{ tag }}">
+              {{ tag }}
+            </a>
+          </li>
+        {% endfor %}
+      </ul>
+    </section>
+
+    {% set nextPost = collections[location] | getNextCollectionItem(page) %}
+
+    <section>
+      {% if nextPost %}
+        <p>Next article:
+          <a class="{{ location }}-link" href="{{ nextPost.url }}">
+            {{ nextPost.data.title }}
+          </a>
+        </p>
+      {% endif %}
+
+      {% set previousPost = collections[location] | getPreviousCollectionItem(page) %}
+
+      {% if previousPost %}
+        <p>Previous article:
+          <a class="{{ location }}-link" href="{{ previousPost.url }}">
+            {{ previousPost.data.title }}
+          </a>
+        </p>
+      {% endif %}
+
+      <p><a class="{{ location }}-link" href="/{{ location }}">Bact to {{ location }} Musings</a></p>
+    </section>
+  </article>
+{% endblock %}

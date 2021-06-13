@@ -1,0 +1,25 @@
+{
+  "name": "eleventy-test",
+  "version": "1.0.0",
+  "description": "Learning eleventy",
+  "main": "index.js",
+  "scripts": {
+    "start": "npx @11ty/eleventy --serve"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sdcaulley/eleventy-test.git"
+  },
+  "author": "sdcaulley",
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/sdcaulley/eleventy-test/issues"
+  },
+  "homepage": "https://github.com/sdcaulley/eleventy-test#readme",
+  "devDependencies": {
+    "@11ty/eleventy": "^0.12.1",
+    "@11ty/eleventy-navigation": "^0.2.0",
+    "standard": "^16.0.3"
+  },
+  "dependencies": {}
+}
